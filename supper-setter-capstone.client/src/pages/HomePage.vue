@@ -1,16 +1,16 @@
 <template>
-  <div class="home flex-grow-1 d-flex flex-column align-items-center justify-content-center">
-    <div class="home-card p-5 bg-white rounded elevation-3">
-      <img
-        src="https://bcw.blob.core.windows.net/public/img/8600856373152463"
-        alt="CodeWorks Logo"
-        class="rounded-circle"
-      >
-      <h1 class="my-5 bg-dark text-white p-3 rounded text-center">
-        Vue 3 Starter
+  <section class="row justify-content-center container-fluid">
+    <div class="col-8">
+      <h1 class="text-center fw-bold raleway">
+        Welcome! To Supper Setter
       </h1>
+      <p class="raleway fs-5">Cut your time spent planning your meals and groceries. You can manage recipes,
+        ingredients, food categories,
+        meal types & grocery items with this clean, uncluttered interface Our Meals combines recipe management, meal
+        planning, groceries</p>
     </div>
-  </div>
+
+  </section>
 </template>
 
 <script>
@@ -38,6 +38,11 @@ export default {
       width: 100%;
       object-fit: contain;
       object-position: center;
+    }
+
+    .raleway {
+      font-family: 'Raleway', sans-serif;
+
     }
   }
 }
