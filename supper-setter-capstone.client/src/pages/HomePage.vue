@@ -22,14 +22,18 @@
 </template>
 
 <script>
-
-import RecipeCard from '../components/RecipeCard.vue';
-
 export default {
   setup() {
-    // async function getFeaturedRecipes() {
-    //   await 
-    // }
+    async function getFeaturedRecipes() {
+      let query = 'chicken'
+      try {
+        await recipesService.getFeaturedRecipes(query)
+      } catch (error) {
+        logger.log(error)
+        Pop.error(error)
+      }
+
+    }
     return {}
   }
 }
