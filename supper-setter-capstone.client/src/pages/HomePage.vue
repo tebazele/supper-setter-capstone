@@ -13,10 +13,18 @@
 
   </section>
   <!-- NOTE adding recipe cards here...  -->
+  <section>
+    <div v-for="r in recipe ">
+      <RecipeCard />
+    </div>
+  </section>
 
 </template>
 
 <script>
+
+import RecipeCard from '../components/RecipeCard.vue';
+
 export default {
   setup() {
     // async function getFeaturedRecipes() {
