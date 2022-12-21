@@ -16,6 +16,9 @@
 <script>
 export default {
   setup() {
+    // async function getFeaturedRecipes() {
+    //   await 
+    // }
     return {}
   }
 }
