@@ -3,8 +3,10 @@
 @import "./_overrides.scss";
 @import "./_utilities.scss";
 @import "./loaders.scss";
+@import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
 
-body{
+
+body {
   overscroll-behavior: none;
 }
 
@@ -30,6 +32,7 @@ select {
     &:valid {
       border: 1px solid $success;
     }
+
     &:invalid {
       border: 1px solid $danger;
     }
@@ -39,4 +42,9 @@ select {
 form:invalid button[type="submit"] {
   filter: grayscale(1);
   pointer-events: none;
+}
+
+.raleway {
+  font-family: 'Raleway', sans-serif;
+
 }
