@@ -24,6 +24,10 @@
 
 <script>
 import RecipeCard from '../components/RecipeCard.vue'
+import { onMounted } from '@vue/runtime-core'
+import { recipesService } from '../services/RecipesService.js'
+import { logger } from '../utils/Logger.js'
+import Pop from '../utils/Pop.js'
 export default {
   setup() {
     async function getFeaturedRecipes() {
@@ -36,6 +40,9 @@ export default {
       }
 
     }
+    onMounted(() => {
+      getFeaturedRecipes()
+    })
     return {}
   }
 }

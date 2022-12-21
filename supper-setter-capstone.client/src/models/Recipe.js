@@ -17,7 +17,8 @@ export class Recipe {
         this.totalNutrients = data.recipe.totalNutrients
         this.cookTime = data.recipe.totalTime
         this.cuisineType = data.recipe.cuisineType
-
+        this.uniqueURL = data.recipe.url
+        // this uniqueURL can act as an id
 
     }
 }
