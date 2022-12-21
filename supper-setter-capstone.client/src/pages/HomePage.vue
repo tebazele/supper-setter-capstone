@@ -17,11 +17,21 @@
 </template>
 
 <script>
+import { recipesService } from '../services/RecipesService.js'
+import { logger } from '../utils/Logger.js'
+import Pop from '../utils/Pop.js'
 export default {
   setup() {
-    // async function getFeaturedRecipes() {
-    //   await 
-    // }
+    async function getFeaturedRecipes() {
+      let query = 'chicken'
+      try {
+        await recipesService.getFeaturedRecipes(query)
+      } catch (error) {
+        logger.log(error)
+        Pop.error(error)
+      }
+
+    }
     return {}
   }
 }
