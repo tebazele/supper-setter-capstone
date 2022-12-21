@@ -14,10 +14,8 @@
   </section>
   <!-- NOTE adding recipe cards here...  -->
   <section>
-    <div v-for="r in recipe ">
-      <RecipeCard />
-      <!-- yo this is a git test -->
-    </div>
+    <RecipeCard />
+    <!-- yo this is a git test -->
   </section>
 
 </template>
@@ -27,17 +25,18 @@ import RecipeCard from '../components/RecipeCard.vue'
 export default {
   setup() {
     async function getFeaturedRecipes() {
-      let query = 'chicken'
+      let query = "chicken";
       try {
-        await recipesService.getFeaturedRecipes(query)
-      } catch (error) {
-        logger.log(error)
-        Pop.error(error)
+        await recipesService.getFeaturedRecipes(query);
       }
-
+      catch (error) {
+        logger.log(error);
+        Pop.error(error);
+      }
     }
-    return {}
-  }
+    return {};
+  },
+  components: { RecipeCard }
 }
 </script>
 
