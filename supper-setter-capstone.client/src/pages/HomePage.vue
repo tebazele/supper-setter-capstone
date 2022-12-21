@@ -41,8 +41,11 @@ export default {
     onMounted(() => {
       getFeaturedRecipes()
     })
-    return {}
-  }
+    return {
+
+    }
+  },
+  components: { RecipeCard }
 }
 </script>
 
