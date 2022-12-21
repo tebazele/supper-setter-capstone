@@ -4,15 +4,13 @@ import { logger } from "../utils/Logger"
 
 
 
-class MealPlansService {
+// class MealPlansService {
 
 
-  // async getAccountMealPlans(accountId) {
-  //   const res = await dbContext.
-  // }
 
 
-}
+
+// }
 
 
-export const mealPlansService = new MealPlansService()
+// export const mealPlansService = new MealPlansService()
