@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import RecipeCard from '../components/RecipeCard.vue'
 export default {
   setup() {
     async function getFeaturedRecipes() {
