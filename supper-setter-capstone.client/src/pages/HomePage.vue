@@ -14,8 +14,10 @@
   </section>
   <!-- NOTE adding recipe cards here...  -->
   <section>
-    <RecipeCard />
-    <!-- yo this is a git test -->
+    <div v-for="r in recipe">
+      <RecipeCard />
+      <!-- yo this is a git test -->
+    </div>
   </section>
 
 </template>
