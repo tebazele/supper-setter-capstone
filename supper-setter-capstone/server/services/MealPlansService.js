@@ -4,13 +4,13 @@ import { logger } from "../utils/Logger"
 
 
 
-// class MealPlansService {
+class MealPlansService {
 
 
 
 
 
-// }
+}
 
 
-// export const mealPlansService = new MealPlansService()
+export const mealPlansService = new MealPlansService()

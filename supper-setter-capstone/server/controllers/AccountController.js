@@ -1,6 +1,6 @@
 import { Auth0Provider } from '@bcwdev/auth0provider'
 import { accountService } from '../services/AccountService'
-// import { mealPlansService } from "../services/MealPlansService"
+import { mealPlansService } from "../services/MealPlansService"
 import BaseController from '../utils/BaseController'
 
 export class AccountController extends BaseController {
@@ -9,7 +9,7 @@ export class AccountController extends BaseController {
     this.router
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('', this.getUserAccount)
-    // .get('account/mealplans', this.getAccountMealPlans)
+      .get('/mealplans', this.getAccountMealPlans)
   }
 
   async getUserAccount(req, res, next) {
@@ -21,14 +21,14 @@ export class AccountController extends BaseController {
     }
   }
 
-  // async getAccountMealPlans(req, res, next) {
-  //   try {
-  //     const mealPlan = await mealPlansService.getAccountMealPlans(req.userInfo.id)
-  //     return res.send(mealPlan)
-  //   } catch (error) {
-  //     next(error)
-  //   }
-  // }
+  async getAccountMealPlans(req, res, next) {
+    try {
+      const mealPlan = await mealPlansService.getAccountMealPlans(req.userInfo.id)
+      return res.send(mealPlan)
+    } catch (error) {
+      next(error)
+    }
+  }
 
 
 }
