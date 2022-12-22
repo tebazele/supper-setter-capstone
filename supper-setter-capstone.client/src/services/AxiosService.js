@@ -24,3 +24,9 @@ export const edamamApi = Axios.create({
 
 // MUST send up a query on get recipes request
 
+// api from another source. 
+// https://www.themealdb.com/api.php
+export const mealdbApi = axios.create({
+  baseURL: 'https://www.themealdb.com/api/v1/1',
+  timeout: 8000,
+})
