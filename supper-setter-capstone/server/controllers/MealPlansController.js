@@ -8,7 +8,7 @@ export class MealPlansController extends BaseController {
   constructor() {
     super('api/mealplans')
     this.router
-      .get('')
+      .get('/:mealPlanid', this.getOneMealPlan)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createMealPlan)
 
@@ -24,6 +24,14 @@ export class MealPlansController extends BaseController {
     }
   }
 
+  async getOneMealPlan(req, res, next) {
+    try {
+      const mealPlan = await mealPlansService.getOneMealPlan(req.params.mealPlanId)
+      return res.send(mealPlan)
+    } catch (error) {
+      next(error)
+    }
+  }
 
 
 }
