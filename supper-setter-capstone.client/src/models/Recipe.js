@@ -1,7 +1,7 @@
 export class Recipe {
     constructor(data) {
         this.image = data.recipe.image
-        this.title = data.recipe.label
+        this.label = data.recipe.label
         this.dietLabels = data.recipe.dietLabels
         this.healthLabels = data.recipe.healthLabels
         // diet labels & health labels are arrays
