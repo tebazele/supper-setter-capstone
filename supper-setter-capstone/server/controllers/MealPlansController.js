@@ -8,7 +8,7 @@ export class MealPlansController extends BaseController {
   constructor() {
     super('api/mealplans')
     this.router
-      .get('/:mealPlanid', this.getOneMealPlan)
+      .get('/:mealPlanId', this.getOneMealPlan)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createMealPlan)
 
