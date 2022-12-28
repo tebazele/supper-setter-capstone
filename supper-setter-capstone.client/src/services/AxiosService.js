@@ -26,7 +26,7 @@ export const edamamApi = Axios.create({
 
 // api from another source. 
 // https://www.themealdb.com/api.php
-export const mealdbApi = axios.create({
+export const mealdbApi = Axios.create({
   baseURL: 'https://www.themealdb.com/api/v1/1',
   timeout: 8000,
 })

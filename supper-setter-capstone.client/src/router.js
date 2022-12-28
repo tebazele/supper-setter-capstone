@@ -21,6 +21,12 @@ const routes = [
     name: 'Account',
     component: loadPage('AccountPage'),
     beforeEnter: authGuard
+  },
+  {
+    path: '/mealplans',
+    name: 'MealPlans',
+    component: loadPage('MealPlanDisplayPage')
+    // FIXME add authGuard protection
   }
 ]
 
