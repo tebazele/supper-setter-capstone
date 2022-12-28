@@ -16,7 +16,7 @@ export class DaysController extends BaseController {
     try {
       req.body.accountId = req.userInfo.id
       const day = daysService.createDay(req.body)
-      return res.send()
+      return res.send(day)
     } catch (error) {
       next(error)
     }
