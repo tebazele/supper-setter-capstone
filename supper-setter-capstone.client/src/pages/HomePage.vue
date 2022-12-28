@@ -15,7 +15,7 @@
   <!-- NOTE adding recipe cards here...  -->
   <section>
     <div v-for="r in recipes" :key="r.url">
-      <RecipeCard />
+      <RecipeCard :recipe="r" />
       <!-- yo this is a git test -->
     </div>
   </section>

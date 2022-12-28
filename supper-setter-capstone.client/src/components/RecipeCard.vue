@@ -1,23 +1,21 @@
 <template>
-  <div class="component">
+  <div class="component p-3 border border-dark rounded border-1 m-2 bg-white">
 
 
-    <img
-      src="https://images.unsplash.com/photo-1587116861219-230ac19df971?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-      alt="meal" class="img-fluid cardImg my-2" title="https://thiscatdoesnotexist.com">
-    <h4>Sauteed Scallops with Sauce</h4>
+    <img :src="recipe.image" alt="meal" class="img-fluid cardImg my-2" :title="recipe.label">
+    <h4>{{ recipe.label }}</h4>
     <div class="d-flex justify-content-between">
-      <i class="mdi mdi-clock">30</i>
-      <p>1250 Calories</p>
+      <i class="mdi mdi-clock">{{ recipe.cookTime }}</i>
+      <p>{{ Math.round(recipe.calories) }} Calories</p>
     </div>
-    <!-- FOR EACH DIET TAG?? -->
-    <div class="d-flex justify-content-evenly">
-      <h5 class="bg-danger text-white rounded">High-Protein</h5>
-      <h5 class="bg-danger text-white rounded">Low-Carb</h5>
-      <h5 class="bg-danger text-white rounded">Low-Carb</h5>
+    <!-- FOR EACH DIET TAG?? YUP-->
+    <div class="d-flex justify-content-evenly" v-for="d in dietLabels" :key="d">
+      <h5 class="bg-danger text-white rounded">{{ d }}</h5>
+      <!-- <h5 class="bg-danger text-white rounded">Low-Carb</h5>
+      <h5 class="bg-danger text-white rounded">Low-Carb</h5> -->
     </div>
     <div class="div d-flex justify-content-end">
-      <p>Serves 4</p>
+      <p>Serves {{ recipe.yield }}</p>
     </div>
   </div>
 </template>
@@ -26,9 +24,15 @@
 <script>
 import { AppState } from '../AppState';
 import { computed, reactive, onMounted } from 'vue';
+import { Recipe } from '../models/Recipe.js';
 export default {
-  setup() {
-    return {}
+  props: {
+    recipe: { type: Recipe, required: true }
+  },
+  setup(props) {
+    return {
+      dietLabels: computed(() => props.recipe.dietLabels)
+    }
   }
 };
 </script>
