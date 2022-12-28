@@ -14,7 +14,7 @@
   </section>
   <!-- NOTE adding recipe cards here...  -->
   <section>
-    <div v-for="r in recipe">
+    <div v-for="r in recipes" :key="r.url">
       <RecipeCard />
       <!-- yo this is a git test -->
     </div>
@@ -24,10 +24,11 @@
 
 <script>
 import RecipeCard from '../components/RecipeCard.vue'
-import { onMounted } from '@vue/runtime-core'
+import { onMounted, computed } from '@vue/runtime-core'
 import { recipesService } from '../services/RecipesService.js'
 import { logger } from '../utils/Logger.js'
 import Pop from '../utils/Pop.js'
+import { AppState } from '../AppState.js'
 export default {
   setup() {
     async function getFeaturedRecipes() {
@@ -44,7 +45,7 @@ export default {
       getFeaturedRecipes()
     })
     return {
-
+      recipes: computed(() => AppState.recipes)
     }
   },
   components: { RecipeCard }
