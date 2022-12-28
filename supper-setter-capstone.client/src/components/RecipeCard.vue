@@ -8,15 +8,16 @@
       <i class="mdi mdi-clock">{{ recipe.cookTime }}</i>
       <p>{{ Math.round(recipe.calories) }} Calories</p>
     </div>
+    <div class="div d-flex justify-content-end">
+      <p>Serves {{ recipe.yield }}</p>
+    </div>
     <!-- FOR EACH DIET TAG?? YUP-->
     <div class="d-flex justify-content-evenly" v-for="d in dietLabels" :key="d">
       <h5 class="bg-danger text-white rounded">{{ d }}</h5>
       <!-- <h5 class="bg-danger text-white rounded">Low-Carb</h5>
       <h5 class="bg-danger text-white rounded">Low-Carb</h5> -->
     </div>
-    <div class="div d-flex justify-content-end">
-      <p>Serves {{ recipe.yield }}</p>
-    </div>
+
   </div>
 </template>
 
