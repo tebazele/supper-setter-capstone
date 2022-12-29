@@ -29,7 +29,7 @@ const routes = [
     // FIXME add authGuard protection
   },
   {
-    path: '/recipes/:uniqueURL',
+    path: '/recipes/:id',
     name: 'RecipeDetails',
     component: loadPage('RecipeDetailsPage')
   }
