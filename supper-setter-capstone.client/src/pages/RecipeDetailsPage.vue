@@ -39,7 +39,6 @@ export default {
 
     async function getRecipeById() {
       try {
-        debugger
         await recipesService.getRecipeById(route.params.id)
       } catch (error) {
         logger.error(error)

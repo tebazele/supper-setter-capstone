@@ -12,7 +12,6 @@ class RecipesService {
     }
 
     async getRecipeById(id) {
-        debugger
         const res = await edamamApi.get('/' + id)
         logger.log('this is getting recipe by id', res.data)
         AppState.activeRecipe = res.data
