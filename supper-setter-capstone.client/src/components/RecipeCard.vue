@@ -1,8 +1,11 @@
 <template>
+
   <div class="component p-3 border border-dark rounded border-1 m-2 bg-white">
 
-
-    <img :src="recipe.image" alt="meal" class="img-fluid cardImg my-2" :title="recipe.label">
+    <router-link :to="{ name: 'RecipeDetails', params: { uniqueURL: recipe.uniqueURL } }"
+      @click="setActiveRecipe(recipe)">
+      <img :src="recipe.image" alt="meal" class="img-fluid cardImg my-2" :title="recipe.label">
+    </router-link>
     <h4>{{ recipe.label }}</h4>
     <div class="d-flex justify-content-between">
       <i class="mdi mdi-clock">{{ recipe.cookTime }}</i>
@@ -26,13 +29,24 @@
 import { AppState } from '../AppState';
 import { computed, reactive, onMounted } from 'vue';
 import { Recipe } from '../models/Recipe.js';
+import { logger } from "../utils/Logger";
 export default {
   props: {
     recipe: { type: Recipe, required: true }
   },
   setup(props) {
+
+
+
+
+
     return {
-      dietLabels: computed(() => props.recipe.dietLabels)
+      dietLabels: computed(() => props.recipe.dietLabels),
+
+      setActiveRecipe(recipe) {
+        AppState.activeRecipe = recipe
+        logger.log(AppState.activeRecipe, 'this is active recipe')
+      }
     }
   }
 };

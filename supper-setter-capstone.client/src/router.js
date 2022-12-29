@@ -27,6 +27,11 @@ const routes = [
     name: 'MealPlans',
     component: loadPage('MealPlanDisplayPage')
     // FIXME add authGuard protection
+  },
+  {
+    path: '/recipes/:uniqueURL',
+    name: 'RecipeDetails',
+    component: loadPage('RecipeDetailsPage')
   }
 ]
 

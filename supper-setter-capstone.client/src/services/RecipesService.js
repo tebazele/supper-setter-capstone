@@ -11,6 +11,8 @@ class RecipesService {
         AppState.recipes = res.data.hits.map(r => new Recipe(r))
     }
 
+
+
 }
 
 export const recipesService = new RecipesService()
