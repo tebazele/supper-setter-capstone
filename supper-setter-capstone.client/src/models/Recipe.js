@@ -18,7 +18,13 @@ export class Recipe {
         this.cookTime = data.recipe.totalTime
         this.cuisineType = data.recipe.cuisineType
         this.uniqueURL = data.recipe.url
-        // this uniqueURL can act as an id
+        this.id = this.parseId(data._links.self.href)
 
+    }
+
+    parseId(routeString) {
+        let id = routeString.replace('https://api.edamam.com/api/recipes/v2/', '')
+        id = id.replace('?type=public&app_id=54586086&app_key=d8b752a4da7fffc862014e3c3524d868', '')
+        return id
     }
 }

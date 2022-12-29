@@ -8,15 +8,21 @@
     </router-link>
     <h4>{{ recipe.label }}</h4>
     <div class="d-flex justify-content-between">
-      <i class="mdi mdi-clock">{{ recipe.cookTime }}</i>
+      <span v-if="recipe.cookTime" class="mdi mdi-clock">{{ recipe.cookTime }}</span>
       <p>{{ Math.round(recipe.calories) }} Calories</p>
     </div>
     <div class="div d-flex justify-content-end">
       <p>Serves {{ recipe.yield }}</p>
     </div>
     <!-- FOR EACH DIET TAG?? YUP-->
-    <div class="d-flex justify-content-evenly" v-for="d in dietLabels" :key="d">
-      <h5 class="bg-danger text-white rounded">{{ d }}</h5>
+    <div class="d-flex" v-for="d in dietLabels" :key="d">
+      <div class="d-flex p-1">
+        <span class="bg-danger text-white rounded p-1">{{ d }}</span>
+      </div>
+
+
+
+
       <!-- <h5 class="bg-danger text-white rounded">Low-Carb</h5>
       <h5 class="bg-danger text-white rounded">Low-Carb</h5> -->
     </div>
