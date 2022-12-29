@@ -6,5 +6,13 @@ export const RecipeSchema = new Schema({
     image: { type: String, required: true },
     // ingredients: { type: Array },
     accountId: { type: ObjectId, required: true, ref: 'Account' },
-    uniqueUrl: { type: String, required: true }
+    uniqueUrl: { type: String, required: true },
+    edamamId: { type: String, required: true }
 }, { timestamps: true, toJSON: { virtuals: true } })
+
+RecipeSchema.virtual('account', {
+    localField: 'accountId',
+    ref: 'Account',
+    foreignField: '_id',
+    justOne: true
+})

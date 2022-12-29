@@ -12,6 +12,12 @@ class RecipesService {
     return recipes
   }
 
+  async addToMyRecipes(body) {
+    const newRecipe = await dbContext.MyRecipe.create(body)
+    await newRecipe.populate('account')
+    return newRecipe
+  }
+
   async getOneRecipe(id) {
     const recipe = await dbContext.MyRecipe.findById(id)
     if (!recipe) {
@@ -19,6 +25,8 @@ class RecipesService {
     }
     return recipe
   }
+
+
 
 
 }
