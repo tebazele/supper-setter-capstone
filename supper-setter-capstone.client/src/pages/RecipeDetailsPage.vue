@@ -20,7 +20,7 @@
       <button v-if="!myRecipes.find(r => r.edamamId == recipe.edamamId)" @click="addToMyRecipes" class="btn btn-success"
         title="Add this recipe to your recipe collection!">Add
         Recipe</button>
-      <button v-else class="btn btn-danger" title="Remove this recipe from your recipe collection!">Remove
+      <button v-else class="btn btn-danger" title="Remove this recipe from your recipe collection">Remove
         Recipe</button>
     </div>
   </div>
