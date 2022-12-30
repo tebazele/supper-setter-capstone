@@ -6,7 +6,7 @@ import { BadRequest } from "../utils/Errors"
 class DaysService {
 
   async createDay(body) {
-    const mealPlan = await dbContext.PlannedMeal.findById(body.id)
+    const mealPlan = await dbContext.MealPlan.findById(body.id)
     if (!mealPlan) {
       throw new BadRequest('no meal plan found')
     }
