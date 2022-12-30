@@ -4,7 +4,7 @@
     <section class="row justify-content-center">
       <!-- v-for over the col-10 -->
       <div class="col-10 bg-white elevation-1">
-        <RecipeCard />
+
       </div>
     </section>
   </div>
@@ -17,6 +17,6 @@ export default {
   setup() {
     return {};
   },
-  components: { RecipeCard }
+
 }
 </script>
