@@ -1,32 +1,34 @@
 <template>
 
-  <div class="component p-3 border border-dark rounded border-1 m-2 bg-white">
+  <router-link :to="{ name: 'RecipeDetails', params: { edamamId: recipe.edamamId } }">
+    <div class="component p-3 border border-dark rounded border-1 m-2 bg-white">
 
-    <router-link :to="{ name: 'RecipeDetails', params: { id: recipe.id } }">
+
       <img :src="recipe.image" alt="meal" class="img-fluid cardImg my-2" :title="recipe.label">
-    </router-link>
-    <h4>{{ recipe.label }}</h4>
-    <div class="d-flex justify-content-between">
-      <span v-if="recipe.cookTime" class="mdi mdi-clock">{{ recipe.cookTime }}</span>
-      <p>{{ Math.round(recipe.calories) }} Calories</p>
-    </div>
-    <div class="div d-flex justify-content-end">
-      <p>Serves {{ recipe.yield }}</p>
-    </div>
-    <!-- FOR EACH DIET TAG?? YUP-->
-    <div class="d-flex" v-for="d in dietLabels" :key="d">
-      <div class="d-flex p-1">
-        <span class="bg-danger text-white rounded p-1">{{ d }}</span>
+
+      <h4>{{ recipe.label }}</h4>
+      <div class="d-flex justify-content-between">
+        <span v-if="recipe.cookTime" class="mdi mdi-clock">{{ recipe.cookTime }}</span>
+        <p>{{ Math.round(recipe.calories) }} Calories</p>
+      </div>
+      <div class="div d-flex justify-content-end">
+        <p>Serves {{ recipe.yield }}</p>
+      </div>
+      <!-- FOR EACH DIET TAG?? YUP-->
+      <div class="d-flex" v-for="d in dietLabels" :key="d">
+        <div class="d-flex p-1">
+          <span class="bg-danger text-white rounded p-1">{{ d }}</span>
+        </div>
+
+
+
+
+        <!-- <h5 class="bg-danger text-white rounded">Low-Carb</h5>
+      <h5 class="bg-danger text-white rounded">Low-Carb</h5> -->
       </div>
 
-
-
-
-      <!-- <h5 class="bg-danger text-white rounded">Low-Carb</h5>
-      <h5 class="bg-danger text-white rounded">Low-Carb</h5> -->
     </div>
-
-  </div>
+  </router-link>
 </template>
 
 

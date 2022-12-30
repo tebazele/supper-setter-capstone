@@ -10,14 +10,15 @@
     </section>
     <section v-if="ingredients" class="row">
       <h3 class="mt-2">ingredients</h3>
-      <div v-for="i in ingredients" class="col-12">
+      <div v-for="i in ingredients" :key="i.text" class="col-12">
         {{ i.text }}
       </div>
       <h3 class="mt-2 mb-0">Cooking Instructions</h3>
       <a class="" :href="recipe.recipe.url">Click here for instructions</a>
     </section>
     <div class="text-end sticky-bottom">
-      <button class="btn btn-success ">Add Recipe</button>
+      <button @click="addToMyRecipes" class="btn btn-success" title="Add this recipe to your recipe collection!">Add
+        Recipe</button>
     </div>
   </div>
 </template>
@@ -39,7 +40,7 @@ export default {
 
     async function getRecipeById() {
       try {
-        await recipesService.getRecipeById(route.params.id)
+        await recipesService.getRecipeById(route.params.edamamId)
       } catch (error) {
         logger.error(error)
         Pop.error(error.message)
@@ -54,7 +55,18 @@ export default {
 
     return {
       recipe: computed(() => AppState.activeRecipe),
-      ingredients: computed(() => AppState.activeRecipe.recipe.ingredients)
+      ingredients: computed(() => AppState.activeRecipe.recipe.ingredients),
+
+      async addToMyRecipes() {
+        try {
+          // logger.log(route.params.edamamId)
+          await recipesService.addToMyRecipes(route.params.edamamId)
+          Pop.toast('Recipe added to your recipes!')
+        } catch (error) {
+          logger.log(error)
+          Pop.error(error)
+        }
+      }
 
     }
 

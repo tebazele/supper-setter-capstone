@@ -17,8 +17,8 @@ export class Recipe {
         this.totalNutrients = data.recipe.totalNutrients
         this.cookTime = data.recipe.totalTime
         this.cuisineType = data.recipe.cuisineType
-        this.uniqueURL = data.recipe.url
-        this.id = this.parseId(data._links.self.href)
+        this.uniqueUrl = data.recipe.url
+        this.edamamId = this.parseId(data._links.self.href)
 
     }
 
