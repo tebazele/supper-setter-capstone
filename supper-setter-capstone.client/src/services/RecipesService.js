@@ -13,8 +13,10 @@ class RecipesService {
 
     async getRecipeById(id) {
         const res = await edamamApi.get('/' + id)
-        // logger.log('this is getting recipe by id', res.data)
-        AppState.activeRecipe = res.data
+        logger.log('this is getting recipe by id', res.data)
+        let mappedRecipe = new Recipe(res.data)
+        logger.log(mappedRecipe)
+        AppState.activeRecipe = mappedRecipe
     }
 
     async addToMyRecipes(recipeId) {
@@ -24,7 +26,18 @@ class RecipesService {
         }
         const res = await api.post('/api/recipes', foundRecipe)
         // logger.log(res.data)
+        AppState.myRecipes.push(res.data)
         return res.data
+    }
+
+    async getMyRecipes() {
+        try {
+            const res = await api.get('account/recipes')
+            logger.log('got my recipes', res.data)
+            AppState.myRecipes = res.data
+        } catch (error) {
+            logger.log(error.message)
+        }
     }
 
 

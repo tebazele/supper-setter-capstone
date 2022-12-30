@@ -5,11 +5,11 @@ import { BadRequest } from "../utils/Errors"
 class RecipesService {
 
   async getAccountRecipes(accountId) {
-    const recipes = await dbContext.MyRecipe.find({ accountId })
-    if (!recipes) {
+    const myRecipes = await dbContext.MyRecipe.find({ accountId })
+    if (!myRecipes) {
       throw new BadRequest(`no recipes at ${accountId}`)
     }
-    return recipes
+    return myRecipes
   }
 
   async addToMyRecipes(body) {

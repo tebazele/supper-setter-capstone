@@ -2,11 +2,11 @@
   <div v-if="recipe" class="container-fluid">
     <section class="row">
       <div class="col-12 text-center">
-        <h1>{{ recipe.recipe.label }}</h1>
+        <h1>{{ recipe.label }}</h1>
       </div>
     </section>
     <section class="row">
-      <img :src="recipe.recipe.image" alt="" class="img-fluid">
+      <img :src="recipe.image" alt="" class="img-fluid">
     </section>
     <section v-if="ingredients" class="row">
       <h3 class="mt-2">ingredients</h3>
@@ -14,10 +14,13 @@
         {{ i.text }}
       </div>
       <h3 class="mt-2 mb-0">Cooking Instructions</h3>
-      <a class="" :href="recipe.recipe.url">Click here for instructions</a>
+      <a class="" :href="recipe.uniqueUrl">Click here for instructions</a>
     </section>
     <div class="text-end sticky-bottom">
-      <button @click="addToMyRecipes" class="btn btn-success" title="Add this recipe to your recipe collection!">Add
+      <button v-if="!myRecipes.find(r => r.edamamId == recipe.edamamId)" @click="addToMyRecipes" class="btn btn-success"
+        title="Add this recipe to your recipe collection!">Add
+        Recipe</button>
+      <button v-else class="btn btn-danger" title="Remove this recipe from your recipe collection!">Remove
         Recipe</button>
     </div>
   </div>
@@ -26,16 +29,24 @@
 
 <script>
 import { AppState } from '../AppState';
-import { computed, reactive, onMounted } from 'vue';
+import { computed, reactive, onMounted, watchEffect } from 'vue';
 import Pop from "../utils/Pop";
 import { recipesService } from "../services/RecipesService";
 import { logger } from "../utils/Logger";
 import { useRoute } from "vue-router";
+import { accountService } from '../services/AccountService.js';
 export default {
   setup() {
     const route = useRoute();
     onMounted(() => {
       getRecipeById()
+      // getMyRecipes()
+    })
+
+    watchEffect(() => {
+      if (AppState.account.id) {
+        getMyRecipes()
+      }
     })
 
     async function getRecipeById() {
@@ -43,6 +54,15 @@ export default {
         await recipesService.getRecipeById(route.params.edamamId)
       } catch (error) {
         logger.error(error)
+        Pop.error(error.message)
+      }
+    }
+
+    async function getMyRecipes() {
+      try {
+        await recipesService.getMyRecipes()
+      } catch (error) {
+        logger.log(error)
         Pop.error(error.message)
       }
     }
@@ -55,7 +75,8 @@ export default {
 
     return {
       recipe: computed(() => AppState.activeRecipe),
-      ingredients: computed(() => AppState.activeRecipe.recipe.ingredients),
+      ingredients: computed(() => AppState.activeRecipe.ingredients),
+      myRecipes: computed(() => AppState.myRecipes),
 
       async addToMyRecipes() {
         try {
