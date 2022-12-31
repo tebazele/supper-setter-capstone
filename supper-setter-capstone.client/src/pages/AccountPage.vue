@@ -5,7 +5,10 @@
         <h2>My Meal Plans</h2>
       </div>
       <div class="col-4 text-end">
-        <button class="btn btn-success">Add MP</button>
+        <router-link :to="{ name: 'MealPlans' }">
+          <button class="btn btn-success">Add MP</button>
+
+        </router-link>
       </div>
     </section>
     <section class="row">

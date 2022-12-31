@@ -42,7 +42,7 @@ export default {
       getRecipeById()
       // getMyRecipes()
     })
-    // FIXME dont need this  -- is in auth service
+    // FIXME don't need this  -- is in auth service
     watchEffect(() => {
       if (AppState.account.id) {
         getMyRecipes()
