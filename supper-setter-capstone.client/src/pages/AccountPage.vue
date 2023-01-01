@@ -20,7 +20,7 @@
       <div class="col-12">
         <h2>My Recipes</h2>
       </div>
-      <div v-for="r in myRecipes" class="col-12">
+      <div v-for="r in myRecipes" :key="r.edamamId" class="col-12">
         <router-link :to="{ name: 'RecipeDetails', params: { edamamId: r.edamamId } }">
           <div class="card">
             <h5>{{ r.label }}</h5>

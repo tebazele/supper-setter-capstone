@@ -10,7 +10,8 @@
     </section>
     <section v-if="ingredients" class="row">
       <h3 class="mt-2">ingredients</h3>
-      <div v-for="i in ingredients" :key="i.text" class="col-12">
+      <!-- STUB ignore this -->
+      <div v-for="(i, index) in ingredients" :key="index" class="col-12">
         {{ i.text }}
       </div>
       <h3 class="mt-2 mb-0">Cooking Instructions</h3>
