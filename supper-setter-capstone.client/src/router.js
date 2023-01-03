@@ -32,6 +32,11 @@ const routes = [
     path: '/recipes/:edamamId',
     name: 'RecipeDetails',
     component: loadPage('RecipeDetailsPage')
+  },
+  {
+    path: '/mealPlans/:mealPlanId',
+    name: 'MealPlanDetails',
+    component: loadPage('MealPlanDetailsPage')
   }
 ]
 

@@ -35,6 +35,7 @@ import MealPlan from '../components/MealPlan.vue';
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
 import { mealPlansService } from '../services/MealPlansService.js'
+import { router } from "../router";
 export default {
     setup() {
         const mealPlanName = ref()
@@ -46,12 +47,14 @@ export default {
             displayForm,
             async createMealPlan() {
                 try {
+
                     logger.log(mealPlanName.value)
-                    await mealPlansService.createMealPlan(mealPlanName.value)
+                    const mealPlan = await mealPlansService.createMealPlan(mealPlanName.value)
 
                     // mealPlanName.value = ''
                     displayForm.value = false
                     Pop.toast('meal plan created')
+                    router.push({ name: 'MealPlanDetails', params: { mealPlanId: mealPlan.id } })
                 } catch (error) {
                     logger.log(error)
                     Pop.error(error.message)
