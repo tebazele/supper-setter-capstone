@@ -1,4 +1,5 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
+import { daysService } from "../services/DaysService";
 import { mealPlansService } from "../services/MealPlansService";
 import BaseController from "../utils/BaseController";
 
@@ -9,6 +10,7 @@ export class MealPlansController extends BaseController {
     super('api/mealplans')
     this.router
       .get('/:mealPlanId', this.getOneMealPlan)
+      .get('/:mealPlanId/days', this.getMealPlanDays)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createMealPlan)
 
@@ -28,6 +30,16 @@ export class MealPlansController extends BaseController {
     try {
       const mealPlan = await mealPlansService.getOneMealPlan(req.params.mealPlanId)
       return res.send(mealPlan)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+
+  async getMealPlanDays(req, res, next) {
+    try {
+      const days = await daysService.getMealPlanDays(req.params.mealPlanId)
+      return res.send(days)
     } catch (error) {
       next(error)
     }

@@ -8,8 +8,8 @@
 
 
 <script>
-import { daysService } from '../services/DaysService.js'
 import { logger } from '../utils/Logger.js';
+import { daysService } from '../services/DaysService.js';
 import Pop from '../utils/Pop.js';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState';
@@ -34,7 +34,21 @@ export default {
 
 
     return {
-      mealPlan: computed(() => AppState.activeMealPlan)
+      mealPlan: computed(() => AppState.activeMealPlan),
+
+
+      async createDay() {
+        try {
+          await daysService.createDay()
+        } catch (error) {
+          logger.error(error)
+          Pop.error(error.message)
+        }
+      }
+
+
+
+
     }
   }
 };

@@ -11,7 +11,10 @@ class DaysService {
     return day
   }
 
-
+  async getMealPlanDays(mealPlanId) {
+    const days = await dbContext.Days.find({ mealPlanId }).populate('mealPlan')
+    return days
+  }
 
 }
 
