@@ -68,7 +68,7 @@ export default {
     }
   }
 };
-pt>
+</script>
 
 
 <style lang="scss" scoped>
