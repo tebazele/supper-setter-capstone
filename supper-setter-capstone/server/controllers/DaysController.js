@@ -14,7 +14,7 @@ export class DaysController extends BaseController {
 
   async createDay(req, res, next) {
     try {
-      const day = daysService.createDay(req.body)
+      const day = await daysService.createDay(req.body)
       return res.send(day)
     } catch (error) {
       next(error)

@@ -6,9 +6,9 @@ import { api } from "./AxiosService"
 class DaysService {
 
   async createDay(mealPlanId) {
-    debugger
     const res = await api.post('api/days', { mealPlanId })
     logger.log(res.data)
+    // AppState.activeDays.push(res.data)
   }
 
   async getDays(mealPlanId) {

@@ -1,13 +1,13 @@
 <template>
   <div class="component">
     <div class="text-end">
-      <button class="btn btn-success">Create Day</button>
+      <button class="btn btn-success" @click="createDay">Create Day</button>
     </div>
     <div v-if="mealPlan">
       {{ mealPlan }}
     </div>
   </div>
-</template>
+te>
 
 
 <script>
@@ -53,7 +53,8 @@ export default {
 
       async createDay() {
         try {
-          await daysService.createDay(route.params.mealPlanId)
+          const newDay = await daysService.createDay(route.params.mealPlanId)
+          logger.log(newDay)
         } catch (error) {
           logger.error(error)
           Pop.error(error.message)
@@ -66,7 +67,7 @@ export default {
     }
   }
 };
-</script>
+pt>
 
 
 <style lang="scss" scoped>
