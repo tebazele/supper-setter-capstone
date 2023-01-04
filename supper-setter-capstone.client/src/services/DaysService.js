@@ -13,6 +13,7 @@ class DaysService {
 
   async getDays(mealPlanId) {
     const res = await api.get('api/mealplans/' + mealPlanId + '/days')
+
     AppState.activeDays = res.data
   }
 

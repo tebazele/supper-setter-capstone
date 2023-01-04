@@ -14,6 +14,12 @@ class MealPlansService {
         return res.data
 
     }
+
+    async getMyMealPlans() {
+        const res = await api.get('account/mealplans')
+        logger.log('got my mealplans', res.data)
+        AppState.mealPlans = res.data
+    }
 }
 
 export const mealPlansService = new MealPlansService()

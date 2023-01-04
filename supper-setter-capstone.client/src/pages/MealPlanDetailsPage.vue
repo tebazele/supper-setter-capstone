@@ -1,5 +1,8 @@
 <template>
   <div class="component">
+    <div class="text-end">
+      <button class="btn btn-success">Create Day</button>
+    </div>
     <div v-if="mealPlan">
       {{ mealPlan }}
     </div>
@@ -35,11 +38,11 @@ export default {
 
     return {
       mealPlan: computed(() => AppState.activeMealPlan),
-
+      days: computed(() => AppState.activeDays),
 
       async createDay() {
         try {
-          await daysService.createDay()
+          await daysService.createDay(route.params.mealPlanId)
         } catch (error) {
           logger.error(error)
           Pop.error(error.message)

@@ -12,8 +12,11 @@
       </div>
     </section>
     <section class="row">
-      <div class="col-12">
-        <MealPlan />
+      <div v-for="m in mealPlans" :key="m.id" class="col-12">
+        <router-link :to="{ name: 'MealPlanDetails', params: { mealPlanId: m.id } }">
+          <h6 class="selectable">{{ m.name }}</h6>
+
+        </router-link>
       </div>
     </section>
     <section class="row">
@@ -34,14 +37,31 @@
 </template>
 
 <script>
-import { computed } from 'vue'
+import { computed, onMounted } from 'vue'
 import { AppState } from '../AppState'
 import MealPlan from "../components/MealPlan.vue";
+import { logger } from '../utils/Logger.js';
+import Pop from '../utils/Pop.js';
+import { mealPlansService } from '../services/MealPlansService.js';
 export default {
   setup() {
+
+    onMounted(() => {
+      getMyMealPlans()
+    })
+
+    async function getMyMealPlans() {
+      try {
+        await mealPlansService.getMyMealPlans()
+      } catch (error) {
+        logger.log(error)
+        Pop.error(error.message)
+      }
+    }
     return {
       account: computed(() => AppState.account),
-      myRecipes: computed(() => AppState.myRecipes)
+      myRecipes: computed(() => AppState.myRecipes),
+      mealPlans: computed(() => AppState.mealPlans)
     };
   },
   components: { MealPlan }
