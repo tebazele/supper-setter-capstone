@@ -7,7 +7,8 @@
       {{ mealPlan }}
     </div>
   </div>
-te>
+
+</template>>
 
 
 <script>
