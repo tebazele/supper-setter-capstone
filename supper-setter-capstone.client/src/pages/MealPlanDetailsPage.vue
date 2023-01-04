@@ -1,14 +1,42 @@
 <template>
-  <div class="component">
+  <div class="container-fluid">
     <div class="text-end">
       <button class="btn btn-success" @click="createDay">Create Day</button>
     </div>
     <div v-if="mealPlan">
-      {{ mealPlan }}
+      <h2>
+        {{ mealPlan.name }}
+
+      </h2>
     </div>
+    <div v-for="d in days" :key="d.id">
+      <p>Breakfast</p>
+      <ul v-for="(b, index) in d.breakfastRecipes" :key="index">
+        <li>{{ b }}</li>
+      </ul>
+      <ul>
+        <li>Add a breakfast recipe</li>
+      </ul>
+      <p>Lunch</p>
+      <ul v-for="(l, index) in d.lunchRecipes" :key="index">
+        <li>{{ l }}</li>
+      </ul>
+      <ul>
+        <li>Add a lunch recipe</li>
+      </ul>
+      <p>Dinner</p>
+      <ul v-for="(s, index) in d.dinnerRecipes" :key="index">
+        <li>{{ s }}</li>
+      </ul>
+      <ul>
+        <li>Add a dinner recipe</li>
+      </ul>
+    </div>
+
   </div>
 
-</template>>
+
+</template>
 
 
 <script>
@@ -54,13 +82,15 @@ export default {
 
       async createDay() {
         try {
-          const newDay = await daysService.createDay(route.params.mealPlanId)
-          logger.log(newDay)
+          await daysService.createDay(route.params.mealPlanId)
+
         } catch (error) {
           logger.error(error)
           Pop.error(error.message)
         }
       }
+
+
 
 
 
