@@ -20,6 +20,11 @@ class MealPlansService {
         logger.log('got my mealplans', res.data)
         AppState.mealPlans = res.data
     }
+
+    async getMealPlanById(mealPlanId) {
+        const res = await api.get('/api/mealplans/' + mealPlanId)
+        AppState.activeMealPlan = res.data
+    }
 }
 
 export const mealPlansService = new MealPlansService()

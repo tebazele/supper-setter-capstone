@@ -17,10 +17,12 @@ import Pop from '../utils/Pop.js';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState';
 import { computed, reactive, onMounted } from 'vue';
+import { mealPlansService } from '../services/MealPlansService.js';
 export default {
   setup() {
     onMounted(() => {
       getDays()
+      getMealPlanById()
     })
     const route = useRoute();
 
@@ -32,6 +34,15 @@ export default {
         logger.error(error)
       }
 
+    }
+
+    async function getMealPlanById() {
+      try {
+        await mealPlansService.getMealPlanById(route.params.mealPlanId)
+      } catch (error) {
+        logger.log(error)
+        Pop.error(error.message)
+      }
     }
 
 
