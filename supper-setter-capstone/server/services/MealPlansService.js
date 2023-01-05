@@ -35,7 +35,7 @@ class MealPlansService {
     // @ts-ignore
     if (mealPlan.creatorId.toString() != accountId) throw new BadRequest('You do not have permission to remove this meal plan')
 
-    daysService.removeDaysByMealPlan(mealPlanId)
+    await daysService.removeDaysByMealPlan(mealPlanId)
     await mealPlan.remove()
 
     return `${mealPlan.name} and associated days have been deleted`

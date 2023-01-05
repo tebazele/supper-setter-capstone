@@ -5,7 +5,7 @@ import { BadRequest } from "../utils/Errors"
 class RecipesService {
 
   async getAccountRecipes(accountId) {
-    const myRecipes = await dbContext.MyRecipe.find({ accountId })
+    const myRecipes = await dbContext.Recipe.find({ accountId })
     if (!myRecipes) {
       throw new BadRequest(`no recipes at ${accountId}`)
     }
@@ -13,13 +13,13 @@ class RecipesService {
   }
 
   async addToMyRecipes(body) {
-    const newRecipe = await dbContext.MyRecipe.create(body)
+    const newRecipe = await dbContext.Recipe.create(body)
     await newRecipe.populate('account')
     return newRecipe
   }
 
   async getOneRecipe(id) {
-    const recipe = await dbContext.MyRecipe.findById(id)
+    const recipe = await dbContext.Recipe.findById(id)
     if (!recipe) {
       throw new BadRequest(`no recipe with id of ${id}`)
     }

@@ -32,7 +32,7 @@ import { AppState } from '../AppState.js'
 export default {
   setup() {
     async function getFeaturedRecipes() {
-      let query = "chicken";
+      let query = "international";
       try {
         await recipesService.getFeaturedRecipes(query);
       }

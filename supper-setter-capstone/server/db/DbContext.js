@@ -14,7 +14,7 @@ class DbContext {
 
   Days = mongoose.model('Day', DaySchema);
 
-  MyRecipe = mongoose.model('MyRecipe', RecipeSchema);
+  Recipe = mongoose.model('Recipe', RecipeSchema);
 
   PlannedMeal = mongoose.model('PlannedMeal', PlannedMealSchema);
 

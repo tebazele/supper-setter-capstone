@@ -1,6 +1,7 @@
 import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 import { logger } from "../utils/Logger.js"
+import { plannedMealsService } from "./PlannedMealsService.js"
 
 
 
@@ -21,10 +22,14 @@ class DaysService {
   }
 
   async removeDaysByMealPlan(mealPlanId) {
+    const days = await dbContext.Days.find({ mealPlanId }).populate('mealPlan')
+    await plannedMealsService.removePlannedMealsByDay(days)
     await dbContext.Days.deleteMany({ mealPlanId }).populate('mealPlan')
-    // TODO this function should go to PlannedMeals controller and delete any associated days
   }
 
+  async removeDay(dayId) {
+
+  }
 }
 
 
