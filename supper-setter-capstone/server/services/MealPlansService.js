@@ -10,8 +10,8 @@ import { daysService } from "./DaysService.js"
 
 class MealPlansService {
 
-  async getAccountMealPlans(accountId) {
-    const mealPlans = await dbContext.MealPlan.find({ accountId })
+  async getAccountMealPlans(creatorId) {
+    const mealPlans = await dbContext.MealPlan.find({ creatorId }).populate('creator')
     return mealPlans
   }
 
