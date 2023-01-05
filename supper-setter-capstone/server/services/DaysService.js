@@ -14,6 +14,7 @@ class DaysService {
 
     foundDay.remove()
     return `this day has been deleted`
+    // TODO DELETE ALL PLANNED MEALS 
   }
 
   async createDay(body) {
