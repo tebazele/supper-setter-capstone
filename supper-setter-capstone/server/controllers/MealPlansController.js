@@ -13,6 +13,7 @@ export class MealPlansController extends BaseController {
       .get('/:mealPlanId/days', this.getMealPlanDays)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createMealPlan)
+      .delete('/:mealPlanId', this.removeMealPlan)
 
   }
 
@@ -40,6 +41,14 @@ export class MealPlansController extends BaseController {
     try {
       const days = await daysService.getMealPlanDays(req.params.mealPlanId)
       return res.send(days)
+    } catch (error) {
+      next(error)
+    }
+  }
+  async removeMealPlan(req, res, next) {
+    try {
+      const message = await mealPlansService.removeMealPlan(req.params.mealPlanId, req.userInfo.id)
+      return res.send(message)
     } catch (error) {
       next(error)
     }

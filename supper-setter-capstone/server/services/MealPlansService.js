@@ -3,6 +3,7 @@ import { DaysController } from "../controllers/DaysController"
 import { dbContext } from "../db/DbContext"
 import { BadRequest } from "../utils/Errors"
 import { logger } from "../utils/Logger"
+import { daysService } from "./DaysService.js"
 
 
 
@@ -27,7 +28,17 @@ class MealPlansService {
     return newMealPlan
   }
 
+  async removeMealPlan(mealPlanId, accountId) {
+    const mealPlan = await dbContext.MealPlan.findById(mealPlanId).populate('creator')
+    daysService.removeDaysByMealPlan(mealPlanId)
+    if (!mealPlan) throw new BadRequest('No meal plan located with this ID')
+    if (mealPlan.creatorId.toString() != accountId) throw new BadRequest('You do not have permission to remove this meal plan')
 
+    daysService.removeDaysByMealPlan(mealPlanId)
+    await mealPlan.remove()
+
+    return `${mealPlan.name} and associated day(s) have been deleted`
+  }
 }
 
 
