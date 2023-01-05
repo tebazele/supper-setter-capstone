@@ -1,13 +1,19 @@
 import { dbContext } from "../db/DbContext"
-import { BadRequest } from "../utils/Errors"
+import { BadRequest, Forbidden } from "../utils/Errors"
 import { logger } from "../utils/Logger.js"
 import { plannedMealsService } from "./PlannedMealsService.js"
 
 
 
 class DaysService {
-  removeDay(dayId, id) {
-    throw new Error("Method not implemented.")
+  async removeDay(dayId, creatorId) {
+    const foundDay = await dbContext.Days.findById(dayId).populate('mealPlan')
+    if (!foundDay) throw new BadRequest(`no day at id: ${dayId}`)
+    // @ts-ignore
+    if (foundDay.mealPlan.creatorId.toString() != creatorId) throw new Forbidden(`Cannot delete a day thats not yours`)
+
+    foundDay.remove()
+    return `this day has been deleted`
   }
 
   async createDay(body) {
@@ -25,10 +31,6 @@ class DaysService {
     const days = await dbContext.Days.find({ mealPlanId }).populate('mealPlan')
     await plannedMealsService.removePlannedMealsByDay(days)
     await dbContext.Days.deleteMany({ mealPlanId }).populate('mealPlan')
-  }
-
-  async removeDay(dayId) {
-
   }
 }
 
