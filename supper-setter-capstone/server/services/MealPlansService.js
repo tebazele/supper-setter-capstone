@@ -32,12 +32,13 @@ class MealPlansService {
     const mealPlan = await dbContext.MealPlan.findById(mealPlanId).populate('creator')
     daysService.removeDaysByMealPlan(mealPlanId)
     if (!mealPlan) throw new BadRequest('No meal plan located with this ID')
+    // @ts-ignore
     if (mealPlan.creatorId.toString() != accountId) throw new BadRequest('You do not have permission to remove this meal plan')
 
     daysService.removeDaysByMealPlan(mealPlanId)
     await mealPlan.remove()
 
-    return `${mealPlan.name} and associated day(s) have been deleted`
+    return `${mealPlan.name} and associated days have been deleted`
   }
 }
 
