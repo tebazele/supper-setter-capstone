@@ -22,6 +22,7 @@ class DaysService {
 
   async removeDaysByMealPlan(mealPlanId) {
     await dbContext.Days.deleteMany({ mealPlanId }).populate('mealPlan')
+    // TODO this function should go to PlannedMeals controller and delete any associated days
   }
 
 }

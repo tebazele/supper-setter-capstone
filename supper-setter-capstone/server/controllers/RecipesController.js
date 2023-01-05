@@ -35,3 +35,5 @@ export class RecipesController extends BaseController {
 
 
 }
+
+// TODO remove recipe. Deleting recipes should also go through every day  and remove plannedmeals tied to day ( delete every planned meal of account where recipe id [I dont know how we are going to do this(?)] = deleted recipe id  ) I dont think this is going to work unless we have universally labeled recipe ids. else it will be a pain in the ass to go by every single item and search the name etc. therefore
