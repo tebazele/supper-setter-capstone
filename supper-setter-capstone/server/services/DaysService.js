@@ -13,11 +13,17 @@ class DaysService {
     if (foundDay.mealPlan.creatorId.toString() != creatorId) throw new Forbidden(`Cannot delete a day thats not yours`)
 
     foundDay.remove()
+    // TODO PUT request to re-sequence all days
     return `this day has been deleted`
-    // TODO DELETE ALL PLANNED MEALS 
+
   }
 
   async createDay(body) {
+    // NOTE Find all days associated with this meal plan and send up Day NUMBER based on how many there are
+    const daysArray = await dbContext.Days.find({ mealPlanId: body.mealPlanId })
+    const numberOfDays = daysArray.length
+    body.name = `Day ${numberOfDays + 1}`
+
     const day = await dbContext.Days.create(body)
     await day.populate('mealPlan')
     return day
