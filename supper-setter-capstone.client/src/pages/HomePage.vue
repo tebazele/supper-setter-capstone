@@ -31,22 +31,22 @@ import Pop from '../utils/Pop.js'
 import { AppState } from '../AppState.js'
 export default {
   setup() {
-    async function getFeaturedRecipes() {
-      let query = "international";
-      try {
-        await recipesService.getFeaturedRecipes(query);
-      }
-      catch (error) {
-        logger.log(error);
-        Pop.error(error);
-      }
-    }
-    onMounted(() => {
-      getFeaturedRecipes()
-    })
-    return {
-      recipes: computed(() => AppState.recipes)
-    }
+    // async function getFeaturedRecipes() {
+    //   let query = "international";
+    //   try {
+    //     await recipesService.getFeaturedRecipes(query);
+    //   }
+    //   catch (error) {
+    //     logger.log(error);
+    //     Pop.error(error);
+    //   }
+    // }
+    // onMounted(() => {
+    //   getFeaturedRecipes()
+    // })
+    // return {
+    //   recipes: computed(() => AppState.recipes)
+    // }
   },
   components: { RecipeCard }
 }

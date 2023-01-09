@@ -7,7 +7,8 @@ export const RecipeSchema = new Schema({
   // ingredients: { type: Array },
   accountId: { type: ObjectId, required: true, ref: 'Account' },
   uniqueUrl: { type: String, required: true },
-  edamamId: { type: String, required: true }
+  edamamId: { type: String, required: true },
+  archived: { type: Boolean, required: true, default: false }
 }, { timestamps: true, toJSON: { virtuals: true } })
 
 RecipeSchema.virtual('account', {
