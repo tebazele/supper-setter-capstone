@@ -62,6 +62,7 @@ export default {
       if (AppState.activeDays) {
         getPlannedMeals(AppState.activeDays);
       }
+
     });
     onMounted(() => {
       getDays();
