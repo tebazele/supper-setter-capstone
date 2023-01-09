@@ -1,21 +1,18 @@
 <template>
     <router-link :to="{ name: 'MealPlans' }">
         <div class="component">
-            <h3 class="mt-3">Day 1</h3>
+            <h3 class="mt-3" v-if="plannedMealsArray[0]">{{ plannedMealsArray[0].day.name }}</h3>
+            <h3 v-else>Day Null</h3>
             <div class="border border-dark border-2 rounded px-2 pt-2 my-2">
                 <div class="d-flex justify-content-between">
                     <h6>Breakfast</h6>
                     <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add
                         recipe</button>
                 </div>
-                <ul>
-                    <li class="my-3"><img
-                            src="https://images.unsplash.com/photo-1571748982800-fa51082c2224?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-                            class="thumbnail" /> Overnight Oats <i class="mdi mdi-delete text-danger"
-                            title="Delete recipe"></i></li>
-                    <li class="my-3"> <img
-                            src="https://images.unsplash.com/photo-1594489428504-5c0c480a15fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
-                            class="thumbnail" /> Chopped Bananas</li>
+                <ul v-for="b in breakfastMeals" :key="b.id">
+
+                    <li class="my-3"><img :src="b.recipe.image" class="thumbnail" /> {{ b.recipe.label }} <i
+                            class="mdi mdi-delete text-danger" title="Delete recipe"></i></li>
                 </ul>
                 <hr>
                 <h6>Lunch</h6>
@@ -75,10 +72,16 @@
 import { AppState } from '../AppState';
 import { computed, reactive, onMounted } from 'vue';
 export default {
-    setup() {
+    props: {
+        plannedMealsArray: { type: Array, required: true }
+    },
+    setup(props) {
         return {
-            myRecipes: computed(() => AppState.myRecipes)
+            myRecipes: computed(() => AppState.myRecipes),
+            entirePlannedMealArray: computed(() => AppState.plannedMeals),
+            breakfastMeals: computed(() => props.plannedMealsArray.filter(m => m.type == 'breakfast'))
         }
+
     }
 };
 </script>

@@ -9,7 +9,13 @@
 
       </h2>
     </div>
-    <div v-for="d in days" :key="d.id">
+    <section class="row">
+      <!-- <p>{{ plannedMealsByDay }}</p> -->
+      <div class="col-12" v-for="ps in plannedMealsByDay" :key="ps.id">
+        <MealPlan :plannedMealsArray="ps" />
+      </div>
+    </section>
+    <!-- <div v-for="d in days" :key="d.id">
       <p>Breakfast</p>
       <ul v-for="(b, index) in d.breakfastRecipes" :key="index">
         <li>{{ b }}</li>
@@ -31,7 +37,7 @@
       <ul>
         <li>Add a dinner recipe</li>
       </ul>
-    </div>
+    </div> -->
 
   </div>
 
@@ -48,73 +54,62 @@ import { AppState } from '../AppState';
 import { computed, reactive, onMounted, watchEffect } from 'vue';
 import { mealPlansService } from '../services/MealPlansService.js';
 import { plannedMealsService } from '../services/PlannedMealsService.js';
+import MealPlan from '../components/MealPlan.vue';
 export default {
   setup() {
     watchEffect(() => {
       if (AppState.activeDays) {
-        getPlannedMeals(AppState.activeDays)
+        getPlannedMeals(AppState.activeDays);
       }
-    })
-
+    });
     onMounted(() => {
-      getDays()
-      getMealPlanById()
-    })
+      getDays();
+      getMealPlanById();
+    });
     const route = useRoute();
-
     async function getPlannedMeals(daysArray) {
       try {
-        await plannedMealsService.getPlannedMeals(daysArray)
-      } catch (error) {
-        Pop.error(error.message)
-        logger.log(error)
+        await plannedMealsService.getPlannedMeals(daysArray);
+      }
+      catch (error) {
+        Pop.error(error.message);
+        logger.log(error);
       }
     }
-
     async function getDays() {
       try {
-        await daysService.getDays(route.params.mealPlanId)
-      } catch (error) {
-        Pop.error(error.message)
-        logger.log(error)
+        await daysService.getDays(route.params.mealPlanId);
       }
-
+      catch (error) {
+        Pop.error(error.message);
+        logger.log(error);
+      }
     }
-
     async function getMealPlanById() {
       try {
-        await mealPlansService.getMealPlanById(route.params.mealPlanId)
-      } catch (error) {
-        logger.log(error)
-        Pop.error(error.message)
+        await mealPlansService.getMealPlanById(route.params.mealPlanId);
+      }
+      catch (error) {
+        logger.log(error);
+        Pop.error(error.message);
       }
     }
-
-
-
     return {
       mealPlan: computed(() => AppState.activeMealPlan),
       days: computed(() => AppState.activeDays),
-
+      plannedMealsByDay: computed(() => AppState.plannedMeals),
       async createDay() {
         try {
-          await daysService.createDay(route.params.mealPlanId)
-
-        } catch (error) {
-          logger.error(error)
-          Pop.error(error.message)
+          await daysService.createDay(route.params.mealPlanId);
+        }
+        catch (error) {
+          logger.error(error);
+          Pop.error(error.message);
         }
       }
-
-
-
-
-
-
-
-
-    }
-  }
+    };
+  },
+  components: { MealPlan }
 };
 </script>
 
