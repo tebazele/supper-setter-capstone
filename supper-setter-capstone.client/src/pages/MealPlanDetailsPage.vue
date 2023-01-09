@@ -11,7 +11,8 @@
     </div>
     <section class="row">
       <!-- <p>{{ plannedMealsByDay }}</p> -->
-      <div class="col-12" v-for="ps in plannedMealsByDay" :key="ps.id">
+      <div class="col-12" v-for="(ps, index) in plannedMealsByDay" :key="index">
+        <h5>Day {{ index + 1 }}</h5>
         <MealPlan :plannedMealsArray="ps" />
       </div>
     </section>

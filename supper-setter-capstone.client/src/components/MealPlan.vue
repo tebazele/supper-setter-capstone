@@ -1,8 +1,8 @@
 <template>
     <router-link :to="{ name: 'MealPlans' }">
         <div class="component">
-            <h3 class="mt-3" v-if="plannedMealsArray[0]">{{ plannedMealsArray[0].day.name }}</h3>
-            <h3 v-else>Day Null</h3>
+            <!-- <h3 class="mt-3" v-if="plannedMealsArray[0]">{{ plannedMealsArray[0].day.name }}</h3>
+            <h3 v-else>Day Null</h3> -->
             <div class="border border-dark border-2 rounded px-2 pt-2 my-2">
                 <div class="d-flex justify-content-between">
                     <h6>Breakfast</h6>
@@ -11,28 +11,35 @@
                 </div>
                 <ul v-for="b in breakfastMeals" :key="b.id">
 
-                    <li class="my-3"><img :src="b.recipe.image" class="thumbnail" /> {{ b.recipe.label }} <i
-                            class="mdi mdi-delete text-danger" title="Delete recipe"></i></li>
+                    <li v-if="b.recipe" class="my-3"><img :src="b.recipe.image" class="thumbnail" /> {{
+        b.recipe.label
+}} <i class="mdi mdi-delete text-danger" title="Delete recipe"></i></li>
+
                 </ul>
                 <hr>
-                <h6>Lunch</h6>
-                <ul>
-                    <li class="my-3"><img
-                            src="https://images.unsplash.com/photo-1571748982800-fa51082c2224?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-                            class="thumbnail" /> Reuben Sandwich</li>
-                    <li class="my-3"> <img
-                            src="https://images.unsplash.com/photo-1594489428504-5c0c480a15fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
-                            class="thumbnail" /> Homemade Potato Chips</li>
+                <div class="d-flex justify-content-between">
+                    <h6>Lunch</h6>
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add
+                        recipe</button>
+
+                </div>
+                <ul v-for="l in lunchMeals" :key="l.id">
+                    <li v-if="l.recipe" class="my-3"><img :src="l.recipe.image" class="thumbnail" /> {{ l.recipe.label
+}} <i class="mdi mdi-delete text-danger" title="Delete recipe"></i></li>
+
                 </ul>
                 <hr>
-                <h6>Dinner</h6>
-                <ul>
-                    <li class="my-3"><img
-                            src="https://images.unsplash.com/photo-1571748982800-fa51082c2224?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80"
-                            class="thumbnail" /> Overnight Oats</li>
-                    <li class="my-3"> <img
-                            src="https://images.unsplash.com/photo-1594489428504-5c0c480a15fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=764&q=80"
-                            class="thumbnail" /> Chopped Bananas</li>
+                <div class="d-flex justify-content-between">
+
+                    <h6>Dinner</h6>
+                    <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add
+                        recipe</button>
+                </div>
+                <ul v-for="d in dinnerMeals" :key="d.id">
+                    <li v-if="d.recipe.id" class="my-3"><img :src="d.recipe.image" class="thumbnail" /> {{
+        d.recipe.label
+}} <i class="mdi mdi-delete text-danger" title="Delete recipe"></i></li>
+
                 </ul>
             </div>
 
@@ -79,7 +86,9 @@ export default {
         return {
             myRecipes: computed(() => AppState.myRecipes),
             entirePlannedMealArray: computed(() => AppState.plannedMeals),
-            breakfastMeals: computed(() => props.plannedMealsArray.filter(m => m.type == 'breakfast'))
+            breakfastMeals: computed(() => props.plannedMealsArray.filter(m => m.type == 'breakfast')),
+            lunchMeals: computed(() => props.plannedMealsArray.filter(m => m.type == 'lunch')),
+            dinnerMeals: computed(() => props.plannedMealsArray.filter(m => m.type == 'dinner'))
         }
 
     }
