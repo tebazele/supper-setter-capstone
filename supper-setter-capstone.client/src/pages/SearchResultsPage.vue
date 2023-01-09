@@ -1,6 +1,6 @@
 <template>
   <h6>test</h6>
-  <!-- 
+
   <section class="row justify-content-center container-fluid">
     <div class="col-12 my-2 text-end">
       <SearchBar />
@@ -13,7 +13,7 @@
     <div v-for="r in recipes" :key="r.url">
       <RecipeCard :recipe="r" />
     </div>
-  </section> -->
+  </section>
 
 </template>
 
