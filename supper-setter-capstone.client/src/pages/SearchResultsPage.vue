@@ -1,16 +1,16 @@
 <template>
-  <h6>test</h6>
+
 
   <section class="row justify-content-center container-fluid">
     <div class="col-12 my-2 text-end">
       <SearchBar />
     </div>
     <div>
-      <h1>RESULTS PAGE LOOK AT THIS WOW</h1>
+      <h3>Seach Results</h3>
     </div>
   </section>
   <section>
-    <div v-for="r in recipes" :key="r.url">
+    <div v-for="r in recipes">
       <RecipeCard :recipe="r" />
     </div>
   </section>
@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import { useRoute } from "vue-router"
 import RecipeCard from '../components/RecipeCard.vue'
 import { onMounted, computed } from '@vue/runtime-core'
 import { recipesService } from '../services/RecipesService.js'
@@ -27,6 +28,9 @@ import { AppState } from '../AppState.js'
 import SearchBar from "../components/SearchBar.vue"
 export default {
   setup() {
+    onMounted(() => {
+      searchRecipes()
+    })
     const route = useRoute();
     async function searchRecipes() {
       try {
@@ -37,9 +41,6 @@ export default {
         Pop.error(error);
       }
     }
-    onMounted(() => {
-      searchRecipes()
-    })
     return {
       recipes: computed(() => AppState.recipes)
     }
