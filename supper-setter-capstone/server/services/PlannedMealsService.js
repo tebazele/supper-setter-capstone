@@ -4,7 +4,7 @@ import { dbContext } from "../db/DbContext.js"
 class PlannedMealsService {
   async createPlannedMeal(body) {
     const newPlannedMeal = await dbContext.PlannedMeal.create(body)
-    newPlannedMeal.populate('day recipe')
+    await newPlannedMeal.populate('day recipe')
     return newPlannedMeal
   }
 
