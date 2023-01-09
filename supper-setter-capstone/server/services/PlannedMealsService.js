@@ -1,4 +1,5 @@
 import { dbContext } from "../db/DbContext.js"
+import { BadRequest } from "../utils/Errors.js"
 
 
 class PlannedMealsService {
@@ -21,6 +22,14 @@ class PlannedMealsService {
   async removePlannedMealsByRecipe(recipeId) {
     await dbContext.PlannedMeal.deleteMany({ recipeId }).populate("recipe")
     return `Deleted all planned meals with recipe`
+  }
+
+  async removePlannedMeal(plannedMealId) {
+    const foundPlannedMeal = await dbContext.PlannedMeal.findById(plannedMealId)
+    if (!foundPlannedMeal) throw new BadRequest('No planned meal at this id')
+    await foundPlannedMeal.remove()
+
+    return `This planned meal has been deleted`
   }
 }
 
