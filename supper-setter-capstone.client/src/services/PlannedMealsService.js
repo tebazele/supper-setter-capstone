@@ -6,13 +6,13 @@ class PlannedMealsService {
 
     async getPlannedMeals(daysArray) {
         logger.log(daysArray)
-        const res = []
+        const allPlannedMeals = []
         for (let i = 0; i < daysArray.length; i++) {
-            let plannedMeals = await api.get('api/days/' + daysArray[i]._id + '/plannedmeals')
-            logger.log(daysArray[i])
-            res.push(plannedMeals)
+            let res = await api.get('api/days/' + daysArray[i]._id + '/plannedmeals')
+            logger.log(daysArray[i]._id)
+            allPlannedMeals.push(res.data)
         }
-        logger.log(res.data)
+        logger.log(allPlannedMeals)
         // AppState.plannedMeals = res.data
 
         // TODO loop through daysArray and get all plannedmeals associated with each day
