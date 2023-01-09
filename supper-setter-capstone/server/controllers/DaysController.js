@@ -34,8 +34,8 @@ export class DaysController extends BaseController {
   }
   async removeDay(req, res, next) {
     try {
-      const message = await daysService.removeDay(req.params.dayId, req.userInfo.id)
-      return res.send(message)
+      const remainingDays = await daysService.removeDay(req.params.dayId, req.userInfo.id)
+      return res.send(remainingDays)
     } catch (error) {
       next(error)
     }

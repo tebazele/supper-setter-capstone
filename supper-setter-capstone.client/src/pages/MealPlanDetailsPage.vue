@@ -45,22 +45,38 @@ import { daysService } from '../services/DaysService.js';
 import Pop from '../utils/Pop.js';
 import { useRoute } from 'vue-router';
 import { AppState } from '../AppState';
-import { computed, reactive, onMounted } from 'vue';
+import { computed, reactive, onMounted, watchEffect } from 'vue';
 import { mealPlansService } from '../services/MealPlansService.js';
+import { plannedMealsService } from '../services/PlannedMealsService.js';
 export default {
   setup() {
+    // watchEffect(() => {
+    //   if (AppState.activeDays) {
+    //     getPlannedMeals(AppState.activeDays)
+    //   }
+    // })
+
     onMounted(() => {
       getDays()
       getMealPlanById()
     })
     const route = useRoute();
 
+    async function getPlannedMeals(daysArray) {
+      try {
+        await plannedMealsService.getPlannedMeals(daysArray)
+      } catch (error) {
+        Pop.error(error.message)
+        logger.log(error)
+      }
+    }
+
     async function getDays() {
       try {
         await daysService.getDays(route.params.mealPlanId)
       } catch (error) {
         Pop.error(error.message)
-        logger.error(error)
+        logger.log(error)
       }
 
     }
@@ -89,6 +105,8 @@ export default {
           Pop.error(error.message)
         }
       }
+
+
 
 
 
