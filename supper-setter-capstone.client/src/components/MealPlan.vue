@@ -15,7 +15,7 @@
         b.recipe.label
 }} <i @click="deletePlannedMeal(b.id)" class="mdi mdi-delete text-danger" title="Delete recipe"></i>
                 </li>
-                <!-- TODO add delete function name -->
+
 
             </ul>
             <hr>
@@ -57,22 +57,23 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="d-flex">
 
-                        <section class="row" v-for="m in myRecipes" :key="m.edamamId">
 
-                            <div class="col-12 m-1">
-                                <p>{{ m.label }}</p>
-                                <img :src="m.image" alt="food" class="img-fluid thumbnail" />
-                            </div>
+                    <section class="row" v-for="m in myRecipes" :key="m.edamamId">
 
-                        </section>
-                    </div>
+                        <div class="col-12 d-flex justify-content-between m-1">
+                            <p>{{ m.label }}</p>
+
+                            <img :src="m.image" alt="food" class="img-fluid thumbnail selectable" />
+                        </div>
+
+                    </section>
+
                 </div>
-                <div class="modal-footer">
+                <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
