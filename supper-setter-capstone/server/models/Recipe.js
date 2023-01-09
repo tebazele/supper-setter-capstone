@@ -18,4 +18,3 @@ RecipeSchema.virtual('account', {
   justOne: true
 })
 
-// TODO we need something universally identifying about all recipes, I suspect uniqueUrl is just that but in that case we will need to change the virtual on Planned meals to actually be able to find and delete all instances of a meal inside of our days

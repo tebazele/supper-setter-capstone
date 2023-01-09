@@ -10,6 +10,7 @@ export class RecipesController extends BaseController {
       // .get('/:id', this.getOneRecipe)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.addToMyRecipes)
+      .put('/:recipeId', this.archiveRecipe)
   }
 
   async addToMyRecipes(req, res, next) {
@@ -24,6 +25,15 @@ export class RecipesController extends BaseController {
 
 
 
+  async archiveRecipe(req, res, next) {
+    try {
+      const message = await recipesService.archiveRecipe(req.params.recipeId, req.userInfo.id)
+      return res.send(message)
+    } catch (error) {
+      next(error)
+    }
+  }
+
   // async getOneRecipe(req, res, next) {
   //   try {
   //     const recipe = await recipesService.getOneRecipe(req.params.url)
@@ -34,6 +44,5 @@ export class RecipesController extends BaseController {
   // }
 
 
-}
 
-// TODO remove recipe. Deleting recipes should also go through every day  and remove plannedmeals tied to day ( delete every planned meal of account where recipe id [I dont know how we are going to do this(?)] = deleted recipe id  ) I dont think this is going to work unless we have universally labeled recipe ids. else it will be a pain in the ass to go by every single item and search the name etc. therefore
+}

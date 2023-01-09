@@ -1,5 +1,5 @@
 import { dbContext } from "../db/DbContext"
-import { BadRequest } from "../utils/Errors"
+import { BadRequest, Forbidden } from "../utils/Errors"
 
 
 class RecipesService {
@@ -26,7 +26,20 @@ class RecipesService {
     return recipe
   }
 
+  async archiveRecipe(recipeId, accountId) {
+    const recipe = await dbContext.Recipe.findById(recipeId).populate('account')
+    if (!recipe) {
+      throw new BadRequest(`no recipe with id of ${recipeId}`)
+    }
+    if (recipe.accountId != accountId) {
+      throw new Forbidden(`you do not have permission to edit this recipe`)
+    }
 
+    recipe.archived = !recipe.archived
+
+    await recipe.save()
+    return `recipe has been archived`
+  }
 
 
 }
