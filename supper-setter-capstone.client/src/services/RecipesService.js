@@ -5,40 +5,40 @@ import { api, edamamApi } from "./AxiosService.js"
 
 class RecipesService {
 
-    async getFeaturedRecipes(query) {
-        const res = await edamamApi.get('', { params: { q: query } })
-        logger.log(res.data.hits)
-        AppState.recipes = res.data.hits.map(r => new Recipe(r))
-    }
+  async getRecipes(query) {
+    const res = await edamamApi.get('', { params: { q: query } })
+    logger.log(res.data.hits)
+    AppState.recipes = res.data.hits.map(r => new Recipe(r))
+  }
 
-    async getRecipeById(id) {
-        const res = await edamamApi.get('/' + id)
-        logger.log('this is getting recipe by id', res.data)
-        let mappedRecipe = new Recipe(res.data)
-        logger.log(mappedRecipe)
-        AppState.activeRecipe = mappedRecipe
-    }
+  async getRecipeById(id) {
+    const res = await edamamApi.get('/' + id)
+    logger.log('this is getting recipe by id', res.data)
+    let mappedRecipe = new Recipe(res.data)
+    logger.log(mappedRecipe)
+    AppState.activeRecipe = mappedRecipe
+  }
 
-    async addToMyRecipes(recipeId) {
-        let foundRecipe = await AppState.recipes.find(r => r.edamamId == recipeId)
-        if (!foundRecipe) {
-            logger.log('no recipe at this id')
-        }
-        const res = await api.post('/api/recipes', foundRecipe)
-        // logger.log(res.data)
-        AppState.myRecipes.push(res.data)
-        return res.data
+  async addToMyRecipes(recipeId) {
+    let foundRecipe = await AppState.recipes.find(r => r.edamamId == recipeId)
+    if (!foundRecipe) {
+      logger.log('no recipe at this id')
     }
+    const res = await api.post('/api/recipes', foundRecipe)
+    // logger.log(res.data)
+    AppState.myRecipes.push(res.data)
+    return res.data
+  }
 
-    async getMyRecipes() {
-        try {
-            const res = await api.get('account/recipes')
-            logger.log('got my recipes', res.data)
-            AppState.myRecipes = res.data
-        } catch (error) {
-            logger.log(error.message)
-        }
+  async getMyRecipes() {
+    try {
+      const res = await api.get('account/recipes')
+      logger.log('got my recipes', res.data)
+      AppState.myRecipes = res.data
+    } catch (error) {
+      logger.log(error.message)
     }
+  }
 
 
 }

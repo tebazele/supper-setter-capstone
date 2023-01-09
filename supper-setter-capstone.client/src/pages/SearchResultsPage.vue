@@ -1,26 +1,19 @@
 <template>
-  <!-- NOTE Here is some welcome stuff....  -->
+  <h6>test</h6>
+  <!-- 
   <section class="row justify-content-center container-fluid">
     <div class="col-12 my-2 text-end">
       <SearchBar />
     </div>
-    <div class="col-8">
-      <h1 class="text-center fw-bold raleway">
-        Welcome! To Supper Setter
-      </h1>
-      <p class="raleway fs-5">Cut your time spent planning your meals and shopping list's. You can manage your recipes,
-        ingredients, meal types & grocery items with this clean, uncluttered interface Our Meals combines recipe
-        management, meal
-        planning & grocery shopping</p>
+    <div>
+      <h1>RESULTS PAGE LOOK AT THIS WOW</h1>
     </div>
-
   </section>
-  <!-- NOTE adding recipe cards here...  -->
   <section>
     <div v-for="r in recipes" :key="r.url">
       <RecipeCard :recipe="r" />
     </div>
-  </section>
+  </section> -->
 
 </template>
 
@@ -34,10 +27,10 @@ import { AppState } from '../AppState.js'
 import SearchBar from "../components/SearchBar.vue"
 export default {
   setup() {
-    async function getFeaturedRecipes() {
-      let query = "international";
+    const route = useRoute();
+    async function searchRecipes() {
       try {
-        await recipesService.getRecipes(query);
+        await recipesService.getRecipes(route.params.searchQuery);
       }
       catch (error) {
         logger.log(error);
@@ -45,7 +38,7 @@ export default {
       }
     }
     onMounted(() => {
-      getFeaturedRecipes()
+      searchRecipes()
     })
     return {
       recipes: computed(() => AppState.recipes)

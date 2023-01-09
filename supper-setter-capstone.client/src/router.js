@@ -37,6 +37,11 @@ const routes = [
     path: '/mealPlans/:mealPlanId',
     name: 'MealPlanDetails',
     component: loadPage('MealPlanDetailsPage')
+  },
+  {
+    path: '/search/:searchQuery',
+    name: 'SearchResults',
+    component: loadPage('SearchResultsPage')
   }
 ]
 
