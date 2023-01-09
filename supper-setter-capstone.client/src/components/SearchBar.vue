@@ -1,9 +1,9 @@
 <template>
   <form @submit.prevent="searchRecipes()">
-    <input type="text" v-model="search.query" placeholder="Search Recipes">
-    <!-- <router-link :to="{ name: 'SearchResultsPage', params: { searchQuery: search.query } }"> -->
-    <button class="btn btn-info mdi mdi-magnify"></button>
-    <!-- </router-link> -->
+    <input class="rounded-start" type="text" v-model="search.query" placeholder="Search Recipes">
+
+    <button class=" rounded-end bg-primary btn-info mdi mdi-magnify"></button>
+
   </form>
 </template>
 
