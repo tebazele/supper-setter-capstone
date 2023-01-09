@@ -1,5 +1,6 @@
 import { dbContext } from "../db/DbContext"
 import { BadRequest, Forbidden } from "../utils/Errors"
+import { plannedMealsService } from "./PlannedMealsService.js"
 
 
 class RecipesService {
@@ -31,7 +32,8 @@ class RecipesService {
     if (!recipe) {
       throw new BadRequest(`no recipe with id of ${recipeId}`)
     }
-    if (recipe.accountId != accountId) {
+    // @ts-ignore
+    if (recipe.accountId.toString() != accountId) {
       throw new Forbidden(`you do not have permission to edit this recipe`)
     }
 
@@ -41,7 +43,22 @@ class RecipesService {
     return `recipe has been archived`
   }
 
+  async clearRecipe(recipeId, accountId) {
+    const recipe = await dbContext.Recipe.findById(recipeId).populate('account')
+    if (!recipe) {
+      throw new BadRequest(`no recipe with id of ${recipeId}`)
+    }
+    // @ts-ignore
+    if (recipe.accountId.toString() != accountId) {
+      throw new Forbidden(`you do not have permission to clear this recipe`)
+    }
 
+    await plannedMealsService.removePlannedMealsByRecipe(recipeId)
+
+    await recipe.remove()
+
+    return `${recipe.label} has been removed from collection and all instances in meal plans have been removed`
+  }
 }
 
 

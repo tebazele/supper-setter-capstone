@@ -18,6 +18,10 @@ class PlannedMealsService {
       await dbContext.PlannedMeal.deleteMany({ dayId: daysArray[i]._id }).populate('day')
     }
   }
+  async removePlannedMealsByRecipe(recipeId) {
+    await dbContext.PlannedMeal.deleteMany({ recipeId }).populate("recipe")
+    return `Deleted all planned meals with recipe`
+  }
 }
 
 export const plannedMealsService = new PlannedMealsService()
