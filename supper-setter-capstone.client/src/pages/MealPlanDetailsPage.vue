@@ -50,11 +50,11 @@ import { mealPlansService } from '../services/MealPlansService.js';
 import { plannedMealsService } from '../services/PlannedMealsService.js';
 export default {
   setup() {
-    // watchEffect(() => {
-    //   if (AppState.activeDays) {
-    //     getPlannedMeals(AppState.activeDays)
-    //   }
-    // })
+    watchEffect(() => {
+      if (AppState.activeDays) {
+        getPlannedMeals(AppState.activeDays)
+      }
+    })
 
     onMounted(() => {
       getDays()
