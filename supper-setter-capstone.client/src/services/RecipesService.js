@@ -9,6 +9,8 @@ class RecipesService {
     const res = await edamamApi.get('', { params: { q: query } })
     // logger.log(res.data.hits)
     logger.log(res.data)
+
+    AppState.nextPageUrl = res.data._links.next.href
     AppState.recipes = res.data.hits.map(r => new Recipe(r))
   }
 
@@ -39,6 +41,14 @@ class RecipesService {
     } catch (error) {
       logger.log(error.message)
     }
+  }
+
+  async loadMoreRecipes() {
+    const res = await edamamApi.get(AppState.nextPageUrl)
+    logger.log(res.data)
+    const mappedRecipes = res.data.hits.map(r => new Recipe(r))
+    AppState.recipes.push(...mappedRecipes)
+    AppState.nextPageUrl = res.data._links.next.href
   }
 
 

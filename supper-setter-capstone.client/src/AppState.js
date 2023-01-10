@@ -22,9 +22,5 @@ export const AppState = reactive({
 
   activePlannedMealRequestBody: null,
 
-  currentPageUrl: null,
-
-  previousPageUrl: null,
-
   nextPageUrl: null
 })

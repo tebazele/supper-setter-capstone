@@ -22,6 +22,9 @@
     <div v-for="r in recipes" :key="r.url">
       <RecipeCard :recipe="r" />
     </div>
+    <div class="text-center">
+      <button @click="loadMoreRecipes" class="btn btn-dark">Load More</button>
+    </div>
   </section>
 
 </template>
@@ -50,7 +53,17 @@ export default {
       getFeaturedRecipes()
     })
     return {
-      recipes: computed(() => AppState.recipes)
+      recipes: computed(() => AppState.recipes),
+
+      async loadMoreRecipes() {
+        try {
+          await recipesService.loadMoreRecipes()
+        } catch (error) {
+          logger.log(error)
+          Pop.error(error.message)
+        }
+
+      }
     }
   },
   components: { RecipeCard, SearchBar }
