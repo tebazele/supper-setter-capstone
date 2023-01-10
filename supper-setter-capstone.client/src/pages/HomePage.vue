@@ -37,7 +37,7 @@ import SearchBar from "../components/SearchBar.vue"
 export default {
   setup() {
     async function getFeaturedRecipes() {
-      let query = "international";
+      let query = "vegan";
       try {
         await recipesService.getRecipes(query);
       }

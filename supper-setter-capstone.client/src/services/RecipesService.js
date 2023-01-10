@@ -7,7 +7,8 @@ class RecipesService {
 
   async getRecipes(query) {
     const res = await edamamApi.get('', { params: { q: query } })
-    logger.log(res.data.hits)
+    // logger.log(res.data.hits)
+    logger.log(res.data)
     AppState.recipes = res.data.hits.map(r => new Recipe(r))
   }
 
