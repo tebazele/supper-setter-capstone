@@ -10,7 +10,7 @@ class PlannedMealsService {
             let res = await api.get('api/days/' + daysArray[i]._id + '/plannedmeals')
 
             allPlannedMeals.push(res.data)
-            // FIXME bring in as array of objects with Day Name as the key and the array of planned meals as the value?
+            // FIXME res.data will now be objects with dayId as one key and plannedMeals as the other key
         }
         AppState.plannedMeals = allPlannedMeals
 
@@ -32,7 +32,7 @@ class PlannedMealsService {
         return res.data
     }
 
-    async createPlannedMeal(recipeId) {
+    async createPlannedMeal(recipeId, daysArray) {
 
         const foundDay = AppState.activeDays.find(d => d.name == AppState.activePlannedMealRequestBody.dayName)
         logger.log(foundDay)
@@ -46,7 +46,7 @@ class PlannedMealsService {
 
         logger.log(res.data)
         // TODO push to AppState somehow
-        AppState.plannedMeals
+        this.getPlannedMeals(daysArray)
 
     }
 

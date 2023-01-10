@@ -146,7 +146,7 @@ export default {
         try {
 
           logger.log(recipeId)
-          await plannedMealsService.createPlannedMeal(recipeId)
+          await plannedMealsService.createPlannedMeal(recipeId, AppState.activeDays)
           // TODO close the modal
         } catch (error) {
           logger.log(error)
