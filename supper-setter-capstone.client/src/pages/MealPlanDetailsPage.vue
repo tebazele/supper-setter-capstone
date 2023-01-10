@@ -14,7 +14,7 @@
       <div class="col-12" v-for="(ps, index) in plannedMealsByDay" :key="index">
         <h5>Day {{ index + 1 }}</h5>
         <!-- <h5>Day {{ index + 1 }}</h5> -->
-        <MealPlan :plannedMealsArray="ps" :dayObj="days[index]" />
+        <MealPlan :plannedMealsArray="ps.plannedMeals" :dayId="ps.dayId" />
       </div>
     </section>
     <!-- <div v-for="d in days" :key="d.id">
@@ -146,7 +146,7 @@ export default {
         try {
 
           logger.log(recipeId)
-          await plannedMealsService.createPlannedMeal(recipeId, AppState.activeDays)
+          await plannedMealsService.createPlannedMeal(recipeId)
           // TODO close the modal
         } catch (error) {
           logger.log(error)
@@ -161,5 +161,11 @@ export default {
 
 
 <style lang="scss" scoped>
-
+.thumbnail {
+  width: 30vh;
+  height: 15vh;
+  object-position: center;
+  object-fit: cover;
+  vertical-align: bottom;
+}
 </style>

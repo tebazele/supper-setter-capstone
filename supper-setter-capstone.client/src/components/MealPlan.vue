@@ -4,14 +4,13 @@
         <!-- <h3 class="mt-3" v-if="plannedMealsArray[0]">{{ plannedMealsArray[0].day.name }}</h3>
             <h3 v-else>Day Null</h3> -->
         <div class="border border-dark border-2 rounded px-2 pt-2 my-2">
-            <p>{{ dayObj.name }}</p>
             <div class="d-flex justify-content-between">
 
                 <h6>Breakfast</h6>
                 <!-- NOTE this button toggles modal and sets mealType to breakfast -->
                 <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="() => {
                     editable.mealType = 'breakfast';
-                    editable.dayName = dayObj.name
+                    editable.dayId = dayId;
                     setEditableInAppState()
                 }">Add
                     recipe</button>
@@ -30,7 +29,7 @@
                 <h6>Lunch</h6>
                 <button @click="() => {
                     editable.mealType = 'lunch';
-                    editable.dayName = dayObj.name
+                    editable.dayId = dayId;
                     setEditableInAppState()
                 }" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add
                     recipe</button>
@@ -49,7 +48,7 @@
                 <h6>Dinner</h6>
                 <button @click="() => {
                     editable.mealType = 'dinner';
-                    editable.dayName = dayObj.name
+                    editable.dayId = dayId
                     setEditableInAppState()
                 }" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add
                     recipe</button>
@@ -78,12 +77,12 @@ import { plannedMealsService } from '../services/PlannedMealsService.js';
 export default {
     props: {
         plannedMealsArray: { type: Array, required: true },
-        dayObj: { type: Object, required: true }
+        dayId: { type: String, required: true }
     },
     setup(props) {
         const editable = reactive({
             mealType: '',
-            dayName: ''
+            dayId: ''
         })
         return {
             editable,

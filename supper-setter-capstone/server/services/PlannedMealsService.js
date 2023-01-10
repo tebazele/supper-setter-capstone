@@ -11,11 +11,11 @@ class PlannedMealsService {
 
   async getPlannedMealsByDayId(dayId) {
     const plannedMeals = await dbContext.PlannedMeal.find({ dayId }).populate('day recipe')
-    // return {
-    //   dayId: dayId,
-    //   plannedMeals: plannedMeals
-    // }
-    return plannedMeals
+    return {
+      dayId: dayId,
+      plannedMeals: plannedMeals
+    }
+    // return plannedMeals
     // FIXME return an object with day id as the key and the array as the value, SAVING THIS WILL BREAK EVERYTHING
   }
 

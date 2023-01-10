@@ -4,11 +4,13 @@
     <div class="col-12 my-2 text-end">
       <SearchBar />
     </div>
-    <div class="col-8">
+    <div class="col-11">
       <h1 class="text-center fw-bold raleway">
         Welcome! To Supper Setter
       </h1>
-      <p class="raleway fs-5">Cut your time spent planning your meals and shopping list's. You can manage your recipes,
+      <p class="roboto-slab fs-5 mt-4">Cut your time spent planning your meals and shopping list's. You can manage
+        your
+        recipes,
         ingredients, meal types & grocery items with this clean, uncluttered interface Our Meals combines recipe
         management, meal
         planning & grocery shopping</p>

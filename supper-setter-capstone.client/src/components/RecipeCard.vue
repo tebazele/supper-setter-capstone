@@ -1,8 +1,8 @@
 <template>
 
   <router-link :to="{ name: 'RecipeDetails', params: { edamamId: recipe.edamamId } }">
-    <div class="component p-3 border border-dark rounded border-1 m-2 bg-white">
-      <h4>{{ recipe.label }}</h4>
+    <div class="component p-3 border border-dark rounded border-1 m-2 bg-white raleway fw-bold">
+      <h4 class="text-black">{{ recipe.label }}</h4>
 
 
       <img :src="recipe.image" alt="meal" class="img-fluid cardImg my-2" :title="recipe.label">

@@ -4,6 +4,8 @@
 @import "./_utilities.scss";
 @import "./loaders.scss";
 @import url('https://fonts.googleapis.com/css2?family=Raleway&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@400;600&family=Source+Serif+Pro:wght@400;600&display=swap');
+
 
 
 body {
@@ -48,3 +50,20 @@ form:invalid button[type="submit"] {
   font-family: 'Raleway', sans-serif;
 
 }
+
+.roboto-slab {
+  font-family: 'Roboto Slab', serif;
+}
+
+// .roboto-slab-bold {
+//   font-family: 'Roboto Slab', serif;
+//   font-weight: 600;
+// }
+
+.serif-pro {
+  font-family: 'Source Serif Pro', serif;
+}
+
+// .serif-pro-bold {
+
+// }

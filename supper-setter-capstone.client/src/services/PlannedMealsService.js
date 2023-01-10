@@ -32,21 +32,24 @@ class PlannedMealsService {
         return res.data
     }
 
-    async createPlannedMeal(recipeId, daysArray) {
+    async createPlannedMeal(recipeId) {
 
-        const foundDay = AppState.activeDays.find(d => d.name == AppState.activePlannedMealRequestBody.dayName)
-        logger.log(foundDay)
+        // const foundDay = AppState.activeDays.find(d => d.name == AppState.activePlannedMealRequestBody.dayName)
+        // logger.log(foundDay)
+        const dayId = AppState.activePlannedMealRequestBody.dayId
         const mealType = AppState.activePlannedMealRequestBody.mealType
 
         const res = await api.post('/api/plannedmeals', {
-            "dayId": foundDay.id,
+            "dayId": dayId,
             "recipeId": recipeId,
             "type": mealType
         })
 
         logger.log(res.data)
         // TODO push to AppState somehow
-        this.getPlannedMeals(daysArray)
+        const foundDay = AppState.plannedMeals.find(day => day.dayId == dayId)
+        foundDay.plannedMeals.push(res.data)
+        // this.getPlannedMeals(daysArray)
 
     }
 

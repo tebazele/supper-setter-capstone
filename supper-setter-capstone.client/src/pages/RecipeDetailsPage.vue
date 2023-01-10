@@ -1,5 +1,5 @@
 <template>
-  <div v-if="recipe" class="container-fluid">
+  <div v-if="recipe" class="container-fluid serif-pro">
     <section class="row">
       <div class="col-12 text-center">
         <h1>{{ recipe.label }}</h1>

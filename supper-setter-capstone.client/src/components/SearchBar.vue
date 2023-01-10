@@ -1,5 +1,5 @@
 <template>
-  <form @submit.prevent="searchRecipes()">
+  <form @submit.prevent="searchRecipes()" class="my-2">
     <input class="rounded-start" type="text" v-model="search.query" placeholder="Search Recipes">
 
     <button class=" rounded-end bg-primary btn-info mdi mdi-magnify"></button>
