@@ -22,6 +22,9 @@
     <div v-for="r in recipes" :key="r.url">
       <RecipeCard :recipe="r" />
     </div>
+    <div class="text-center">
+      <button @click="loadMoreRecipes" class="btn btn-dark">Load More</button>
+    </div>
   </section>
 
 </template>
@@ -37,7 +40,7 @@ import SearchBar from "../components/SearchBar.vue"
 export default {
   setup() {
     async function getFeaturedRecipes() {
-      let query = "international";
+      let query = "vegan";
       try {
         await recipesService.getRecipes(query);
       }
@@ -50,7 +53,17 @@ export default {
       getFeaturedRecipes()
     })
     return {
-      recipes: computed(() => AppState.recipes)
+      recipes: computed(() => AppState.recipes),
+
+      async loadMoreRecipes() {
+        try {
+          await recipesService.loadMoreRecipes()
+        } catch (error) {
+          logger.log(error)
+          Pop.error(error.message)
+        }
+
+      }
     }
   },
   components: { RecipeCard, SearchBar }
