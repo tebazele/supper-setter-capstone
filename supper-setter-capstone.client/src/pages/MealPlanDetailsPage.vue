@@ -13,7 +13,8 @@
       <!-- <p>{{ plannedMealsByDay }}</p> -->
       <div class="col-12" v-for="(ps, index) in plannedMealsByDay" :key="index">
         <h5>Day {{ index + 1 }}</h5>
-        <MealPlan :plannedMealsArray="ps" />
+        <!-- <h5>Day {{ index + 1 }}</h5> -->
+        <MealPlan :plannedMealsArray="ps" :dayObj="days[index]" />
       </div>
     </section>
     <!-- <div v-for="d in days" :key="d.id">
@@ -40,6 +41,35 @@
       </ul>
     </div> -->
 
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Your Recipes</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+
+          <section class="row" v-for="m in myRecipes" :key="m.edamamId">
+
+            <div class="col-12 d-flex justify-content-between m-1">
+              <p>{{ m.label }}</p>
+
+              <img :src="m.image" alt="food" class="img-fluid thumbnail selectable" @click="createPlannedMeal(m.id)" />
+            </div>
+
+          </section>
+
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
   </div>
 
 
@@ -100,6 +130,7 @@ export default {
       mealPlan: computed(() => AppState.activeMealPlan),
       days: computed(() => AppState.activeDays),
       plannedMealsByDay: computed(() => AppState.plannedMeals),
+      myRecipes: computed(() => AppState.myRecipes),
       async createDay() {
         try {
           await daysService.createDay(route.params.mealPlanId);
@@ -107,6 +138,19 @@ export default {
         catch (error) {
           logger.error(error);
           Pop.error(error.message);
+        }
+      },
+
+      async createPlannedMeal(recipeId) {
+        // NOTE send up {mealType: activeMealType.value} and find dayId by matching dayName, grab recipeId from clicking on recipe
+        try {
+
+          logger.log(recipeId)
+          await plannedMealsService.createPlannedMeal(recipeId)
+          // TODO close the modal
+        } catch (error) {
+          logger.log(error)
+          Pop.error(error.message)
         }
       }
     };
