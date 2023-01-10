@@ -12,13 +12,13 @@
       </div> -->
       <!-- </div> -->
       <!-- <div class="dropdown-menu dropdown-menu-lg-left p-0" aria-labelledby="authDropdown"> -->
-      <div class="list-group">
+      <div class="list-group text-end">
         <router-link :to="{ name: 'Account' }">
           <div class=" btn text-success lighten-30 selectable text-uppercase m-0">
-            Manage Account
+            Your Meal Plans
           </div>
         </router-link>
-        <div class="lighten-10 text-uppercase text-danger selectable ms-2 p-1" @click="logout">
+        <div class="lighten-10 text-uppercase text-light selectable p-1 me-1" @click="logout">
           <i class="mdi mdi-logout"></i>
           logout
         </div>
