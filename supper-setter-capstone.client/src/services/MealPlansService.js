@@ -6,11 +6,13 @@ import { daysService } from "./DaysService.js"
 class MealPlansService {
     async createMealPlan(formData) {
         debugger
+        AppState.plannedMeals = null
         logger.log(formData)
         const res = await api.post('/api/mealplans', { "name": formData })
         logger.log(res.data)
         AppState.activeMealPlan = res.data
         daysService.createDay(res.data.id)
+
         return res.data
 
     }

@@ -6,17 +6,19 @@
       </div>
       <div class="col-4 text-end">
         <router-link :to="{ name: 'MealPlans' }">
-          <button class="btn btn-success">Add MP</button>
+          <button @click="clearPlannedMeals()" class="btn btn-success">Add MP</button>
 
         </router-link>
       </div>
     </section>
     <section class="row">
       <div v-for="m in mealPlans" :key="m.id" class="col-12">
-        <router-link :to="{ name: 'MealPlanDetails', params: { mealPlanId: m.id } }">
+        <button @click="this.goToMealPlan(m.id)" class="btn btn-outline-dark rounded-pill m-1">{{ m.name }}</button>
+
+        <!-- <router-link :to="{ name: 'MealPlanDetails', params: { mealPlanId: m.id } }">
           <h6 class="selectable">{{ m.name }}</h6>
 
-        </router-link>
+        </router-link> -->
       </div>
     </section>
     <section class="row">
@@ -43,6 +45,11 @@ import MealPlan from "../components/MealPlan.vue";
 import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
 import { mealPlansService } from '../services/MealPlansService.js';
+import { daysService } from '../services/DaysService.js';
+import { plannedMealsService } from '../services/PlannedMealsService.js';
+import { router } from '../router.js';
+import MealPlanDetailsPage from './MealPlanDetailsPage.vue';
+import MealPlanDisplayPage from './MealPlanDisplayPage.vue';
 export default {
   setup() {
 
@@ -57,11 +64,32 @@ export default {
         logger.log(error)
         Pop.error(error.message)
       }
+
+
+
     }
     return {
+
+
       account: computed(() => AppState.account),
       myRecipes: computed(() => AppState.myRecipes),
-      mealPlans: computed(() => AppState.mealPlans)
+      mealPlans: computed(() => AppState.mealPlans),
+
+      async goToMealPlan(mealPlanId) {
+        logger.log(mealPlanId)
+        await daysService.getDays(mealPlanId)
+
+        await plannedMealsService.getPlannedMeals(AppState.activeDays)
+
+        router.push({ name: 'MealPlanDetails', params: { mealPlanId: mealPlanId } })
+      },
+
+      async clearPlannedMeals() {
+        AppState.plannedMeals = null
+      }
+
+
+
     };
   },
   components: { MealPlan }

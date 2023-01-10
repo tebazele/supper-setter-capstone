@@ -97,6 +97,7 @@ export default {
     onMounted(() => {
       getDays();
       getMealPlanById();
+
     });
     const route = useRoute();
     async function getPlannedMeals(daysArray) {
@@ -131,6 +132,8 @@ export default {
       days: computed(() => AppState.activeDays),
       plannedMealsByDay: computed(() => AppState.plannedMeals),
       myRecipes: computed(() => AppState.myRecipes),
+
+
       async createDay() {
         try {
           await daysService.createDay(route.params.mealPlanId);
@@ -140,6 +143,8 @@ export default {
           Pop.error(error.message);
         }
       },
+
+
 
       async createPlannedMeal(recipeId) {
         // NOTE send up {mealType: activeMealType.value} and find dayId by matching dayName, grab recipeId from clicking on recipe

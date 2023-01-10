@@ -2,7 +2,7 @@
     <!-- <router-link :to="{ name: 'MealPlans' }"> -->
     <div class="component">
         <!-- <h3 class="mt-3" v-if="plannedMealsArray[0]">{{ plannedMealsArray[0].day.name }}</h3>
-            <h3 v-else>Day Null</h3> -->
+        <h3 v-else>Day Null</h3> -->
         <div class="border border-dark border-2 rounded px-2 pt-2 my-2">
             <div class="d-flex justify-content-between">
 
