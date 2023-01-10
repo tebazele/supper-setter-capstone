@@ -104,7 +104,7 @@ export default {
                     Pop.error(error.message)
                 }
             },
-
+            // NOTE sends mealType and day name to AppState as an object so Meal Plan Details page can use them to create PlannedMeal
             setEditableInAppState() {
                 AppState.activePlannedMealRequestBody = editable
                 logger.log(AppState.activePlannedMealRequestBody)

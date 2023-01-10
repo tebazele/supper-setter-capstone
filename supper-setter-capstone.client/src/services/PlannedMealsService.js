@@ -8,7 +8,9 @@ class PlannedMealsService {
         const allPlannedMeals = []
         for (let i = 0; i < daysArray.length; i++) {
             let res = await api.get('api/days/' + daysArray[i]._id + '/plannedmeals')
+
             allPlannedMeals.push(res.data)
+            // FIXME bring in as array of objects with Day Name as the key and the array of planned meals as the value?
         }
         AppState.plannedMeals = allPlannedMeals
 
