@@ -21,12 +21,14 @@
       <button v-if="myRecipes.find(r => r.edamamId == recipe.edamamId || r.archived == false)" @click="archiveRecipe()"
         class="btn btn-danger" title="Remove this recipe from your recipe collection">Remove
         Recipe</button>
-      <button v-else @click="addToMyRecipes" class="btn btn-success"
-        title="Add this recipe to your recipe collection!">Add
+      <button @click="addToMyRecipes" class="btn btn-success" title="Add this recipe to your recipe collection!">Add
         Recipe</button>
     </div>
   </div>
 </template>
+
+<!-- v-if="myRecipes.find(r => r.edamamId == recipe.edamamId || r.archived == false)"
+v-if="!myRecipes.find(r => r.edamamId == recipe.id || r.archived == true)" -->
 
 
 <script>
