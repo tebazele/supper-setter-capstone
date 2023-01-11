@@ -22,8 +22,6 @@ class DaysService {
     AppState.activeDays = res.data
 
     // await plannedMealsService.getPlannedMeals(AppState.activeDays)
-
-
   }
 
 }
