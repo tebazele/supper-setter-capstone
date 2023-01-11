@@ -36,8 +36,10 @@ import { logger } from '../utils/Logger.js';
 import Pop from '../utils/Pop.js';
 import { mealPlansService } from '../services/MealPlansService.js'
 import { router } from "../router";
+import { useRouter } from 'vue-router';
 export default {
     setup() {
+        const router = useRouter()
         const mealPlanName = ref()
         const displayForm = ref(true)
 
@@ -48,10 +50,10 @@ export default {
             async createMealPlan() {
                 try {
 
-                    logger.log(mealPlanName.value)
+                    // logger.log(mealPlanName.value)
                     const mealPlan = await mealPlansService.createMealPlan(mealPlanName.value)
-
-
+                    logger.log('These are the days on the new plan' + AppState.activeDays)
+                    logger.log('These are the planned meals on the new plan' + AppState.plannedMeals)
                     displayForm.value = false
                     Pop.toast('meal plan created')
                     router.push({ name: 'MealPlanDetails', params: { mealPlanId: mealPlan.id } })

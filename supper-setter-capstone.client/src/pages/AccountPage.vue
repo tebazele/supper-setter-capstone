@@ -50,10 +50,11 @@ import { mealPlansService } from '../services/MealPlansService.js';
 import { daysService } from '../services/DaysService.js';
 import { plannedMealsService } from '../services/PlannedMealsService.js';
 import { router } from '../router.js';
+import { useRouter } from 'vue-router';
 
 export default {
   setup() {
-
+    const router = useRouter()
     onMounted(() => {
       getMyMealPlans()
     })

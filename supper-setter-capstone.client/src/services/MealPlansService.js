@@ -2,7 +2,7 @@ import { AppState } from "../AppState.js"
 import { logger } from "../utils/Logger.js"
 import { api } from "./AxiosService.js"
 import { daysService } from "./DaysService.js"
-import { plannedMealsService } from "./PlannedMealsService.js"
+// import { plannedMealsService } from "./PlannedMealsService.js"
 
 class MealPlansService {
     async createMealPlan(formData) {
@@ -10,14 +10,15 @@ class MealPlansService {
         const res = await api.post('/api/mealplans', { "name": formData })
         logger.log(res.data)
         AppState.activeMealPlan = res.data
-        const day = await daysService.createDay(res.data.id)
-        logger.log(day)
 
-        AppState.plannedMeals = {
+        const day = await daysService.createDay(res.data.id)
+        logger.log('This is the day returned from daysService' + day)
+
+        AppState.plannedMeals.push({
             dayId: day.id,
             plannedMeals: []
-        }
-        logger.log(AppState.plannedMeals)
+        })
+        logger.log('This is the planned meal object in the AppState' + AppState.plannedMeals)
 
         return res.data
 

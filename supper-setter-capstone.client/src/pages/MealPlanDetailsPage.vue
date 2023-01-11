@@ -80,14 +80,17 @@
 import { logger } from '../utils/Logger.js';
 import { daysService } from '../services/DaysService.js';
 import Pop from '../utils/Pop.js';
-import { useRoute } from 'vue-router';
+import { useRoute, useRouter } from 'vue-router';
 import { AppState } from '../AppState';
 import { computed, reactive, onMounted, watchEffect } from 'vue';
 import { mealPlansService } from '../services/MealPlansService.js';
 import { plannedMealsService } from '../services/PlannedMealsService.js';
 import MealPlan from '../components/MealPlan.vue';
+import { Modal } from 'bootstrap';
+
 export default {
   setup() {
+    const router = useRouter()
     watchEffect(() => {
       if (AppState.activeDays) {
         getPlannedMeals(AppState.activeDays);
@@ -98,6 +101,7 @@ export default {
     onMounted(() => {
       getDays();
       getMealPlanById();
+      // getPlannedMeals(AppState.activeDays)
 
     });
     const route = useRoute();
@@ -153,6 +157,7 @@ export default {
 
           logger.log(recipeId)
           await plannedMealsService.createPlannedMeal(recipeId)
+          Modal.getOrCreateInstance('#exampleModal').hide()
           // TODO close the modal
         } catch (error) {
           logger.log(error)

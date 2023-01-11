@@ -1,16 +1,17 @@
 import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import { api } from "./AxiosService"
-import { plannedMealsService } from "../services/PlannedMealsService.js"
+// import { plannedMealsService } from "../services/PlannedMealsService.js"
 
 
 class DaysService {
 
   async createDay(mealPlanId) {
-    AppState.plannedMeals = null
     const res = await api.post('api/days', { mealPlanId })
-    logger.log(res.data)
+    logger.log('new day returned from api' + res.data)
+
     AppState.activeDays.push(res.data)
+
     return res.data
 
   }
