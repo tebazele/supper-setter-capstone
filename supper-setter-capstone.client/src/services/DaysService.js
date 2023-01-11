@@ -8,7 +8,7 @@ class DaysService {
 
   async createDay(mealPlanId) {
     const res = await api.post('api/days', { mealPlanId })
-    logger.log('new day returned from api' + res.data)
+    // logger.log('new day returned from api' + res.data)
 
     AppState.activeDays.push(res.data)
 
