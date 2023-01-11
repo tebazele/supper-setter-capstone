@@ -12,13 +12,14 @@ class MealPlansService {
         AppState.activeMealPlan = res.data
 
         const day = await daysService.createDay(res.data.id)
-        logger.log('This is the day returned from daysService' + day)
+        AppState.activeDays = [day]
+        // logger.log('This is the day returned from daysService', day)
 
-        AppState.plannedMeals.push({
-            dayId: day.id,
-            plannedMeals: []
-        })
-        logger.log('This is the planned meal object in the AppState' + AppState.plannedMeals)
+        // AppState.plannedMeals = [{
+        //     dayId: day.id,
+        //     plannedMeals: []
+        // }]
+        // logger.log('This is the planned meal object in the AppState', AppState.plannedMeals)
 
         return res.data
 
