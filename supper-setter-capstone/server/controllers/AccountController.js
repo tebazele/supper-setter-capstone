@@ -12,12 +12,22 @@ export class AccountController extends BaseController {
       .get('', this.getUserAccount)
       .get('/mealplans', this.getAccountMealPlans)
       .get('/recipes', this.getAccountRecipes)
+      .put('', this.updateAccount)
   }
 
   async getUserAccount(req, res, next) {
     try {
       const account = await accountService.getAccount(req.userInfo)
       res.send(account)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async updateAccount(req, res, next) {
+    try {
+      const account = await accountService.updateAccount(req.userInfo, req.body)
+      return res.send(account)
     } catch (error) {
       next(error)
     }

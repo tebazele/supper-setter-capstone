@@ -82,12 +82,12 @@ export default {
       mealPlans: computed(() => AppState.mealPlans),
 
       async goToMealPlan(mealPlanId) {
-        logger.log(mealPlanId)
+        // logger.log(mealPlanId)
         await daysService.getDays(mealPlanId)
-        logger.log(AppState.activeDays)
+        // logger.log(AppState.activeDays)
 
         await plannedMealsService.getPlannedMeals(AppState.activeDays)
-        logger.log(AppState.plannedMeals);
+        // logger.log(AppState.plannedMeals);
 
         router.push({ name: 'MealPlanDetails', params: { mealPlanId: mealPlanId } })
       },
