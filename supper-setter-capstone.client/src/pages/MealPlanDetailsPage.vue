@@ -41,7 +41,7 @@
         <li>Add a dinner recipe</li>
       </ul>
     </div> -->
-    <div class="text-end sticky-bottom">
+    <div class="text-end">
       <button class="btn btn-danger"><i class="mdi mdi-delete" @click="deleteMealPlan"></i></button>
 
     </div>
