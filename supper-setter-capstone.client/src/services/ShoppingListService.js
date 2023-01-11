@@ -11,3 +11,4 @@ class ShoppingListService {
   }
 
 }
+export const shoppingListService = new ShoppingListService()
