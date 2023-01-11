@@ -24,5 +24,5 @@ export const AppState = reactive({
 
   nextPageUrl: null,
 
-  shoppingList: [],
+  shoppingList: null,
 })

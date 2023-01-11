@@ -1,6 +1,13 @@
 <template>
     <div>
         <h1>hello hello</h1>
+        <div v-for="i in ingredients" class="d-flex">
+
+            <p>{{ i.food }}</p>
+            <p>{{ i.quantity }}</p>
+            <p>{{ i.measure }}</p>
+
+        </div>
     </div>
 </template>
 
