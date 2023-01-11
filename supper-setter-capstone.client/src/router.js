@@ -1,5 +1,6 @@
 import { createRouter, createWebHashHistory } from 'vue-router'
 import { authGuard } from '@bcwdev/auth0provider-client'
+import ShoppingListPageVue from "./pages/ShoppingListPage.vue"
 
 function loadPage(page) {
   return () => import(`./pages/${page}.vue`)
@@ -42,7 +43,14 @@ const routes = [
     path: '/search/:searchQuery',
     name: 'SearchResults',
     component: loadPage('SearchResultsPage')
+  },
+  {
+    path: '/shoppinglist/',
+    name: 'ShoppingList',
+    component: loadPage('ShoppingListPage')
   }
+
+
 ]
 
 export const router = createRouter({

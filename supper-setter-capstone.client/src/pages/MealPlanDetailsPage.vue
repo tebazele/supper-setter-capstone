@@ -13,7 +13,11 @@
     <section class="row">
       <!-- <p>{{ plannedMealsByDay }}</p> -->
       <div class="col-12" v-for="(ps, index) in plannedMealsByDay" :key="index">
-        <h5>Day {{ index + 1 }}</h5>
+        <div class="d-flex justify-content-between">
+
+          <h5>Day {{ index + 1 }}</h5>
+          <button @click="createDayShoppingList(ps.dayId)" class="btn btn-info">Shopping List</button>
+        </div>
         <!-- <h5>Day {{ index + 1 }}</h5> -->
         <MealPlan :plannedMealsArray="ps.plannedMeals" :dayId="ps.dayId" />
       </div>
@@ -168,6 +172,13 @@ export default {
           Pop.error(error.message)
         }
       },
+
+      async createDayShoppingList(dayId) {
+        router.push({ name: 'ShoppingList', query: { day: `${dayId}` } })
+      },
+
+
+
 
       async deleteMealPlan() {
         try {
