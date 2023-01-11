@@ -27,11 +27,18 @@ class PlannedMealsService {
     let newPlannedMealArray = []
     const res = await api.delete('/api/plannedmeals/' + plannedMealId)
     for (let i = 0; i < AppState.plannedMeals.length; i++) {
-      newPlannedMealArray.push(AppState.plannedMeals[i].filter(p => p.id != plannedMealId))
+      let dayObj = AppState.plannedMeals[i]
+      if (dayObj.plannedMeals.find(p => p.id == plannedMealId)) {
+        let changedArray = dayObj.plannedMeals.filter(p => p.id != plannedMealId)
+        dayObj.plannedMeals = changedArray
+        AppState.plannedMeals.splice(i, 1, dayObj)
+      }
+
+      // newPlannedMealArray.push(AppState.plannedMeals[i].plannedMeals.filter(p => p.id != plannedMealId))
 
     }
 
-    AppState.plannedMeals = newPlannedMealArray
+    // AppState.plannedMeals = newPlannedMealArray
 
     return res.data
   }

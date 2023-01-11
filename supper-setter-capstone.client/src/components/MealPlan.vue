@@ -6,7 +6,7 @@
         <div class="border border-dark border-2 rounded px-2 pt-2 my-2">
             <div class="d-flex justify-content-between">
 
-                <h6>Breakfast</h6>
+                <h3>Breakfast</h3>
                 <!-- NOTE this button toggles modal and sets mealType to breakfast -->
                 <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="() => {
                     editable.mealType = 'breakfast';
@@ -15,15 +15,15 @@
                 }">Add
                     recipe</button>
             </div>
-            <ul v-for="b in breakfastMeals" :key="b.id">
-
-                <li v-if="b.recipe" class="my-3"><img :src="b.recipe.image" class="thumbnail" /> {{
+            <div v-for="b in breakfastMeals" :key="b.id" class="text-center mt-2">
+                <img :src="b.recipe.image" class="thumbnail rounded" />
+                <p v-if="b.recipe" class="my-1 fw-bold roboto-slab p-2"> {{
                     b.recipe.label
                 }} <i @click="deletePlannedMeal(b.id)" class="mdi mdi-delete text-danger" title="Delete recipe"></i>
-                </li>
+                </p>
 
 
-            </ul>
+            </div>
             <hr>
             <div class="d-flex justify-content-between">
                 <h6>Lunch</h6>
@@ -36,7 +36,7 @@
 
             </div>
             <ul v-for="l in lunchMeals" :key="l.id">
-                <li v-if="l.recipe" class="my-3"><img :src="l.recipe.image" class="thumbnail" /> {{
+                <li v-if="l.recipe" class="my-1"><img :src="l.recipe.image" class="thumbnail" /> {{
                     l.recipe.label
                 }} <i @click="deletePlannedMeal(l.id)" class="mdi mdi-delete text-danger" title="Delete recipe"></i>
                 </li>
@@ -50,11 +50,11 @@
                     editable.mealType = 'dinner';
                     editable.dayId = dayId
                     setEditableInAppState()
-                }" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add
+                }" class="btn btn-success mb-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Add
                     recipe</button>
             </div>
             <ul v-for="d in dinnerMeals" :key="d.id">
-                <li v-if="d.recipe.id" class="my-3"><img :src="d.recipe.image" class="thumbnail" /> {{
+                <li v-if="d.recipe.id" class="my-1"><img :src="d.recipe.image" class="thumbnail" /> {{
                     d.recipe.label
                 }} <i @click="deletePlannedMeal(d.id)" class="mdi mdi-delete text-danger" title="Delete recipe"></i>
                 </li>
@@ -119,11 +119,16 @@ export default {
 
 <style lang="scss" scoped>
 .thumbnail {
-    width: 30vh;
-    height: 15vh;
+    width: 90vw;
+    height: 35vh;
     object-position: center;
     object-fit: cover;
     vertical-align: bottom;
+
+}
+
+.move-up {
+    transform: translateY(-50px);
 }
 
 ul {
