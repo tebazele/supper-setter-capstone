@@ -18,10 +18,11 @@
       <a class="" :href="recipe.uniqueUrl">Click here for instructions</a>
     </section>
     <div class="text-end sticky-bottom">
-      <button v-if="!myRecipes.find(r => r.edamamId == recipe.edamamId)" @click="addToMyRecipes" class="btn btn-success"
-        title="Add this recipe to your recipe collection!">Add
+      <button v-if="myRecipes.find(r => r.edamamId == recipe.edamamId || r.archived == false)" @click="archiveRecipe()"
+        class="btn btn-danger" title="Remove this recipe from your recipe collection">Remove
         Recipe</button>
-      <button v-else class="btn btn-danger" title="Remove this recipe from your recipe collection">Remove
+      <button v-else @click="addToMyRecipes" class="btn btn-success"
+        title="Add this recipe to your recipe collection!">Add
         Recipe</button>
     </div>
   </div>
@@ -74,6 +75,7 @@ export default {
 
 
 
+
     return {
       recipe: computed(() => AppState.activeRecipe),
       ingredients: computed(() => AppState.activeRecipe.ingredients),
@@ -88,9 +90,20 @@ export default {
           logger.log(error)
           Pop.error(error)
         }
+      },
+
+      async archiveRecipe() {
+        try {
+          await recipesService.archiveRecipe(route.params.edamamId)
+        } catch (error) {
+          logger.log(error.message)
+          Pop.error(error)
+        }
       }
 
     }
+
+
 
 
   }

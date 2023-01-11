@@ -40,7 +40,7 @@ class RecipesService {
     recipe.archived = !recipe.archived
 
     await recipe.save()
-    return `recipe has been archived`
+    return recipe
   }
 
   async clearRecipe(recipeId, accountId) {

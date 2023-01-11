@@ -23,14 +23,27 @@ class RecipesService {
   }
 
   async addToMyRecipes(recipeId) {
-    let foundRecipe = await AppState.recipes.find(r => r.edamamId == recipeId)
-    if (!foundRecipe) {
-      logger.log('no recipe at this id')
+
+    if (AppState.myRecipes.find(r => r.edamamId == recipeId)) {
+      const foundRecipe = AppState.myRecipes.find(r => r.edamamId = edamamId)
+
+      foundRecipe.archived = false
+      const editedRecipe = await api.put('api/recipes/' + foundRecipe.id, foundRecipe)
+      return editedRecipe
+
+    } else {
+      let foundRecipe = await AppState.recipes.find(r => r.edamamId == recipeId)
+      if (!foundRecipe) {
+        logger.log('no recipe at this id')
+      }
+      const res = await api.post('/api/recipes', foundRecipe)
+      // logger.log(res.data)
+      AppState.myRecipes.push(res.data)
+      return res.data
+
+
+
     }
-    const res = await api.post('/api/recipes', foundRecipe)
-    // logger.log(res.data)
-    AppState.myRecipes.push(res.data)
-    return res.data
   }
 
   async getMyRecipes() {
@@ -50,6 +63,20 @@ class RecipesService {
     AppState.recipes.push(...mappedRecipes)
     AppState.nextPageUrl = res.data._links.next.href
   }
+
+  async archiveRecipe(edamamId) {
+    const foundRecipe = AppState.myRecipes.find(r => r.edamamId == edamamId)
+    logger.log(foundRecipe)
+    const index = AppState.myRecipes.findIndex(r => r.id == foundRecipe.id)
+    logger.log(index)
+    foundRecipe.archived = true
+    const res = await api.put('api/recipes/' + foundRecipe.id, foundRecipe)
+    logger.log(res.data)
+    AppState.myRecipes.splice(index, 1, res.data)
+
+
+  }
+
 
 
 }

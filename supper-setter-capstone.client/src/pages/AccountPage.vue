@@ -31,7 +31,7 @@
       <div class="col-12">
         <h2 class="my-3">My Recipes</h2>
       </div>
-      <div v-for="r in myRecipes" :key="r.edamamId" class="col-12">
+      <div v-for="r in nonArchivedRecipes" :key="r.edamamId" class="col-12">
         <router-link :to="{ name: 'RecipeDetails', params: { edamamId: r.edamamId } }">
           <div class="card px-3 py-1">
             <p class="text-center">{{ r.label }}</p>
@@ -79,6 +79,7 @@ export default {
     return {
       account: computed(() => AppState.account),
       myRecipes: computed(() => AppState.myRecipes),
+      nonArchivedRecipes: computed(() => AppState.myRecipes.filter(r => r.archived == false)),
       mealPlans: computed(() => AppState.mealPlans),
 
       async goToMealPlan(mealPlanId) {
