@@ -35,6 +35,13 @@ class MealPlansService {
         const res = await api.get('/api/mealplans/' + mealPlanId)
         AppState.activeMealPlan = res.data
     }
+
+    async deleteMealPlan(mealPlanId) {
+        const res = await api.delete('api/mealplans/' + mealPlanId)
+        // logger.log(res.data)
+        AppState.activeMealPlan = null
+
+    }
 }
 
 export const mealPlansService = new MealPlansService()

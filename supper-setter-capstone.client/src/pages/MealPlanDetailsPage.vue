@@ -46,7 +46,7 @@
       </ul>
     </div> -->
     <div class="text-end">
-      <button class="btn btn-danger"><i class="mdi mdi-delete" @click="deleteMealPlan"></i></button>
+      <button @click="deleteMealPlan()" class="btn btn-danger"><i class="mdi mdi-delete"></i>Delete Plan</button>
 
     </div>
   </div>
@@ -182,7 +182,10 @@ export default {
 
       async deleteMealPlan() {
         try {
-
+          if (await Pop.confirm('Are you sure you want to delete this meal plan?', "You can't go back")) {
+            await mealPlansService.deleteMealPlan(route.params.mealPlanId)
+            router.push({ name: 'Account' })
+          }
         } catch (error) {
           logger.log(error)
           Pop.error(error.message)
