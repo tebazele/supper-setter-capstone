@@ -1,8 +1,7 @@
 <template>
-  <div class="component">
-
-
-  </div>
+    <div>
+        <h1>hello hello</h1>
+    </div>
 </template>
 
 
@@ -13,27 +12,28 @@ import { useRoute, useRouter } from "vue-router";
 import { logger } from "../utils/Logger";
 import { shoppingListService } from "../services/ShoppingListService.js";
 export default {
-  setup() {
-    const route = useRoute();
-    onMounted(() => {
-      loadShoppingList()
-    })
+    setup() {
+        const route = useRoute();
+        onMounted(() => {
+            loadShoppingList()
+        })
 
-    async function loadShoppingList() {
+        async function loadShoppingList() {
 
-      if (route.query.params = day) {
-        await shoppingListService.getShoppingListByDayId()
-      }
+            if (route.query.day) {
+                await shoppingListService.getShoppingListByDayId(route.query.day)
+            }
 
+        }
+
+        return {
+            days: computed(() => AppState.activeDays),
+            ingredients: computed(() => AppState.shoppingList),
+
+
+
+        }
     }
-
-    return {
-      days: computed(() => AppState.activeDays)
-
-
-
-    }
-  }
 };
 </script>
 

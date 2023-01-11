@@ -22,5 +22,7 @@ export const AppState = reactive({
 
   activePlannedMealRequestBody: null,
 
-  nextPageUrl: null
+  nextPageUrl: null,
+
+  shoppingList: [],
 })
