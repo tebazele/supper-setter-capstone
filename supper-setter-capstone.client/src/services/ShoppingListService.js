@@ -16,8 +16,9 @@ class ShoppingListService {
       ingredients.push(...elm.recipe.ingredients)
 
     }
-
-
+    const sorted = ingredients.sort(function (a, b) {
+      return a.food.localeCompare(b.food);
+    })
 
     AppState.shoppingList = ingredients
     logger.log('app state shopping list', AppState.shoppingList)

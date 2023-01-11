@@ -3,9 +3,15 @@
         <h1>hello hello</h1>
         <div v-for="i in ingredients" class="d-flex">
 
-            <p>{{ i.food }}</p>
-            <p>{{ i.quantity }}</p>
-            <p>{{ i.measure }}</p>
+            <p>{{ i.food }}
+                <span v-if="i.quantity != 0">
+
+                    {{ i.quantity }}
+                </span>
+                <span v-if="i.measure != '<unit>'">
+                    {{ i.measure }}
+                </span>
+            </p>
 
         </div>
     </div>
