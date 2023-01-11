@@ -6,7 +6,9 @@
       </div>
       <div class="col-4 text-end">
         <router-link :to="{ name: 'MealPlans' }">
-          <button @click="clearPlannedMeals()" class="btn btn-success">Add MP</button>
+          <button class="btn btn-success">Add MP</button>
+
+          <!-- @click="clearPlannedMeals()" -->
 
         </router-link>
       </div>
@@ -48,8 +50,7 @@ import { mealPlansService } from '../services/MealPlansService.js';
 import { daysService } from '../services/DaysService.js';
 import { plannedMealsService } from '../services/PlannedMealsService.js';
 import { router } from '../router.js';
-import MealPlanDetailsPage from './MealPlanDetailsPage.vue';
-import MealPlanDisplayPage from './MealPlanDisplayPage.vue';
+
 export default {
   setup() {
 
@@ -69,8 +70,6 @@ export default {
 
     }
     return {
-
-
       account: computed(() => AppState.account),
       myRecipes: computed(() => AppState.myRecipes),
       mealPlans: computed(() => AppState.mealPlans),
@@ -78,15 +77,18 @@ export default {
       async goToMealPlan(mealPlanId) {
         logger.log(mealPlanId)
         await daysService.getDays(mealPlanId)
+        logger.log(AppState.activeDays)
 
         await plannedMealsService.getPlannedMeals(AppState.activeDays)
+        logger.log(AppState.plannedMeals);
 
         router.push({ name: 'MealPlanDetails', params: { mealPlanId: mealPlanId } })
       },
 
-      async clearPlannedMeals() {
-        AppState.plannedMeals = null
-      }
+      // async clearPlannedMeals() {
+      //   // AppState.plannedMeals = null
+      //   router.push({ name: 'MealPlans' })
+      // }
 
 
 

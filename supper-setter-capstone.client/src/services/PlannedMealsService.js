@@ -10,13 +10,10 @@ class PlannedMealsService {
             let res = await api.get('api/days/' + daysArray[i]._id + '/plannedmeals')
 
             allPlannedMeals.push(res.data)
-            // FIXME res.data will now be objects with dayId as one key and plannedMeals as the other key
+
         }
         AppState.plannedMeals = allPlannedMeals
 
-        // TODO loop through daysArray and get all plannedmeals associated with each day
-        // STUB do we want to sort them by day here or on the page? We could push arrays of planned meals to a superset array of all meals associated with the mealplan
-        // TODO we'll still have to sort by meal type on the page
     }
 
     async deletePlannedMeal(plannedMealId) {

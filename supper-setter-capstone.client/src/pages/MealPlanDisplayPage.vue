@@ -51,7 +51,7 @@ export default {
                     logger.log(mealPlanName.value)
                     const mealPlan = await mealPlansService.createMealPlan(mealPlanName.value)
 
-                    // mealPlanName.value = ''
+
                     displayForm.value = false
                     Pop.toast('meal plan created')
                     router.push({ name: 'MealPlanDetails', params: { mealPlanId: mealPlan.id } })

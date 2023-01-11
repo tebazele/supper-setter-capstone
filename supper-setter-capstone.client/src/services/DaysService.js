@@ -7,12 +7,11 @@ import { plannedMealsService } from "../services/PlannedMealsService.js"
 class DaysService {
 
   async createDay(mealPlanId) {
-    debugger
     AppState.plannedMeals = null
     const res = await api.post('api/days', { mealPlanId })
     logger.log(res.data)
     AppState.activeDays.push(res.data)
-
+    return res.data
 
   }
 

@@ -91,6 +91,7 @@ export default {
     watchEffect(() => {
       if (AppState.activeDays) {
         getPlannedMeals(AppState.activeDays);
+
       }
 
     });
