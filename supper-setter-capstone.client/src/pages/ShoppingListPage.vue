@@ -11,6 +11,7 @@ import { AppState } from '../AppState';
 import { computed, reactive, onMounted } from 'vue';
 import { useRoute, useRouter } from "vue-router";
 import { logger } from "../utils/Logger";
+import { shoppingListService } from "../services/ShoppingListService.js";
 export default {
   setup() {
     const route = useRoute();
@@ -19,10 +20,9 @@ export default {
     })
 
     async function loadShoppingList() {
-      logger.log(route.params)
-      logger.log(this.$route.query.test)
+
       if (route.query.params = day) {
-        logger.log(day)
+        await shoppingListService.getShoppingListByDayId()
       }
 
     }
