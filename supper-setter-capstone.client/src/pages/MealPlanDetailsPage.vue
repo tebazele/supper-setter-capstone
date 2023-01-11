@@ -1,11 +1,8 @@
 <template>
-  <div class="container-fluid">
-    <div class="text-end p-2">
-      <button class="btn btn-success me-2" @click="createDay">Create Day</button>
+  <div class="container-fluid serif-pro">
 
-    </div>
     <div v-if="mealPlan">
-      <h2>
+      <h2 class="mt-1 raleway">
         {{ mealPlan.name }}
 
       </h2>
@@ -15,7 +12,7 @@
       <div class="col-12" v-for="(ps, index) in plannedMealsByDay" :key="index">
         <div class="d-flex justify-content-between">
 
-          <h5>Day {{ index + 1 }}</h5>
+          <h5 class="raleway">Day {{ index + 1 }} <span class="mdi mdi-delete"></span></h5>
           <button @click="createDayShoppingList(ps.dayId)" class="btn btn-info">Shopping List</button>
         </div>
         <!-- <h5>Day {{ index + 1 }}</h5> -->
@@ -46,7 +43,11 @@
       </ul>
     </div> -->
     <div class="text-end">
-      <button @click="deleteMealPlan()" class="btn btn-danger"><i class="mdi mdi-delete"></i>Delete Plan</button>
+      <div class="text-end d-flex justify-content-between">
+        <button @click="deleteMealPlan()" class="btn btn-danger mb-2"><i class="mdi mdi-delete"></i>Delete Plan</button>
+        <button class="btn btn-success me-2 mb-2" @click="createDay">Create Day</button>
+
+      </div>
 
     </div>
   </div>
@@ -199,11 +200,12 @@ export default {
 
 
 <style lang="scss" scoped>
+// FIXME style this
 .thumbnail {
-  width: 30vh;
-  height: 15vh;
+  width: 400px;
   object-position: center;
   object-fit: cover;
   vertical-align: bottom;
+  transform: translateY(10px);
 }
 </style>
