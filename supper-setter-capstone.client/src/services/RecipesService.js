@@ -22,17 +22,19 @@ class RecipesService {
     AppState.activeRecipe = mappedRecipe
   }
 
-  async addToMyRecipes(recipeId) {
+  async addToMyRecipes(edamamId) {
+    const foundRecipe = AppState.myRecipes.find(r => r.edamamId == edamamId)
+    if (foundRecipe) {
+      // const foundRecipe = AppState.myRecipes.find(r => r.edamamId = edamamId)
+      // logger.log(foundRecipe)
 
-    if (AppState.myRecipes.find(r => r.edamamId == recipeId)) {
-      const foundRecipe = AppState.myRecipes.find(r => r.edamamId = edamamId)
-
-      foundRecipe.archived = false
+      foundRecipe.archived = !foundRecipe.archived
+      // logger.log(foundRecipe)
       const editedRecipe = await api.put('api/recipes/' + foundRecipe.id, foundRecipe)
       return editedRecipe
 
     } else {
-      let foundRecipe = await AppState.recipes.find(r => r.edamamId == recipeId)
+      let foundRecipe = await AppState.recipes.find(r => r.edamamId == edamamId)
       if (!foundRecipe) {
         logger.log('no recipe at this id')
       }
