@@ -2,7 +2,7 @@ import { Schema } from "mongoose";
 const ObjectId = Schema.Types.ObjectId
 
 export const MealPlanSchema = new Schema({
-    name: { type: String, required: true, maxLength: 30 },
+    name: { type: String, required: true, maxLength: 50 },
     creatorId: { type: ObjectId, required: true, ref: 'Account' },
 
 }, { timestamps: true, toJSON: { virtuals: true } })

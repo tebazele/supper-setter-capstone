@@ -1,9 +1,11 @@
 <template>
-  <span class="navbar-text">
-    <button class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0" @click="login"
-      v-if="!user.isAuthenticated">
-      Login
-    </button>
+  <span class="navbar-text raleway">
+    <div v-if="!user.isAuthenticated" class="text-end">
+
+      <button class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0" @click="login">
+        Login
+      </button>
+    </div>
     <div v-else>
       <!-- <div class="dropdown dropstart my-2 my-lg-0"> -->
       <!-- <div type="button" class="bg-dark border-0 selectable no-select" data-bs-toggle="dropdown" aria-expanded="false"> -->

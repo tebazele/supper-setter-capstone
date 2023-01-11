@@ -1,12 +1,12 @@
 <template>
-  <div class="container">
+  <div class="container serif-pro">
     <section class="row justify-content-between">
       <div class="col-8">
-        <h2>My Meal Plans</h2>
+        <h2 class="mt-3 raleway">My Meal Plans</h2>
       </div>
       <div class="col-4 text-end">
         <router-link :to="{ name: 'MealPlans' }">
-          <button class="btn btn-success">Add MP</button>
+          <button class="btn btn-success my-3">Add MP</button>
 
           <!-- @click="clearPlannedMeals()" -->
 
@@ -14,8 +14,11 @@
       </div>
     </section>
     <section class="row">
-      <div v-for="m in mealPlans" :key="m.id" class="col-12">
-        <button @click="this.goToMealPlan(m.id)" class="btn btn-outline-dark rounded-pill m-1">{{ m.name }}</button>
+      <div v-for="m in mealPlans" :key="m.id" class="col-12 d-flex align-items-baseline justify-content-between">
+        <button @click="this.goToMealPlan(m.id)" class="btn btn-outline-dark bg-primary rounded-pill m-1 same-width">{{
+          m.name
+        }}</button>
+        <h6>Created: {{ new Date(m.createdAt).toLocaleDateString() }}</h6>
 
         <!-- <router-link :to="{ name: 'MealPlanDetails', params: { mealPlanId: m.id } }">
           <h6 class="selectable">{{ m.name }}</h6>
@@ -23,15 +26,18 @@
         </router-link> -->
       </div>
     </section>
+    <hr>
     <section class="row">
       <div class="col-12">
-        <h2>My Recipes</h2>
+        <h2 class="my-3">My Recipes</h2>
       </div>
       <div v-for="r in myRecipes" :key="r.edamamId" class="col-12">
         <router-link :to="{ name: 'RecipeDetails', params: { edamamId: r.edamamId } }">
-          <div class="card">
-            <h5>{{ r.label }}</h5>
-            <img :src="r.image" alt="">
+          <div class="card px-3 py-1">
+            <p class="text-center">{{ r.label }}</p>
+            <!-- FIXME maybe make images background images for the div with text over -->
+
+            <img :src="r.image" class="recipe-img" alt="">
 
           </div>
         </router-link>
@@ -102,5 +108,15 @@ export default {
 <style scoped>
 img {
   max-width: 100px;
+}
+
+.same-width {
+  width: 300px;
+}
+
+.recipe-img {
+  width: 300px;
+  /* object-fit: cover;
+  object-position: center; */
 }
 </style>

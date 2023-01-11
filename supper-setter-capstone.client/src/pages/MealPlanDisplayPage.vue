@@ -4,10 +4,10 @@
             <div class="col-8">
                 <!-- STUB write the post function -->
                 <form class="d-flex mt-3" @submit.prevent="createMealPlan">
-                    <input placeholder="Give your meal plan a name" class="w-100" v-model="mealPlanName" /><button
-                        class="btn btn-primary">Save</button>
+                    <input placeholder="Give your meal plan a name" class="w-100" v-model="mealPlanName"
+                        maxlength="50" /><button class="btn btn-primary">Save</button>
                 </form>
-                <!-- FIXME -->
+                <!-- NOTE form validation on front end done -->
 
             </div>
             <div class="col-4 text-end mt-3">

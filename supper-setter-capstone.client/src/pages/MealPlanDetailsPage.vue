@@ -1,7 +1,8 @@
 <template>
   <div class="container-fluid">
-    <div class="text-end">
-      <button class="btn btn-success" @click="createDay">Create Day</button>
+    <div class="text-end p-2">
+      <button class="btn btn-success me-2" @click="createDay">Create Day</button>
+
     </div>
     <div v-if="mealPlan">
       <h2>
@@ -40,7 +41,10 @@
         <li>Add a dinner recipe</li>
       </ul>
     </div> -->
+    <div class="text-end sticky-bottom">
+      <button class="btn btn-danger"><i class="mdi mdi-delete" @click="deleteMealPlan"></i></button>
 
+    </div>
   </div>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -159,6 +163,15 @@ export default {
           await plannedMealsService.createPlannedMeal(recipeId)
           Modal.getOrCreateInstance('#exampleModal').hide()
           // TODO close the modal
+        } catch (error) {
+          logger.log(error)
+          Pop.error(error.message)
+        }
+      },
+
+      async deleteMealPlan() {
+        try {
+
         } catch (error) {
           logger.log(error)
           Pop.error(error.message)
