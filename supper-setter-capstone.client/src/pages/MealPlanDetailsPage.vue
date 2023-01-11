@@ -12,7 +12,7 @@
       <div class="col-12" v-for="(ps, index) in plannedMealsByDay" :key="index">
         <div class="d-flex justify-content-between">
 
-          <h5 class="raleway">Day {{ index + 1 }} <span class="mdi mdi-delete"></span></h5>
+          <h5 class="raleway">Day {{ index + 1 }} <span @click="deleteDay(ps.dayId)" class="mdi mdi-delete"></span></h5>
           <button @click="createDayShoppingList(ps.dayId)" class="btn btn-info">Shopping List</button>
         </div>
         <!-- <h5>Day {{ index + 1 }}</h5> -->
@@ -186,6 +186,17 @@ export default {
           if (await Pop.confirm('Are you sure you want to delete this meal plan?', "You can't go back")) {
             await mealPlansService.deleteMealPlan(route.params.mealPlanId)
             router.push({ name: 'Account' })
+          }
+        } catch (error) {
+          logger.log(error)
+          Pop.error(error.message)
+        }
+      },
+
+      async deleteDay(dayId) {
+        try {
+          if (await Pop.confirm('Are you sure you want to delete this day?', '')) {
+            await daysService.deleteDay(dayId)
           }
         } catch (error) {
           logger.log(error)

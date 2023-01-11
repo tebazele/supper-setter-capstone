@@ -24,6 +24,12 @@ class DaysService {
     // await plannedMealsService.getPlannedMeals(AppState.activeDays)
   }
 
+  async deleteDay(dayId) {
+    const res = await api.delete('api/days/' + dayId)
+    logger.log(res.data)
+    AppState.activeDays = res.data
+  }
+
 }
 
 export const daysService = new DaysService()
