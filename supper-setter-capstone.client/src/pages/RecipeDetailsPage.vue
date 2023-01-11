@@ -18,10 +18,11 @@
       <a class="" :href="recipe.uniqueUrl">Click here for instructions</a>
     </section>
     <div class="text-end sticky-bottom">
-      <button v-if="myRecipes.find(r => r.edamamId == recipe.edamamId || r.archived == false)" @click="archiveRecipe()"
+      <button v-if="myRecipes.find(r => r.edamamId == recipe.edamamId && r.archived == false)" @click="archiveRecipe()"
         class="btn btn-danger" title="Remove this recipe from your recipe collection">Remove
         Recipe</button>
-      <button @click="addToMyRecipes" class="btn btn-success" title="Add this recipe to your recipe collection!">Add
+      <button v-else @click="addToMyRecipes" class="btn btn-success"
+        title="Add this recipe to your recipe collection!">Add
         Recipe</button>
     </div>
   </div>
