@@ -9,7 +9,7 @@ export const RecipeSchema = new Schema({
   uniqueUrl: { type: String, required: true },
   edamamId: { type: String, required: true },
   archived: { type: Boolean, required: true, default: false },
-  ingredients: { type: Array, required: true, default: [] }
+  ingredients: { type: Array, required: true }
   // TODO look at default 
 }, { timestamps: true, toJSON: { virtuals: true } })
 
