@@ -10,10 +10,10 @@ export class DaysController extends BaseController {
     super('api/days')
     this.router
       .get('/:dayId/plannedmeals', this.getPlannedMealsByDayId)
+      .get('/:dayId', this.getDayInfoByDayId)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createDay)
       .delete('/:dayId', this.removeDay)
-      .get('/:dayId', this.getDayInfoByDayId)
 
   }
 

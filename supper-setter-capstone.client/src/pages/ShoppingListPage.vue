@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2 v-if="activeDay && route.query.day" class="p-1 mb-3">{{ activeDay.name }} of {{ activeDay.mealPlan.name }}
+    <h2 v-if="activeDay" class="p-1 mb-3">{{ activeDay.name }} of {{ activeDay.mealPlan.name }}
       shopping
       list </h2>
     <h2 v-if="activeMealPlan && route.query.mealplan" class="p-1 mb-3">{{ activeMealPlan.name }} shopping
@@ -52,8 +52,10 @@ export default {
         await daysService.getDayInfoByDayId(route.query.day)
       }
       if (route.query.mealplan) {
+        debugger
         await shoppingListService.getShoppingListByMealPlanId(route.query.mealplan)
         await mealPlansService.getMealPlanById(route.query.mealplan)
+
       }
     }
 
