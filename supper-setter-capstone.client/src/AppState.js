@@ -8,7 +8,7 @@ export const AppState = reactive({
   /** @type {import('./models/Recipe.js').Recipe[]} */
   recipes: [],
 
-  queryOptions: ['vegan', 'chicken', 'international', 'dessert', 'sandwich', 'breakfast', 'lunch', 'dinner', 'vegetable', 'smoothie', 'vegetarian', 'pizza', 'apple', 'pineapple', 'duck', 'cream', 'marinated', 'high-protein', 'soup', 'pasta', 'cocktail', 'healthy', 'delicious', 'rich', 'savory', 'sweet'],
+  queryOptions: ['vegan', 'chicken', 'international', 'dessert', 'sandwich', 'breakfast', 'lunch', 'dinner', 'vegetable', 'smoothie', 'vegetarian', 'pizza', 'apple', 'pineapple', 'lamb', 'cream', 'marinated', 'high-protein', 'soup', 'pasta', 'cocktail', 'healthy', 'delicious', 'rich', 'savory', 'sweet'],
 
   myRecipes: [],
 

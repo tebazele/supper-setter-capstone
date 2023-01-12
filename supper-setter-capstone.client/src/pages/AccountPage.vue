@@ -42,11 +42,45 @@
         </router-link>
       </div>
     </section>
+    <section class="row">
+      <div class="col-12">
+        <hr>
+        <div class="text-end my-4">
+          <button data-bs-toggle="offcanvas" data-bs-target="#offcanvasExample"
+            class="btn btn-outline-dark selectable ">Edit Your Account Info</button>
+
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasExampleLabel">Edit Your Account</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      <form @submit.prevent="editAccount()">
+        <div class="mb-3">
+          <label for="name" class="form-label">Name</label>
+          <input v-model="editable.name" type="text" required class="form-control" id="name">
+        </div>
+        <div class="mb-3">
+          <label for="picture" class="form-label">Picture</label>
+          <input v-model="editable.picture" type="text" required class="form-control" id="picture">
+        </div>
+        <div class="mb-3">
+          <label for="bio" class="form-label">Bio</label>
+          <textarea v-model="editable.bio" required class="form-control" id="bio" rows="3"></textarea>
+        </div>
+        <button class="btn btn-success mb-1" type="submit">Submit</button>
+      </form>
+
+    </div>
   </div>
 </template>
 
 <script>
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { AppState } from '../AppState'
 import MealPlan from "../components/MealPlan.vue";
 import { logger } from '../utils/Logger.js';
@@ -56,9 +90,12 @@ import { daysService } from '../services/DaysService.js';
 import { plannedMealsService } from '../services/PlannedMealsService.js';
 import { router } from '../router.js';
 import { useRouter } from 'vue-router';
+import { accountService } from '../services/AccountService.js';
+import { Offcanvas } from 'bootstrap';
 
 export default {
   setup() {
+    const editable = ref({})
     const router = useRouter()
     onMounted(() => {
       getMyMealPlans()
@@ -76,6 +113,7 @@ export default {
 
     }
     return {
+      editable,
       account: computed(() => AppState.account),
       myRecipes: computed(() => AppState.myRecipes),
       nonArchivedRecipes: computed(() => AppState.myRecipes.filter(r => r.archived == false)),
@@ -92,10 +130,17 @@ export default {
         router.push({ name: 'MealPlanDetails', params: { mealPlanId: mealPlanId } })
       },
 
-      // async clearPlannedMeals() {
-      //   // AppState.plannedMeals = null
-      //   router.push({ name: 'MealPlans' })
-      // }
+      async editAccount() {
+        try {
+          await accountService.editAccount(editable.value)
+          editable.value = {}
+          Pop.toast('Account edited')
+          Offcanvas.getOrCreateInstance('#offcanvasExample').hide()
+        } catch (error) {
+          logger.error(error)
+          Pop.error(error.message)
+        }
+      }
 
 
 

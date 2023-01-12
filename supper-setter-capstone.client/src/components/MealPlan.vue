@@ -123,7 +123,7 @@ export default {
 
 <style lang="scss" scoped>
 .thumbnail {
-    width: 90vw;
+    width: 78vw;
     height: 35vh;
     object-position: center;
     object-fit: cover;
