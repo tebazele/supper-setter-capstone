@@ -5,8 +5,10 @@
       <h2 v-if="mealPlan" class="mt-1 raleway">
         {{ mealPlan.name }}
       </h2>
-      <!-- <img v-if="mealPlan.creator" :src="mealPlan.creator.picture"
-        class="img-fluid tiny-img rounded-circle border border-dark border-1" /> -->
+      <!-- <div v-if="creator">
+        <img :src="creator.picture" class="img-fluid tiny-img rounded-circle border border-dark border-1" />
+
+      </div> -->
     </div>
     <section class="row">
       <!-- <p>{{ plannedMealsByDay }}</p> -->
@@ -21,29 +23,6 @@
         <MealPlan :plannedMealsArray="ps.plannedMeals" :dayId="ps.dayId" />
       </div>
     </section>
-    <!-- <div v-for="d in days" :key="d.id">
-      <p>Breakfast</p>
-      <ul v-for="(b, index) in d.breakfastRecipes" :key="index">
-        <li>{{ b }}</li>
-      </ul>
-      <ul>
-        <li>Add a breakfast recipe</li>
-      </ul>
-      <p>Lunch</p>
-      <ul v-for="(l, index) in d.lunchRecipes" :key="index">
-        <li>{{ l }}</li>
-      </ul>
-      <ul>
-        <li>Add a lunch recipe</li>
-      </ul>
-      <p>Dinner</p>
-      <ul v-for="(s, index) in d.dinnerRecipes" :key="index">
-        <li>{{ s }}</li>
-      </ul>
-      <ul>
-        <li>Add a dinner recipe</li>
-      </ul>
-    </div> -->
     <div class="text-end">
       <div class="text-end d-flex justify-content-between">
         <button @click="deleteMealPlan()" class="btn border border-dark bg-danger text-white selectable mb-2"><i
@@ -166,6 +145,7 @@ export default {
     return {
       search,
       mealPlan: computed(() => AppState.activeMealPlan),
+      // creator: computed(() => AppState.activeMealPlan.creator),
       days: computed(() => AppState.activeDays),
       plannedMealsByDay: computed(() => AppState.plannedMeals),
       myRecipes: computed(() => AppState.myRecipes),

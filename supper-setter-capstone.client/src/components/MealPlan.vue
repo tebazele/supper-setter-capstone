@@ -17,10 +17,10 @@
             </div>
             <div v-for="b in breakfastMeals" :key="b.id" class="text-center mt-2">
                 <img :src="b.recipe.image" class="thumbnail rounded" />
-                <p v-if="b.recipe" class="my-1 fw-bold roboto-slab p-2"> {{
+                <h5 v-if="b.recipe" class="my-1 fw-bold roboto-slab p-2"> {{
                     b.recipe.label
                 }} <i @click="deletePlannedMeal(b.id)" class="mdi mdi-delete text-danger" title="Delete recipe"></i>
-                </p>
+                </h5>
 
 
             </div>
@@ -38,10 +38,10 @@
             </div>
             <div v-for="l in lunchMeals" :key="l.id" class="text-center mt-2">
                 <img :src="l.recipe.image" class="thumbnail rounded" />
-                <p v-if="l.recipe" class="my-1 fw-bold roboto-slab p-2"> {{
+                <h5 v-if="l.recipe" class="my-1 fw-bold roboto-slab p-2"> {{
                     l.recipe.label
                 }} <i @click="deletePlannedMeal(l.id)" class="mdi mdi-delete text-danger" title="Delete recipe"></i>
-                </p>
+                </h5>
 
             </div>
             <hr>
@@ -58,10 +58,10 @@
             </div>
             <div class="text-center mt-2" v-for="d in dinnerMeals" :key="d.id">
                 <img :src="d.recipe.image" class="thumbnail rounded" />
-                <p v-if="d.recipe.id" class="my-1 fw-bold roboto-slab p-2"> {{
+                <h5 v-if="d.recipe.id" class="my-1 fw-bold roboto-slab p-2"> {{
                     d.recipe.label
                 }} <i @click="deletePlannedMeal(d.id)" class="mdi mdi-delete text-danger" title="Delete recipe"></i>
-                </p>
+                </h5>
 
             </div>
         </div>
@@ -124,7 +124,7 @@ export default {
 <style lang="scss" scoped>
 .thumbnail {
     width: 78vw;
-    height: 35vh;
+    height: 17vh;
     object-position: center;
     object-fit: cover;
     vertical-align: bottom;
