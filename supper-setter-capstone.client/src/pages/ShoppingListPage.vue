@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h2><span v-if="route.query.day">{{ day.name }} of {{ day.mealPlan.name }}</span> shopping list </h2>
+
 
     <div v-for="i in ingredients" class="d-flex ">
 
@@ -56,7 +56,7 @@ export default {
     return {
       days: computed(() => AppState.activeDays),
       ingredients: computed(() => AppState.shoppingList),
-      day: computed(() => AppState.activeDay),
+      activeDay: computed(() => AppState.activeDay),
       route
     }
   }
