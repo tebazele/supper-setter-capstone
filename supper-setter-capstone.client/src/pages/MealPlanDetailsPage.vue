@@ -2,9 +2,9 @@
   <div class="container-fluid serif-pro">
 
     <div v-if="mealPlan">
-      <h2 class="mt-1 raleway">
+      <h2 class="mt-1 raleway d-flex justify-content-between">
         {{ mealPlan.name }}
-
+        <button @click="createMealPlanShoppingList(mealPlan.id)" class="btn btn-info">Shopping List</button>
       </h2>
     </div>
     <section class="row">
@@ -178,7 +178,9 @@ export default {
         router.push({ name: 'ShoppingList', query: { day: `${dayId}` } })
       },
 
-
+      async createMealPlanShoppingList(mealPlanId) {
+        router.push({ name: 'ShoppingList', query: { mealplan: `${mealPlanId}` } })
+      },
 
 
       async deleteMealPlan() {

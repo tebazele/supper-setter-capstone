@@ -14,15 +14,16 @@ class ShoppingListService {
     for (let i = 0; i < day.data.plannedMeals.length; i++) {
       const elm = day.data.plannedMeals[i];
       ingredients.push(...elm.recipe.ingredients)
-
     }
     const sorted = ingredients.sort(function (a, b) {
       return a.food.localeCompare(b.food);
     })
-
     AppState.shoppingList = ingredients
     logger.log('app state shopping list', AppState.shoppingList)
+  }
 
+  getShoppingListByMealPlanId(mealPlanId) {
+    logger.log(mealPlanId)
   }
 
 }

@@ -1,20 +1,20 @@
 <template>
-    <div>
-        <h1>hello hello</h1>
-        <div v-for="i in ingredients" class="d-flex">
+  <div>
+    <h1>hello hello</h1>
+    <div v-for="i in ingredients" class="d-flex">
 
-            <p>{{ i.food }}
-                <span v-if="i.quantity != 0">
+      <p>{{ i.food }}
+        <span v-if="i.quantity != 0">
 
-                    {{ i.quantity }}
-                </span>
-                <span v-if="i.measure != '<unit>'">
-                    {{ i.measure }}
-                </span>
-            </p>
+          {{ i.quantity }}
+        </span>
+        <span v-if="i.measure != '<unit>'">
+          {{ i.measure }}
+        </span>
+      </p>
 
-        </div>
     </div>
+  </div>
 </template>
 
 
@@ -25,28 +25,26 @@ import { useRoute, useRouter } from "vue-router";
 import { logger } from "../utils/Logger";
 import { shoppingListService } from "../services/ShoppingListService.js";
 export default {
-    setup() {
-        const route = useRoute();
-        onMounted(() => {
-            loadShoppingList()
-        })
+  setup() {
+    const route = useRoute();
+    onMounted(() => {
+      loadShoppingList()
+    })
 
-        async function loadShoppingList() {
-
-            if (route.query.day) {
-                await shoppingListService.getShoppingListByDayId(route.query.day)
-            }
-
-        }
-
-        return {
-            days: computed(() => AppState.activeDays),
-            ingredients: computed(() => AppState.shoppingList),
-
-
-
-        }
+    async function loadShoppingList() {
+      if (route.query.day) {
+        await shoppingListService.getShoppingListByDayId(route.query.day)
+      }
+      if (route.query.mealplan) {
+        await shoppingListService.getShoppingListByMealPlanId(route.query.mealplan)
+      }
     }
+
+    return {
+      days: computed(() => AppState.activeDays),
+      ingredients: computed(() => AppState.shoppingList),
+    }
+  }
 };
 </script>
 
