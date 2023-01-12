@@ -24,13 +24,26 @@ class ShoppingListService {
   }
 
   async getShoppingListByMealPlanId(mealPlanId) {
+    const plannedMealsArray = []
+    const ingredients = []
     await daysService.getDays(mealPlanId)
     logger.log(AppState.activeDays, "Got days by Meal Plan ID")
     let daysArray = AppState.activeDays
     for (let i = 0; i < daysArray.length; i++) {
-      plannedMealsService.getPlannedMealsByDayId(daysArray[i].id)
-      logger.log(daysArray[i].id, 'hello?')
+      let meals = await plannedMealsService.getPlannedMealsByDayId(daysArray[i].id)
+      plannedMealsArray.push(...meals.data.plannedMeals)
+      for (let j = 0; j < plannedMealsArray.length; j++) {
+        const elm = plannedMealsArray[j];
+        ingredients.push(...elm.recipe.ingredients)
+      }
     }
+    logger.log(ingredients)
+    const sorted = ingredients.sort(function (a, b) {
+      return a.food.localeCompare(b.food);
+    })
+    AppState.shoppingList = ingredients
+    logger.log('app state shopping list', AppState.shoppingList)
+
   }
 
 }
