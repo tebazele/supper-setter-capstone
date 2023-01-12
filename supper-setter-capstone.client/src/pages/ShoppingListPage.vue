@@ -46,10 +46,7 @@ export default {
       }
       if (route.query.mealplan) {
         await shoppingListService.getShoppingListByMealPlanId(route.query.mealplan)
-      }
-      else {
-        Pop.error('Please go back to your collection page to generate a shopping list')
-        //TODO rework handling make this draw on page itself not pop//
+
       }
     }
 
