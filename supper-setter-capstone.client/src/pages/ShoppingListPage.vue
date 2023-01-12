@@ -34,6 +34,7 @@ import { useRoute, useRouter } from "vue-router";
 import { logger } from "../utils/Logger";
 import { shoppingListService } from "../services/ShoppingListService.js";
 import Pop from "../utils/Pop.js";
+import { daysService } from "../services/DaysService.js";
 export default {
   setup() {
     const route = useRoute();
@@ -44,7 +45,7 @@ export default {
     async function loadShoppingList() {
       if (route.query.day) {
         await shoppingListService.getShoppingListByDayId(route.query.day)
-        await 
+        await daysService.getDayInfoByDayId(route.query.day)
       }
       if (route.query.mealplan) {
         await shoppingListService.getShoppingListByMealPlanId(route.query.mealplan)
