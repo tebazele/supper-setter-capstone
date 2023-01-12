@@ -1,0 +1,8 @@
+
+
+class IngredientsService {
+
+  async checkIngredientByRecipeId() {
+
+  }
+}
