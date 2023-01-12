@@ -51,6 +51,12 @@ class DaysService {
     await plannedMealsService.removePlannedMealsByDay(days)
     await dbContext.Days.deleteMany({ mealPlanId }).populate('mealPlan')
   }
+
+
+  async getDayInfoByDayId(dayId) {
+    const day = await dbContext.Days.findById(dayId).populate('mealPlan')
+    return day
+  }
 }
 
 
