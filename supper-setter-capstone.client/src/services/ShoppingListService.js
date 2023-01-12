@@ -1,6 +1,7 @@
 import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import { plannedMealsService } from "./PlannedMealsService.js"
+import { daysService } from "./DaysService.js"
 
 
 class ShoppingListService {
@@ -22,8 +23,14 @@ class ShoppingListService {
     logger.log('app state shopping list', AppState.shoppingList)
   }
 
-  getShoppingListByMealPlanId(mealPlanId) {
-    logger.log(mealPlanId)
+  async getShoppingListByMealPlanId(mealPlanId) {
+    await daysService.getDays(mealPlanId)
+    logger.log(AppState.activeDays, "Got days by Meal Plan ID")
+    let daysArray = AppState.activeDays
+    for (let i = 0; i < daysArray.length; i++) {
+      plannedMealsService.getPlannedMealsByDayId(daysArray[i].id)
+      logger.log(daysArray[i].id, 'hello?')
+    }
   }
 
 }

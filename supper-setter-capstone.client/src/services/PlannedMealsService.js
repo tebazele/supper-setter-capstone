@@ -19,7 +19,6 @@ class PlannedMealsService {
 
   async getPlannedMealsByDayId(dayId) {
     let meals = await api.get(`api/days/${dayId}/plannedmeals`)
-    logger.log(meals)
     return meals
   }
 
