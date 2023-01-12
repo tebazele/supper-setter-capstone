@@ -1,11 +1,11 @@
 <template>
-  <section class="main-section text-visible">
+  <section class="main-section text-visible raleway">
     <h1 class="text-center mb-5 pt-md-4 pt-2">Our Amazing Team!</h1>
 
 
 
     <!-- dev team images and desc -->
-    <div class="my-body">
+    <div class="my-body raleway">
       <div class="my-container">
         <input type="radio" name="slider" id="item-1" checked />
         <input type="radio" name="slider" id="item-2" />
@@ -15,7 +15,7 @@
         <input type="radio" name="slider" id="item-6" />
 
 
-        <div class="cards">
+        <div class="raleway text-light cards">
           <!-- Jeanne Allen -->
           <label class="card" for="item-1" id="member-1">
             <img
@@ -23,14 +23,14 @@
               alt="Jeanne Allen" />
             <div class="desc">
               <div class="desc-title d-flex justify-content-md-center justify-content-between px-3 px-md-0">
-                <h3>Jeanne Allen</h3>
+                <h3 class="fw-bold">Jeanne Allen</h3>
                 <div class="icons d-flex gap-2 ps-3">
                   <a href="https://github.com/tebazele" target="_blank" class="mdi mdi-github fs-4" title="GitHub"></a>
                   <a class="mdi mdi-linkedin fs-4" title="LinkedIn" target="_blank"
                     href="https://www.linkedin.com/in/jeanne-allen-0437078/"></a>
                 </div>
               </div>
-              <div class="desc-body p-3">
+              <div class="desc-body p-3 serif-pro">
                 <span>This is my bio</span>
               </div>
             </div>
@@ -44,8 +44,8 @@
               src="https://media.licdn.com/dms/image/D5603AQHH3QQktPzkyA/profile-displayphoto-shrink_400_400/0/1673548298160?e=1678924800&v=beta&t=OXCOKSrouahlZezAg8m4r3JNd9cGDHhYnFlbpKQOfT0"
               alt="Derik Banning" />
             <div class="desc">
-              <div class="desc-title d-flex justify-content-center">
-                <h3>Derik Banning</h3>
+              <div class="desc-title d-flex justify-content-md-center justify-content-between px-3 px-md-0">
+                <h3 class="fw-bold">Derik Banning</h3>
                 <div class="icons d-flex gap-2 ps-3">
                   <a href="https://github.com/deriklee451" target="_blank" class="mdi mdi-github fs-4"
                     title="GitHub"></a>
@@ -69,7 +69,7 @@
               src="https://images.unsplash.com/photo-1495216875107-c6c043eb703f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
               alt="Liam Smith" />
             <div class="desc">
-              <div class="desc-title d-flex justify-content-center">
+              <div class="desc-title d-flex justify-content-md-center justify-content-between px-3 px-md-0">
                 <h3>Liam Smith</h3>
                 <div class="icons d-flex gap-2 ps-3">
                   <a href="https://github.com/liamSmith1992" target="_blank" class="mdi mdi-github fs-4"
@@ -92,7 +92,7 @@
               src="https://images.unsplash.com/photo-1495216875107-c6c043eb703f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
               alt="Devin Withoft" />
             <div class="desc">
-              <div class="desc-title d-flex justify-content-center">
+              <div class="desc-title d-flex justify-content-md-center justify-content-between px-3 px-md-0">
                 <h3>Devin Withoft</h3>
                 <div class="icons d-flex gap-2 ps-3">
                   <a href="https://github.com/devinwithoft" target="_blank" class="mdi mdi-github fs-4"
@@ -127,6 +127,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+a {
+  color: whitesmoke;
+}
+
 .main-section {
   height: 90vh;
 }
@@ -172,7 +176,7 @@ input[type="radio"] {
   transition: transform 0.75s ease;
   cursor: pointer;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #258ea6;
 }
 
 img {
@@ -190,7 +194,7 @@ img {
 
 .desc-title {
   position: relative;
-  border-bottom: 2px solid rgba(95, 19, 95, 0.68);
+  border-bottom: 2px solid #62bcd1;
 }
 
 .desc-body {
