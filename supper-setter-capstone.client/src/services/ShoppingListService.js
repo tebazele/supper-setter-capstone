@@ -9,12 +9,18 @@ class ShoppingListService {
   async getShoppingListByDayId(dayId) {
 
     const ingredients = []
+
     logger.log(dayId, 'this is id')
     const day = await plannedMealsService.getPlannedMealsByDayId(dayId)
     logger.log(day.data.plannedMeals, 'this is day meals')
     for (let i = 0; i < day.data.plannedMeals.length; i++) {
       const elm = day.data.plannedMeals[i];
-      ingredients.push(...elm.recipe.ingredients)
+      for (let j = 0; j < elm.recipe.ingredients.length; j++) {
+        let ingredient = elm.recipe.ingredients[j]
+        ingredient.recipeId = elm.recipe.id
+        ingredients.push(ingredient)
+      }
+      logger.log(ingredients)
     }
     const sorted = ingredients.sort(function (a, b) {
       return a.food.localeCompare(b.food);
