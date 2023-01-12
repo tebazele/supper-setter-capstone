@@ -24,6 +24,7 @@ import { computed, reactive, onMounted } from 'vue';
 import { useRoute, useRouter } from "vue-router";
 import { logger } from "../utils/Logger";
 import { shoppingListService } from "../services/ShoppingListService.js";
+import Pop from "../utils/Pop.js";
 export default {
   setup() {
     const route = useRoute();
@@ -37,6 +38,10 @@ export default {
       }
       if (route.query.mealplan) {
         await shoppingListService.getShoppingListByMealPlanId(route.query.mealplan)
+      }
+      else {
+        Pop.error('Please go back to your collection page to generate a shopping list')
+        //TODO rework handling make this draw on page itself not pop//
       }
     }
 
