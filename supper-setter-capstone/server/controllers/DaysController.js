@@ -13,6 +13,7 @@ export class DaysController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createDay)
       .delete('/:dayId', this.removeDay)
+      .get('/:dayId', this.getDayInfoByDayId)
 
   }
 
@@ -36,6 +37,15 @@ export class DaysController extends BaseController {
     try {
       const remainingDays = await daysService.removeDay(req.params.dayId, req.userInfo.id)
       return res.send(remainingDays)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getDayInfoByDayId(req, res, next) {
+    try {
+      const dayInfo = await daysService.getDayInfoByDayId(req.params.dayId)
+      return res.send(dayInfo)
     } catch (error) {
       next(error)
     }

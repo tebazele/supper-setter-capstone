@@ -20,6 +20,8 @@ export const AppState = reactive({
 
   activeDays: [],
 
+  activeDay: null,
+
   plannedMeals: [],
 
   activePlannedMealRequestBody: null,
