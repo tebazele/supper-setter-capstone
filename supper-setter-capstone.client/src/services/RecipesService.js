@@ -75,10 +75,7 @@ class RecipesService {
     const res = await api.put('api/recipes/' + foundRecipe.id, foundRecipe)
     logger.log(res.data)
     AppState.myRecipes.splice(index, 1, res.data)
-
-
   }
-
 
 
 }
