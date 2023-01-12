@@ -2,9 +2,11 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div>
-        <h1 class="raleway">
+        <img alt="logo" src="../assets/img/logo.png" height="125" />
+        <!-- <h1 class="raleway">
+
           Supper Setter <i class="mdi mdi-food"></i>
-        </h1>
+        </h1> -->
       </div>
     </router-link>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
