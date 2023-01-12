@@ -1,11 +1,11 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-0 ">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div>
-        <img alt="logo" src="../assets/img/logo.png" height="100" />
-        <!-- <h1 class="raleway">
+        <img alt="logo" src="../assets/img/logo.png" height="75">
+        <!-- <h1 class=" raleway">
 
-          Supper Setter <i class="mdi mdi-food"></i>
+        Supper Setter <i class="mdi mdi-food"></i>
         </h1> -->
       </div>
     </router-link>
