@@ -30,6 +30,11 @@ class DaysService {
     AppState.activeDays = res.data
   }
 
+  async getDayInfoByDayId(dayId) {
+    const res = await api.get(`api/days/${dayId}`)
+
+  }
+
 }
 
 export const daysService = new DaysService()
