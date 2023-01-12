@@ -1,6 +1,7 @@
 <template>
   <div>
-    <h1>hello hello</h1>
+    <h1>Shopping list for <span v-if="route.query.day"></span></h1>
+
     <div v-for="i in ingredients" class="d-flex ">
 
       <div class="form-check ms-2">
@@ -43,6 +44,7 @@ export default {
     async function loadShoppingList() {
       if (route.query.day) {
         await shoppingListService.getShoppingListByDayId(route.query.day)
+        await 
       }
       if (route.query.mealplan) {
         await shoppingListService.getShoppingListByMealPlanId(route.query.mealplan)
