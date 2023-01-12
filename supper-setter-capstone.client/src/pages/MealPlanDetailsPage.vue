@@ -1,11 +1,11 @@
 <template>
   <div class="container-fluid serif-pro">
 
-    <div v-if="mealPlan">
-      <h2 class="mt-1 raleway">
+    <div class="d-flex my-2 justify-content-between">
+      <h2 v-if="mealPlan" class="mt-1 raleway">
         {{ mealPlan.name }}
-
       </h2>
+      <img :src="mealPlan.creator.picture" class="img-fluid tiny-img rounded-circle border border-dark border-1" />
     </div>
     <section class="row">
       <!-- <p>{{ plannedMealsByDay }}</p> -->
@@ -242,5 +242,10 @@ export default {
   object-fit: cover;
   vertical-align: bottom;
   transform: translateY(10px);
+}
+
+.tiny-img {
+  width: 40px;
+  height: 40px;
 }
 </style>

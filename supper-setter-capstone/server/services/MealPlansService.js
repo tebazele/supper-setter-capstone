@@ -16,7 +16,7 @@ class MealPlansService {
   }
 
   async getOneMealPlan(id) {
-    const mealPlan = await dbContext.MealPlan.findById(id)
+    const mealPlan = await dbContext.MealPlan.findById(id).populate('creator')
     if (!mealPlan) {
       throw new BadRequest(`no mealPlan at ${id}`)
     }
