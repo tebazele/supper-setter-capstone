@@ -1,8 +1,8 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark p-2">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div>
-        <img alt="logo" src="../assets/img/logo.png" height="125" width="175" />
+        <img alt="logo" src="../assets/img/logo.png" height="100" />
         <!-- <h1 class="raleway">
 
           Supper Setter <i class="mdi mdi-food"></i>
