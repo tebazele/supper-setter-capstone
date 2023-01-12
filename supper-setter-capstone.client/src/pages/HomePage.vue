@@ -1,19 +1,18 @@
 <template>
   <!-- NOTE Here is some welcome stuff....  -->
-  <section class="row justify-content-center container-fluid">
+  <section class="row justify-content-center container-fluid pe-0 me-0">
     <div class="col-12 my-2 text-end">
       <SearchBar />
     </div>
-    <div class="col-11">
+    <div class="col-12">
       <h1 class="text-center fw-bold raleway">
         Welcome! To Supper Setter
       </h1>
-      <p class="roboto-slab fs-5 mt-4">Cut your time spent planning your meals and shopping list's. You can manage
-        your
-        recipes,
-        ingredients, meal types & grocery items with this clean, uncluttered interface Our Meals combines recipe
-        management, meal
-        planning & grocery shopping</p>
+      <p class="roboto-slab mt-4 ms-3 text-justify">Reduce stress, save time, and eat healthier when you plan your
+        meals with
+        Supper
+        Setter. Browse our recipes, create an
+        account, and get set for a healthier you!</p>
     </div>
 
   </section>
@@ -22,7 +21,7 @@
     <div v-for="r in recipes" :key="r.url">
       <RecipeCard :recipe="r" />
     </div>
-    <div class="text-center">
+    <div class="text-center pb-3">
       <button @click="loadMoreRecipes" class="btn btn-dark">Load More</button>
     </div>
   </section>
@@ -40,7 +39,8 @@ import SearchBar from "../components/SearchBar.vue"
 export default {
   setup() {
     async function getFeaturedRecipes() {
-      let query = "vegan";
+      let num = Math.floor(Math.random() * AppState.queryOptions.length)
+      let query = AppState.queryOptions[num];
       try {
         await recipesService.getRecipes(query);
       }

@@ -7,59 +7,63 @@
             <div class="d-flex justify-content-between">
 
                 <h3>Breakfast</h3>
-                <!-- NOTE this button toggles modal and sets mealType to breakfast -->
-                <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal" @click="() => {
-                    editable.mealType = 'breakfast';
-                    editable.dayId = dayId;
-                    setEditableInAppState()
-                }">Add
+                <button class="btn bg-secondary border border-dark border-1" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal" @click="() => {
+                        editable.mealType = 'breakfast';
+                        editable.dayId = dayId;
+                        setEditableInAppState()
+                    }">Add
                     recipe</button>
             </div>
             <div v-for="b in breakfastMeals" :key="b.id" class="text-center mt-2">
                 <img :src="b.recipe.image" class="thumbnail rounded" />
-                <p v-if="b.recipe" class="my-1 fw-bold roboto-slab p-2"> {{
+                <h5 v-if="b.recipe" class="my-1 fw-bold roboto-slab p-2"> {{
                     b.recipe.label
                 }} <i @click="deletePlannedMeal(b.id)" class="mdi mdi-delete text-danger" title="Delete recipe"></i>
-                </p>
+                </h5>
 
 
             </div>
             <hr>
             <div class="d-flex justify-content-between">
-                <h6>Lunch</h6>
+                <h3>Lunch</h3>
                 <button @click="() => {
                     editable.mealType = 'lunch';
                     editable.dayId = dayId;
                     setEditableInAppState()
-                }" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Add
+                }" class="btn bg-secondary border border-dark border-1" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Add
                     recipe</button>
 
             </div>
-            <ul v-for="l in lunchMeals" :key="l.id">
-                <li v-if="l.recipe" class="my-1"><img :src="l.recipe.image" class="thumbnail" /> {{
+            <div v-for="l in lunchMeals" :key="l.id" class="text-center mt-2">
+                <img :src="l.recipe.image" class="thumbnail rounded" />
+                <h5 v-if="l.recipe" class="my-1 fw-bold roboto-slab p-2"> {{
                     l.recipe.label
                 }} <i @click="deletePlannedMeal(l.id)" class="mdi mdi-delete text-danger" title="Delete recipe"></i>
-                </li>
+                </h5>
 
-            </ul>
+            </div>
             <hr>
             <div class="d-flex justify-content-between">
 
-                <h6>Dinner</h6>
+                <h3>Dinner</h3>
                 <button @click="() => {
                     editable.mealType = 'dinner';
                     editable.dayId = dayId
                     setEditableInAppState()
-                }" class="btn btn-success mb-1" data-bs-toggle="modal" data-bs-target="#exampleModal">Add
+                }" class="btn bg-secondary border border-dark border-1 mb-1" data-bs-toggle="modal"
+                    data-bs-target="#exampleModal">Add
                     recipe</button>
             </div>
-            <ul v-for="d in dinnerMeals" :key="d.id">
-                <li v-if="d.recipe.id" class="my-1"><img :src="d.recipe.image" class="thumbnail" /> {{
+            <div class="text-center mt-2" v-for="d in dinnerMeals" :key="d.id">
+                <img :src="d.recipe.image" class="thumbnail rounded" />
+                <h5 v-if="d.recipe.id" class="my-1 fw-bold roboto-slab p-2"> {{
                     d.recipe.label
                 }} <i @click="deletePlannedMeal(d.id)" class="mdi mdi-delete text-danger" title="Delete recipe"></i>
-                </li>
+                </h5>
 
-            </ul>
+            </div>
         </div>
 
     </div>
@@ -119,8 +123,8 @@ export default {
 
 <style lang="scss" scoped>
 .thumbnail {
-    width: 90vw;
-    height: 35vh;
+    width: 78vw;
+    height: 17vh;
     object-position: center;
     object-fit: cover;
     vertical-align: bottom;

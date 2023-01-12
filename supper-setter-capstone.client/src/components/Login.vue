@@ -17,7 +17,7 @@
       <div class="list-group text-end">
         <router-link :to="{ name: 'Account' }">
           <div class=" btn text-success lighten-30 selectable text-uppercase m-0">
-            Your Meal Plans
+            Your Collections
           </div>
         </router-link>
         <div class="lighten-10 text-uppercase text-light selectable p-1 me-1" @click="logout">
