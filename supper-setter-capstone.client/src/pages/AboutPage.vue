@@ -1,63 +1,115 @@
 <template>
-  <div class="container">
-    <input type="radio" name="slider" id="item-1" checked>
-    <input type="radio" name="slider" id="item-2">
-    <input type="radio" name="slider" id="item-3">
-    <div class="cards">
-      <label class="card" for="item-1" id="song-1">
-        <img
-          src="https://images.unsplash.com/photo-1530651788726-1dbf58eeef1f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=882&q=80"
-          alt="song">
-      </label>
-      <label class="card" for="item-2" id="song-2">
-        <img
-          src="https://images.unsplash.com/photo-1559386484-97dfc0e15539?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1234&q=80"
-          alt="song">
-      </label>
-      <label class="card" for="item-3" id="song-3">
-        <img
-          src="https://images.unsplash.com/photo-1533461502717-83546f485d24?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=60"
-          alt="song">
-      </label>
-    </div>
-    <div class="player">
-      <div class="upper-part">
-        <div class="play-icon">
-          <svg width="20" height="20" fill="#2992dc" stroke="#2992dc" stroke-linecap="round" stroke-linejoin="round"
-            stroke-width="2" class="feather feather-play" viewBox="0 0 24 24">
-            <defs />
-            <path d="M5 3l14 9-14 9V3z" />
-          </svg>
-        </div>
-        <div class="info-area" id="test">
-          <label class="song-info" id="song-info-1">
-            <div class="title">Bunker</div>
-            <div class="sub-line">
-              <div class="subtitle">Balthazar</div>
-              <div class="time">4.05</div>
+  <section class="main-section text-visible">
+    <h1 class="text-center mb-5 pt-md-4 pt-2">Our Amazing Team!</h1>
+
+
+
+    <!-- dev team images and desc -->
+    <div class="my-body">
+      <div class="my-container">
+        <input type="radio" name="slider" id="item-1" checked />
+        <input type="radio" name="slider" id="item-2" />
+        <input type="radio" name="slider" id="item-3" />
+        <input type="radio" name="slider" id="item-4" />
+        <input type="radio" name="slider" id="item-5" />
+        <input type="radio" name="slider" id="item-6" />
+
+
+        <div class="cards">
+          <!-- Jeanne Allen -->
+          <label class="card" for="item-1" id="member-1">
+            <img
+              src="https://media.licdn.com/dms/image/C5603AQFt9rf6Z8q2Uw/profile-displayphoto-shrink_800_800/0/1519793362640?e=1678924800&v=beta&t=EasUzPh5Lz90j5SM-1lWg8K-tiD2W5NMGAhHRhqQLfk"
+              alt="Jeanne Allen" />
+            <div class="desc">
+              <div class="desc-title d-flex justify-content-md-center justify-content-between px-3 px-md-0">
+                <h3>Jeanne Allen</h3>
+                <div class="icons d-flex gap-2 ps-3">
+                  <a href="https://github.com/tebazele" target="_blank" class="mdi mdi-github fs-4" title="GitHub"></a>
+                  <a class="mdi mdi-linkedin fs-4" title="LinkedIn" target="_blank"
+                    href="https://www.linkedin.com/in/jeanne-allen-0437078/"></a>
+                </div>
+              </div>
+              <div class="desc-body p-3">
+                <span>This is my bio</span>
+              </div>
             </div>
           </label>
-          <label class="song-info" id="song-info-2">
-            <div class="title">Words Remain</div>
-            <div class="sub-line">
-              <div class="subtitle">Moderator</div>
-              <div class="time">4.05</div>
+
+
+
+          <!-- Derik Banning -->
+          <label class="card" for="item-2" id="member-2">
+            <img
+              src="https://media.licdn.com/dms/image/D5603AQHH3QQktPzkyA/profile-displayphoto-shrink_400_400/0/1673548298160?e=1678924800&v=beta&t=OXCOKSrouahlZezAg8m4r3JNd9cGDHhYnFlbpKQOfT0"
+              alt="Derik Banning" />
+            <div class="desc">
+              <div class="desc-title d-flex justify-content-center">
+                <h3>Derik Banning</h3>
+                <div class="icons d-flex gap-2 ps-3">
+                  <a href="https://github.com/deriklee451" target="_blank" class="mdi mdi-github fs-4"
+                    title="GitHub"></a>
+                  <a class="mdi mdi-linkedin fs-4" title="LinkedIn" target="_blank"
+                    href="https://www.linkedin.com/in/derikbanning"></a>
+                </div>
+              </div>
+              <div class="desc-body p-3">
+                <span>Cool bio</span>
+                <hr />
+                <span>More cool bio</span>
+              </div>
             </div>
           </label>
-          <label class="song-info" id="song-info-3">
-            <div class="title">Falling Out</div>
-            <div class="sub-line">
-              <div class="subtitle">Otzeki</div>
-              <div class="time">4.05</div>
+
+
+
+          <!-- Liam Smith -->
+          <label class="card" for="item-3" id="member-3">
+            <img
+              src="https://images.unsplash.com/photo-1495216875107-c6c043eb703f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+              alt="Liam Smith" />
+            <div class="desc">
+              <div class="desc-title d-flex justify-content-center">
+                <h3>Liam Smith</h3>
+                <div class="icons d-flex gap-2 ps-3">
+                  <a href="https://github.com/liamSmith1992" target="_blank" class="mdi mdi-github fs-4"
+                    title="GitHub"></a>
+                  <a class="mdi mdi-linkedin fs-4" title="LinkedIn" target="_blank"
+                    href="https://www.linkedin.com/in/liam-smith123/"></a>
+                </div>
+              </div>
+              <div class="desc-body p-3">
+                <span>Cool bio</span>
+              </div>
+            </div>
+          </label>
+
+
+
+          <!-- Devin Withoft-->
+          <label class="card" for="item-4" id="member-4">
+            <img
+              src="https://images.unsplash.com/photo-1495216875107-c6c043eb703f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
+              alt="Devin Withoft" />
+            <div class="desc">
+              <div class="desc-title d-flex justify-content-center">
+                <h3>Devin Withoft</h3>
+                <div class="icons d-flex gap-2 ps-3">
+                  <a href="https://github.com/devinwithoft" target="_blank" class="mdi mdi-github fs-4"
+                    title="GitHub"></a>
+                  <a class="mdi mdi-linkedin fs-4" title="LinkedIn" target="_blank" href=""></a>
+                </div>
+              </div>
+              <div class="desc-body p-3">
+                <span>Cool bio
+                </span>
+              </div>
             </div>
           </label>
         </div>
       </div>
-      <div class="progress-bar">
-        <span class="progress"></span>
-      </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <script>
@@ -75,50 +127,23 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url("https://fonts.googleapis.com/css?family=DM+Sans:400,500,700&display=swap");
-
-* {
-  box-sizing: border-box;
+.main-section {
+  height: 90vh;
 }
 
-html,
-body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-}
-
-body {
+.my-body {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 30px 10px;
-  font-family: 'DM Sans', sans-serif;
-  transition: background .4s ease-in;
-  background-color: #c394f8;
-
-  &.blue {
-    background-color: #428aa6;
-  }
+  font-family: "DM Sans", sans-serif;
+  transition: background 0.4s ease-in;
 }
 
-input[type=radio] {
+input[type="radio"] {
   display: none;
 }
 
-.card {
-  position: absolute;
-  width: 60%;
-  height: 100%;
-  left: 0;
-  right: 0;
-  margin: auto;
-  transition: transform .4s ease;
-  cursor: pointer;
-}
-
-.container {
+.my-container {
   width: 100%;
   max-width: 800px;
   max-height: 600px;
@@ -134,130 +159,159 @@ input[type=radio] {
   position: relative;
   width: 100%;
   height: 100%;
-  margin-bottom: 20px;
+  margin-top: 3rem;
+}
+
+.card {
+  position: absolute;
+  width: 60%;
+  height: fit-content;
+  left: 0;
+  right: 0;
+  margin: auto;
+  transition: transform 0.75s ease;
+  cursor: pointer;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 img {
   width: 100%;
-  height: 100%;
-  border-radius: 10px;
+  max-height: 55vh;
+  border-radius: 10px 10px 0 0;
   object-fit: cover;
 }
 
-#item-1:checked~.cards #song-3,
-#item-2:checked~.cards #song-1,
-#item-3:checked~.cards #song-2 {
-  transform: translatex(-40%) scale(.8);
-  opacity: .4;
+.desc {
+  display: none;
+  padding: 0.5rem;
+  backdrop-filter: blur(8px);
+}
+
+.desc-title {
+  position: relative;
+  border-bottom: 2px solid rgba(95, 19, 95, 0.68);
+}
+
+.desc-body {
+  max-height: 25vh;
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 80%;
+  }
+
+  .cards {
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 768px) {
+  .icons {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+  }
+}
+
+@media (min-width: 1400px) {
+  img {
+    max-height: 60vh;
+  }
+}
+
+#item-1:checked~.cards #member-3,
+#item-1:checked~.cards #member-4,
+#item-1:checked~.cards #member-5,
+#item-2:checked~.cards #member-4,
+#item-2:checked~.cards #member-5,
+#item-2:checked~.cards #member-6,
+#item-3:checked~.cards #member-1,
+#item-3:checked~.cards #member-5,
+#item-3:checked~.cards #member-6,
+#item-4:checked~.cards #member-1,
+#item-4:checked~.cards #member-2,
+#item-4:checked~.cards #member-6,
+#item-5:checked~.cards #member-1,
+#item-5:checked~.cards #member-2,
+#item-5:checked~.cards #member-3,
+#item-6:checked~.cards #member-2,
+#item-6:checked~.cards #member-3,
+#item-6:checked~.cards #member-4 {
+  display: none;
+}
+
+// NOTE left this commented out bit in case we want to change the carousel style
+// #item-1:checked~.cards #member-5,
+// #item-2:checked~.cards #member-6,
+// #item-3:checked~.cards #member-1,
+// #item-4:checked~.cards #member-2,
+// #item-5:checked~.cards #member-3,
+// #item-6:checked~.cards #member-4 {
+//   display: block;
+//   transform: translatex(-80%) scale(.5);
+//   opacity: .2;
+//   z-index: 0;
+// }
+// #item-1:checked~.cards #member-3,
+// #item-2:checked~.cards #member-4,
+// #item-3:checked~.cards #member-5,
+// #item-4:checked~.cards #member-6,
+// #item-5:checked~.cards #member-1,
+// #item-6:checked~.cards #member-2 {
+//   display: block;
+//   transform: translatex(80%) scale(.5);
+//   opacity: .2;
+//   z-index: 0;
+// }
+#item-1:checked~.cards #member-6,
+#item-2:checked~.cards #member-1,
+#item-3:checked~.cards #member-2,
+#item-4:checked~.cards #member-3,
+#item-5:checked~.cards #member-4,
+#item-6:checked~.cards #member-5 {
+  transform: translatex(-40%) scale(0.8);
+  opacity: 0.4;
   z-index: 0;
 }
 
-#item-1:checked~.cards #song-2,
-#item-2:checked~.cards #song-3,
-#item-3:checked~.cards #song-1 {
-  transform: translatex(40%) scale(.8);
-  opacity: .4;
+#item-1:checked~.cards #member-2,
+#item-2:checked~.cards #member-3,
+#item-3:checked~.cards #member-4,
+#item-4:checked~.cards #member-5,
+#item-5:checked~.cards #member-6,
+#item-6:checked~.cards #member-1 {
+  transform: translatex(40%) scale(0.8);
+  opacity: 0.4;
   z-index: 0;
 }
 
-#item-1:checked~.cards #song-1,
-#item-2:checked~.cards #song-2,
-#item-3:checked~.cards #song-3 {
+#item-1:checked~.cards #member-1,
+#item-2:checked~.cards #member-2,
+#item-3:checked~.cards #member-3,
+#item-4:checked~.cards #member-4,
+#item-5:checked~.cards #member-5,
+#item-6:checked~.cards #member-6 {
   transform: translatex(0) scale(1);
+  width: 80%;
   opacity: 1;
   z-index: 1;
+  cursor: default;
 
   img {
     box-shadow: 0px 0px 5px 0px rgba(81, 81, 81, 0.47);
   }
 }
 
-.player {
-  background-color: #fff;
-  border-radius: 8px;
-  min-width: 320px;
-  padding: 16px 10px;
-}
-
-.upper-part {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-bottom: 12px;
-  height: 36px;
-  overflow: hidden;
-}
-
-.play-icon {
-  margin-right: 10px;
-}
-
-.song-info {
-  width: calc(100% - 32px);
+#item-1:checked~.cards #member-1>.desc,
+#item-2:checked~.cards #member-2>.desc,
+#item-3:checked~.cards #member-3>.desc,
+#item-4:checked~.cards #member-4>.desc,
+#item-5:checked~.cards #member-5>.desc,
+#item-6:checked~.cards #member-6>.desc {
   display: block;
-}
-
-.song-info .title {
-  color: #403d40;
-  font-size: 14px;
-  line-height: 24px;
-}
-
-.sub-line {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-}
-
-.subtitle,
-.time {
-  font-size: 12px;
-  line-height: 16px;
-  color: #c6c5c6;
-}
-
-.time {
-  font-size: 12px;
-  line-height: 16px;
-  color: #a5a5a5;
-  font-weight: 500;
-  margin-left: auto;
-}
-
-.progress-bar {
-  height: 3px;
-  width: 100%;
-  background-color: #e9efff;
-  border-radius: 2px;
-  overflow: hidden;
-}
-
-.progress {
-  display: block;
-  position: relative;
-  width: 60%;
-  height: 100%;
-  background-color: #2992dc;
-  border-radius: 6px;
-}
-
-.info-area {
-  width: 100%;
-  position: absolute;
-  top: 0;
-  left: 30px;
-  transition: transform .4s ease-in;
-}
-
-#item-2:checked~.player #test {
-  transform: translateY(0);
-}
-
-#item-2:checked~.player #test {
-  transform: translateY(-40px);
-}
-
-#item-3:checked~.player #test {
-  transform: translateY(-80px);
 }
 </style>
