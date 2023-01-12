@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>hello hello</h1>
+
     <div v-for="i in ingredients" class="d-flex">
 
       <p>{{ i.food }}
@@ -48,6 +48,7 @@ export default {
     return {
       days: computed(() => AppState.activeDays),
       ingredients: computed(() => AppState.shoppingList),
+      route
     }
   }
 };
