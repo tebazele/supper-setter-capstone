@@ -5,7 +5,8 @@
       <h2 v-if="mealPlan" class="mt-1 raleway">
         {{ mealPlan.name }}
       </h2>
-      <img :src="mealPlan.creator.picture" class="img-fluid tiny-img rounded-circle border border-dark border-1" />
+      <!-- <img v-if="mealPlan.creator" :src="mealPlan.creator.picture"
+        class="img-fluid tiny-img rounded-circle border border-dark border-1" /> -->
     </div>
     <section class="row">
       <!-- <p>{{ plannedMealsByDay }}</p> -->
