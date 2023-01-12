@@ -1,12 +1,12 @@
 <template>
   <div class="container serif-pro">
     <section class="row justify-content-between">
-      <div class="col-8">
-        <h2 class="mt-3 raleway">My Meal Plans</h2>
+      <div class="col-6">
+        <h4 class="mt-3 raleway">My Meal Plans</h4>
       </div>
-      <div class="col-4 text-end">
+      <div class="col-6 text-end">
         <router-link :to="{ name: 'MealPlans' }">
-          <button class="btn btn-success my-3">Add MP</button>
+          <button class="btn btn-success my-3">Add MealPlan</button>
 
           <!-- @click="clearPlannedMeals()" -->
 
@@ -29,15 +29,14 @@
     <hr>
     <section class="row">
       <div class="col-12">
-        <h2 class="my-3">My Recipes</h2>
+        <h4 class="my-1 raleway">My Recipes</h4>
       </div>
       <div v-for="r in nonArchivedRecipes" :key="r.edamamId" class="col-12">
         <router-link :to="{ name: 'RecipeDetails', params: { edamamId: r.edamamId } }">
-          <div class="card px-3 py-1">
-            <p class="text-center">{{ r.label }}</p>
-            <!-- FIXME maybe make images background images for the div with text over -->
+          <div class="pb-1 text-center bg-white my-2">
 
             <img :src="r.image" class="recipe-img" alt="">
+            <h6 class="roboto-slab pt-2">{{ r.label }}</h6>
 
           </div>
         </router-link>
@@ -107,17 +106,18 @@ export default {
 </script>
 
 <style scoped>
-img {
+/* img {
   max-width: 100px;
-}
+} */
 
 .same-width {
   width: 300px;
 }
 
 .recipe-img {
-  width: 300px;
-  /* object-fit: cover;
-  object-position: center; */
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  object-position: center;
 }
 </style>

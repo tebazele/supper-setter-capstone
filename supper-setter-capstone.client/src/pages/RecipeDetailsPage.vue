@@ -97,7 +97,10 @@ export default {
 
       async archiveRecipe() {
         try {
-          await recipesService.archiveRecipe(route.params.edamamId)
+          if (await Pop.confirm('Are you sure you want to remove this recipe from your recipe collection?', '')) {
+            await recipesService.archiveRecipe(route.params.edamamId)
+
+          }
         } catch (error) {
           logger.log(error.message)
           Pop.error(error)

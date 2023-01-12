@@ -8,7 +8,7 @@
       <img :src="recipe.image" alt="meal" class="img-fluid cardImg my-2" :title="recipe.label">
 
       <div class="d-flex justify-content-between">
-        <span v-if="recipe.cookTime" class="mdi mdi-clock">{{ recipe.cookTime }}</span>
+        <span v-if="recipe.cookTime" class="mdi mdi-clock">{{ recipe.cookTime }} mins</span>
         <p>{{ Math.round(recipe.calories) }} Calories</p>
         <div class="div d-flex justify-content-end">
           <p> {{ recipe.yield }} Servings</p>
@@ -63,7 +63,7 @@ export default {
 <style lang="scss" scoped>
 .cardImg {
   object-fit: cover;
-  height: 17vh;
-  width: 60vh
+  height: 30vh;
+  width: 70vh
 }
 </style>

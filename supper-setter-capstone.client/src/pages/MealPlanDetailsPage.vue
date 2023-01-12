@@ -13,7 +13,8 @@
         <div class="d-flex justify-content-between">
 
           <h5 class="raleway">Day {{ index + 1 }} <span @click="deleteDay(ps.dayId)" class="mdi mdi-delete"></span></h5>
-          <button @click="createDayShoppingList(ps.dayId)" class="btn btn-info">Shopping List</button>
+          <button @click="createDayShoppingList(ps.dayId)" class="btn btn-info border border-dark border-1">Shopping
+            List</button>
         </div>
         <!-- <h5>Day {{ index + 1 }}</h5> -->
         <MealPlan :plannedMealsArray="ps.plannedMeals" :dayId="ps.dayId" />
@@ -44,15 +45,18 @@
     </div> -->
     <div class="text-end">
       <div class="text-end d-flex justify-content-between">
-        <button @click="deleteMealPlan()" class="btn btn-danger mb-2"><i class="mdi mdi-delete"></i>Delete Plan</button>
-        <button class="btn btn-success me-2 mb-2" @click="createDay">Create Day</button>
+        <button @click="deleteMealPlan()" class="btn border border-dark bg-danger text-white selectable mb-2"><i
+            class="mdi mdi-delete"></i>Delete
+          Plan</button>
+        <button class="btn bg-secondary border border-dark me-2 mb-2" @click="createDay">Add Day</button>
 
       </div>
 
     </div>
   </div>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade serif-pro" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -60,14 +64,29 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <form @submit.prevent="searchMyRecipes()" class="my-2 text-end">
+            <input class="rounded-start" type="text" v-model="search.query" placeholder="Search Your Recipes">
+
+            <button class=" rounded-end bg-primary btn-info mdi mdi-magnify"></button>
+
+          </form>
+          <h4 class="raleway">Sort Your Recipes</h4>
+          <div class="d-flex">
+            <button class="btn btn-outline-dark me-1">Breakfast</button>
+            <button class="btn btn-outline-dark me-1">Lunch</button>
+            <button class="btn btn-outline-dark">Dinner</button>
+
+          </div>
 
 
-          <section class="row" v-for="m in myRecipes" :key="m.edamamId">
+          <section class="row" v-for="m in nonArchivedMyRecipes" :key="m.edamamId">
 
-            <div class="col-12 d-flex justify-content-between m-1">
-              <p>{{ m.label }}</p>
+            <div @click="createPlannedMeal(m.id)"
+              class="ms-3 mt-2 col-11 d-flex justify-content-between align-items-baseline m-1 bg-grey">
 
-              <img :src="m.image" alt="food" class="img-fluid thumbnail selectable" @click="createPlannedMeal(m.id)" />
+              <p class="roboto-slab">{{ m.label }}</p>
+
+              <img :src="m.image" alt="food" class="thumbnail selectable" />
             </div>
 
           </section>
@@ -75,7 +94,6 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>
@@ -99,6 +117,9 @@ import { Modal } from 'bootstrap';
 
 export default {
   setup() {
+    const search = reactive({
+      query: ''
+    })
     const router = useRouter()
     watchEffect(() => {
       if (AppState.activeDays) {
@@ -142,10 +163,12 @@ export default {
       }
     }
     return {
+      search,
       mealPlan: computed(() => AppState.activeMealPlan),
       days: computed(() => AppState.activeDays),
       plannedMealsByDay: computed(() => AppState.plannedMeals),
       myRecipes: computed(() => AppState.myRecipes),
+      nonArchivedMyRecipes: computed(() => AppState.myRecipes.filter(r => r.archived == false)),
 
 
       async createDay() {
@@ -213,7 +236,8 @@ export default {
 <style lang="scss" scoped>
 // FIXME style this
 .thumbnail {
-  width: 400px;
+  width: 80px;
+  height: 60px;
   object-position: center;
   object-fit: cover;
   vertical-align: bottom;
