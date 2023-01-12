@@ -1,7 +1,14 @@
 <template>
   <div>
+    <h1>hello hello</h1>
+    <div v-for="i in ingredients" class="d-flex ">
 
-    <div v-for="i in ingredients" class="d-flex">
+      <div class="form-check ms-2">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <label class="form-check-label" for="flexCheckDefault">
+
+        </label>
+      </div>
 
       <p>{{ i.food }}
         <span v-if="i.quantity != 0">
@@ -12,6 +19,7 @@
           {{ i.measure }}
         </span>
       </p>
+
 
     </div>
   </div>
@@ -38,10 +46,7 @@ export default {
       }
       if (route.query.mealplan) {
         await shoppingListService.getShoppingListByMealPlanId(route.query.mealplan)
-      }
-      else {
-        Pop.error('Please go back to your collection page to generate a shopping list')
-        //TODO rework handling make this draw on page itself not pop//
+
       }
     }
 
