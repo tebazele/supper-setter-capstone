@@ -57,6 +57,11 @@ export default {
       }
     }
 
+    async function checkIngredient() {
+
+    }
+
+
     return {
       days: computed(() => AppState.activeDays),
       ingredients: computed(() => AppState.shoppingList),

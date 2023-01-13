@@ -9,11 +9,9 @@ class ShoppingListService {
 
   async getShoppingListByDayId(dayId) {
 
-    const ingredients = []
 
-    logger.log(dayId, 'this is id')
+    const ingredients = []
     const day = await plannedMealsService.getPlannedMealsByDayId(dayId)
-    logger.log(day.data.plannedMeals, 'this is day meals')
     for (let i = 0; i < day.data.plannedMeals.length; i++) {
       const elm = day.data.plannedMeals[i];
       for (let j = 0; j < elm.recipe.ingredients.length; j++) {
@@ -22,21 +20,18 @@ class ShoppingListService {
         ingredient.id = generateId()
         ingredients.push(ingredient)
       }
-      logger.log(ingredients)
     }
     const sorted = ingredients.sort(function (a, b) {
       return a.food.localeCompare(b.food);
     })
     const save = await this.saveShoppingList(dayId, ingredients)
     AppState.shoppingList = ingredients
-    logger.log('app state shopping list', AppState.shoppingList)
   }
 
   async getShoppingListByMealPlanId(mealPlanId) {
     const plannedMealsArray = []
     const ingredients = []
     await daysService.getDays(mealPlanId)
-    logger.log(AppState.activeDays, "Got days by Meal Plan ID")
     let daysArray = AppState.activeDays
     for (let i = 0; i < daysArray.length; i++) {
       let meals = await plannedMealsService.getPlannedMealsByDayId(daysArray[i].id)
@@ -51,19 +46,20 @@ class ShoppingListService {
         }
       }
     }
-    logger.log(ingredients)
     const sorted = ingredients.sort(function (a, b) {
       return a.food.localeCompare(b.food);
     })
     AppState.shoppingList = ingredients
-    logger.log('app state shopping list', AppState.shoppingList)
   }
 
 
   async saveShoppingList(dayId, ingredients) {
     const res = await api.post('api/shoppinglist', { dayId, ingredients })
-    logger.log(res.data, 'response from server')
+    logger.log('response from server', res.data)
+    AppState.shoppingList = res.data
   }
+
+
 
 }
 export const shoppingListService = new ShoppingListService()
