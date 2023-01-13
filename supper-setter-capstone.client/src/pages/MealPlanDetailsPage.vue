@@ -52,9 +52,12 @@
           <h4 class="raleway">Sort Your Recipes</h4>
           <!-- STUB filter my Recipes buttons -->
           <div class="d-flex">
-            <button class="btn btn-outline-dark me-1">Breakfast/Brunch</button>
-            <button class="btn btn-outline-dark me-1">Lunch/Dinner</button>
-            <button class="btn btn-outline-dark">Snack</button>
+            <button @click="
+            filterBy = 'breakfast'" class="same-width btn btn-outline-dark me-1">Breakfast</button>
+            <button @click="filterBy = 'lunch/dinner'" class="same-width btn btn-outline-dark me-1">Lunch/
+              Dinner</button>
+            <button @click="filterBy = ''" class="same-width btn btn-outline-dark">All</button>
+
           </div>
           <section class="row" v-for="m in nonArchivedMyRecipes" :key="m.edamamId">
             <div @click="createPlannedMeal(m.id)"
@@ -77,13 +80,14 @@ import { daysService } from '../services/DaysService.js';
 import Pop from '../utils/Pop.js';
 import { useRoute, useRouter } from 'vue-router';
 import { AppState } from '../AppState';
-import { computed, reactive, onMounted, watchEffect } from 'vue';
+import { computed, reactive, onMounted, watchEffect, ref } from 'vue';
 import { mealPlansService } from '../services/MealPlansService.js';
 import { plannedMealsService } from '../services/PlannedMealsService.js';
 import MealPlan from '../components/MealPlan.vue';
 import { Modal } from 'bootstrap';
 export default {
   setup() {
+    const filterBy = ref('')
     const search = reactive({
       query: ''
     })
@@ -127,13 +131,23 @@ export default {
       }
     }
     return {
+      filterBy,
       search,
       mealPlan: computed(() => AppState.activeMealPlan),
       // creator: computed(() => AppState.activeMealPlan.creator),
       days: computed(() => AppState.activeDays),
       plannedMealsByDay: computed(() => AppState.plannedMeals),
       myRecipes: computed(() => AppState.myRecipes),
-      nonArchivedMyRecipes: computed(() => AppState.myRecipes.filter(r => r.archived == false)),
+      nonArchivedMyRecipes: computed(() => {
+        let filteredRecipes = AppState.myRecipes.filter(r => r.archived == false);
+        if (filterBy.value == "") {
+          return filteredRecipes;
+        } else {
+          logger.log(filterBy.value)
+          return filteredRecipes.filter(r => r.mealType[0] == filterBy.value)
+        }
+
+      }),
       async createDay() {
         try {
           await daysService.createDay(route.params.mealPlanId);
@@ -201,5 +215,9 @@ export default {
 .tiny-img {
   width: 40px;
   height: 40px;
+}
+
+.same-width {
+  width: 32vw;
 }
 </style>
