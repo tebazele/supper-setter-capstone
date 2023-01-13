@@ -63,15 +63,8 @@ class RecipesService {
 
 
   async checkIngredient(recipeId, ingredientId) {
-    const recipe = await dbContext.Recipe.findById(recipeId)
-    if (!recipe) {
-      throw new BadRequest('no recipe found ')
-    }
-    logger.log(recipe, 'this is recipe')
-    // const ingredient = recipe.ingredients.find(recipe.ingredients.id == ingredientId)
-    // ingredient.checked = !ingredient.checked
-
-    return recipe
+    const recipe = await this.getOneRecipe(recipeId)
+    return recipe.ingredients
   }
 
 }
