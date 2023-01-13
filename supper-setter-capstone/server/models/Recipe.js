@@ -17,7 +17,8 @@ export const RecipeSchema = new Schema({
   uniqueUrl: { type: String, required: true },
   edamamId: { type: String, required: true },
   archived: { type: Boolean, required: true, default: false },
-  ingredients: { type: [IngredientSchema], required: true }
+  ingredients: { type: [IngredientSchema], required: true },
+  mealType: { type: String }
   // TODO look at default 
 }, { timestamps: true, toJSON: { virtuals: true } })
 
