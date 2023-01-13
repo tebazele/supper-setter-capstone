@@ -1,6 +1,6 @@
 <template>
   <section class="main-section text-visible raleway">
-    <h1 class="text-center mb-5 pt-md-4 pt-2">Our Amazing Team!</h1>
+    <h1 class="text-center mb-3 pt-md-4 pt-2">Supper Setter Creators</h1>
 
 
 
@@ -11,16 +11,12 @@
         <input type="radio" name="slider" id="item-2" />
         <input type="radio" name="slider" id="item-3" />
         <input type="radio" name="slider" id="item-4" />
-        <input type="radio" name="slider" id="item-5" />
-        <input type="radio" name="slider" id="item-6" />
 
 
         <div class="raleway text-light cards">
           <!-- Jeanne Allen -->
           <label class="card" for="item-1" id="member-1">
-            <img
-              src="https://media.licdn.com/dms/image/C5603AQFt9rf6Z8q2Uw/profile-displayphoto-shrink_800_800/0/1519793362640?e=1678924800&v=beta&t=EasUzPh5Lz90j5SM-1lWg8K-tiD2W5NMGAhHRhqQLfk"
-              alt="Jeanne Allen" />
+            <img src="../assets/img/Jeanne head shot 1.png" alt="Jeanne Allen" />
             <div class="desc">
               <div class="desc-title d-flex justify-content-md-center justify-content-between px-3 px-md-0">
                 <h3 class="fw-bold">Jeanne Allen</h3>
@@ -31,7 +27,12 @@
                 </div>
               </div>
               <div class="desc-body p-3 serif-pro">
-                <span>This is my bio</span>
+                <span><i>"If I'm shinin', everybody gonna shine. I was born like this, don't even gotta
+                    try."</i></span><br>
+                <div class="text-end">
+                  <p class="mb-0">~Lizzo</p>
+
+                </div>
               </div>
             </div>
           </label>
