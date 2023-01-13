@@ -45,7 +45,7 @@ export class AccountController extends BaseController {
 
   async getAccountRecipes(req, res, next) {
     try {
-      const recipes = await recipesService.getAccountRecipes(req.userInfo.id)
+      const recipes = await recipesService.findRecipes(req.query.search, req.userInfo.id)
       return res.send(recipes)
     } catch (error) {
       next(error)

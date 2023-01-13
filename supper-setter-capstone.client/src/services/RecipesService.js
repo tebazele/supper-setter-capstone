@@ -77,6 +77,14 @@ class RecipesService {
     AppState.myRecipes.splice(index, 1, res.data)
   }
 
+  async searchMyRecipes(searchTerm) {
+    const res = await api.get('account/recipes', {
+      params: { search: searchTerm }
+    })
+    logger.log(res.data)
+    AppState.myRecipes = res.data
+  }
+
 
 }
 

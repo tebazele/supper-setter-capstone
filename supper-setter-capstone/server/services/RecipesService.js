@@ -68,6 +68,15 @@ class RecipesService {
     return ingredient
   }
 
+  async findRecipes(search = '', accountId) {
+
+    const filter = new RegExp(search, 'ig')
+    const accountRecipesFiltered = await dbContext.Recipe
+      .find({ label: { $regex: filter }, accountId })
+    // .filter(r => r.accountId == accountId)
+    return accountRecipesFiltered
+  }
+
 }
 
 

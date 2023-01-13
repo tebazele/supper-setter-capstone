@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2 light-green">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark  light-green">
     <router-link class="navbar-brand d-flex ms-1" :to="{ name: 'Home' }">
       <div>
         <img id='tour-0-welcome' alt="logo" src="../assets/img/logo-green.png" height="65">
