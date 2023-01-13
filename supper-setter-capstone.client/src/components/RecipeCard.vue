@@ -1,11 +1,12 @@
 <template>
-
   <router-link :to="{ name: 'RecipeDetails', params: { edamamId: recipe.edamamId } }">
-    <div class="component p-3 border border-dark rounded border-1 m-2 bg-white raleway fw-bold">
+    <div class="component p-3 border border-dark rounded border-1 m-2 bg-white raleway fw-bold card-height">
       <h4 class="text-black">{{ recipe.label }}</h4>
 
+      <div class="text-center">
 
-      <img :src="recipe.image" alt="meal" class="img-fluid cardImg my-2" :title="recipe.label">
+        <img :src="recipe.image" alt="meal" class="img-fluid cardImg my-2" :title="recipe.label" />
+      </div>
 
       <div class="d-flex justify-content-between">
         <span v-if="recipe.cookTime" class="mdi mdi-clock">{{ recipe.cookTime }} mins</span>
@@ -32,6 +33,7 @@
 
     </div>
   </router-link>
+
 </template>
 
 
@@ -63,7 +65,11 @@ export default {
 <style lang="scss" scoped>
 .cardImg {
   object-fit: cover;
-  height: 30vh;
+  max-height: 30vh;
   width: 70vh
+}
+
+.card-height {
+  min-height: 445px;
 }
 </style>

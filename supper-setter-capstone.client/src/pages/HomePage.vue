@@ -18,14 +18,17 @@
   </section>
   <!-- NOTE adding recipe cards here...  -->
   <div id="tour-2-browse"></div>
-  <section>
-    <div v-for="r in recipes" :key="r.url">
-      <RecipeCard :recipe="r" />
-    </div>
-    <div class="text-center pb-3">
-      <button @click="loadMoreRecipes" class="btn btn-dark">Load More</button>
-    </div>
-  </section>
+  <div class="container">
+    <section class="row">
+      <div v-for="r in recipes" :key="r.url" class="col-md-4">
+        <RecipeCard :recipe="r" />
+      </div>
+      <div class="text-center pb-3">
+        <button @click="loadMoreRecipes" class="btn btn-dark">Load More</button>
+      </div>
+    </section>
+
+  </div>
   <Tour />
 </template>
 
