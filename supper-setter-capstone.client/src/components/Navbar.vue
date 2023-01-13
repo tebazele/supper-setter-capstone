@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-0 light-green">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-2 light-green">
     <router-link class="navbar-brand d-flex ms-1" :to="{ name: 'Home' }">
       <div>
         <img id='tour-0-welcome' alt="logo" src="../assets/img/logo-green.png" height="65">
@@ -9,7 +9,7 @@
         </h1> -->
       </div>
     </router-link>
-    <button id="tour-1-login" class="navbar-toggler light-green me-1" type="button" data-bs-toggle="collapse"
+    <button id="tour-1-login" class="navbar-toggler light-green me-3" type="button" data-bs-toggle="collapse"
       data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
