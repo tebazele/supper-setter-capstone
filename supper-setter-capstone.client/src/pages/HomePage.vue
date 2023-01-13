@@ -17,15 +17,19 @@
 
   </section>
   <!-- NOTE adding recipe cards here...  -->
-  <section>
-    <div v-for="r in recipes" :key="r.url">
-      <RecipeCard :recipe="r" />
-    </div>
-    <div class="text-center pb-3">
-      <button @click="loadMoreRecipes" class="btn btn-dark">Load More</button>
-    </div>
-  </section>
+  <div id="tour-2-browse"></div>
+  <div class="container">
+    <section class="row">
+      <div v-for="r in recipes" :key="r.url" class="col-md-4">
+        <RecipeCard :recipe="r" />
+      </div>
+      <div class="text-center pb-3">
+        <button @click="loadMoreRecipes" class="btn btn-dark">Load More</button>
+      </div>
+    </section>
 
+  </div>
+  <Tour />
 </template>
 
 <script>
@@ -36,6 +40,7 @@ import { logger } from '../utils/Logger.js'
 import Pop from '../utils/Pop.js'
 import { AppState } from '../AppState.js'
 import SearchBar from "../components/SearchBar.vue"
+import Tour from '../components/Tour.vue'
 export default {
   setup() {
     async function getFeaturedRecipes() {
@@ -66,7 +71,7 @@ export default {
       }
     }
   },
-  components: { RecipeCard, SearchBar }
+  components: { RecipeCard, SearchBar, Tour }
 }
 </script>
 

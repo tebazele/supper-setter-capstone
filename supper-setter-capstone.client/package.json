@@ -16,7 +16,8 @@
     "socket.io-client": "4.5.2",
     "sweetalert2": "^11.4.8",
     "vue": "3.2.39",
-    "vue-router": "4.1.5"
+    "vue-router": "4.1.5",
+    "vue3-tour": "^0.3.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "3.1.0",

@@ -1,22 +1,22 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-0 ">
-    <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-0 light-green">
+    <router-link class="navbar-brand d-flex ms-1" :to="{ name: 'Home' }">
       <div>
-        <img alt="logo" src="../assets/img/logo.png" height="75">
+        <img id='tour-0-welcome' alt="logo" src="../assets/img/logo-green.png" height="65">
         <!-- <h1 class=" raleway">
 
         Supper Setter <i class="mdi mdi-food"></i>
         </h1> -->
       </div>
     </router-link>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <button id="tour-1-login" class="navbar-toggler light-green me-1" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav me-auto">
         <li class="text-end">
-          <router-link :to="{ name: 'About' }" class="btn text-success lighten-30 selectable text-uppercase">
+          <router-link :to="{ name: 'About' }" class="btn light-green selectable text-uppercase">
             About
           </router-link>
         </li>
@@ -54,7 +54,11 @@ a:hover {
 
 @media screen and (min-width: 913px) {
   nav {
-    height: 64px;
+    height: 70px;
   }
+}
+
+.light-green {
+  color: #d7e0c6
 }
 </style>

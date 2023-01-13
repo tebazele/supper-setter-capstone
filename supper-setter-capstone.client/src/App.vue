@@ -5,10 +5,9 @@
   <main>
     <router-view />
   </main>
-  <footer class="bg-dark text-light">
-    Made with 💖 by Us
+  <footer class="bg-dark text-light raleway">
+    <p class="mt-3"><sup>TM</sup> Supper Setter 2023</p>
   </footer>
-
 
 </template>
 
@@ -20,7 +19,9 @@ import Navbar from './components/Navbar.vue'
 export default {
   setup() {
     return {
-      appState: computed(() => AppState)
+      appState: computed(() => AppState),
+
+
     }
   },
   components: { Navbar }
