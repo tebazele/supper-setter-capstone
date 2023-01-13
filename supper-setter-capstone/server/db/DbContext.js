@@ -4,6 +4,7 @@ import { DaySchema } from '../models/Day.js';
 import { MealPlanSchema } from '../models/MealPlan.js';
 import { PlannedMealSchema } from '../models/PlannedMeal.js';
 import { IngredientSchema, RecipeSchema } from '../models/Recipe.js';
+import { ShoppingListSchema } from "../models/ShoppingList.js";
 import { ValueSchema } from '../models/Value'
 
 class DbContext {
@@ -18,7 +19,9 @@ class DbContext {
 
   PlannedMeal = mongoose.model('PlannedMeal', PlannedMealSchema);
 
-  Ingredient = mongoose.model('Ingredient', IngredientSchema)
+  Ingredient = mongoose.model('Ingredient', IngredientSchema);
+
+  ShoppingList = mongoose.model('ShoppingList', ShoppingListSchema)
 
 }
 

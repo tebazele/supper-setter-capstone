@@ -1,6 +1,10 @@
+import { dbContext } from "../db/DbContext.js"
+
 class ShoppingCartService {
-  saveShoppingList(body) {
-    throw new Error("Method not implemented.");
+  async saveShoppingList(body) {
+    const newShoppingList = await dbContext.ShoppingList.create(body)
+    await newShoppingList.populate('day mealplan')
+    return newShoppingList
   }
 
 
