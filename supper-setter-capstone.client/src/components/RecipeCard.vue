@@ -1,7 +1,10 @@
 <template>
   <router-link :to="{ name: 'RecipeDetails', params: { edamamId: recipe.edamamId } }">
     <div class="component p-3 border border-dark rounded border-1 m-2 bg-white raleway fw-bold card-height">
-      <h4 class="text-black">{{ recipe.label }}</h4>
+      <div class="standard-height">
+        <h4 class="text-black">{{ recipe.label }}</h4>
+
+      </div>
 
       <div class="text-center">
 
@@ -71,5 +74,9 @@ export default {
 
 .card-height {
   min-height: 445px;
+}
+
+.standard-height {
+  min-height: 75px;
 }
 </style>

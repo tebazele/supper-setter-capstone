@@ -44,15 +44,17 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
+          <!-- STUB search myRecipes -->
           <form @submit.prevent="searchMyRecipes()" class="my-2 text-end">
             <input class="rounded-start" type="text" v-model="search.query" placeholder="Search Your Recipes">
             <button class=" rounded-end bg-primary btn-info mdi mdi-magnify"></button>
           </form>
           <h4 class="raleway">Sort Your Recipes</h4>
+          <!-- STUB filter my Recipes buttons -->
           <div class="d-flex">
-            <button class="btn btn-outline-dark me-1">Breakfast</button>
-            <button class="btn btn-outline-dark me-1">Lunch</button>
-            <button class="btn btn-outline-dark">Dinner</button>
+            <button class="btn btn-outline-dark me-1">Breakfast/Brunch</button>
+            <button class="btn btn-outline-dark me-1">Lunch/Dinner</button>
+            <button class="btn btn-outline-dark">Snack</button>
           </div>
           <section class="row" v-for="m in nonArchivedMyRecipes" :key="m.edamamId">
             <div @click="createPlannedMeal(m.id)"
