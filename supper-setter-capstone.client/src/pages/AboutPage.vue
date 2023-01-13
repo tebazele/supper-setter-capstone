@@ -55,9 +55,9 @@
                 </div>
               </div>
               <div class="desc-body p-3">
-                <span>Cool bio</span>
-                <hr />
-                <span>More cool bio</span>
+                <span><i>“So you’re telling me there’s a chance… — Lloyd Christmas, Dumb and Dumber”</i></span>
+
+                <span></span>
               </div>
             </div>
           </label>
@@ -66,9 +66,7 @@
 
           <!-- Liam Smith -->
           <label class="card" for="item-3" id="member-3">
-            <img
-              src="https://images.unsplash.com/photo-1495216875107-c6c043eb703f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-              alt="Liam Smith" />
+            <img src="../assets/img/liamHeadshot.jpg" alt="Liam Smith" />
             <div class="desc">
               <div class="desc-title d-flex justify-content-md-center justify-content-between px-3 px-md-0">
                 <h3>Liam Smith</h3>
@@ -89,9 +87,7 @@
 
           <!-- Devin Withoft-->
           <label class="card" for="item-4" id="member-4">
-            <img
-              src="https://images.unsplash.com/photo-1495216875107-c6c043eb703f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-              alt="Devin Withoft" />
+            <img src="../assets/img/devinHeadshot.jpg" alt="Devin Withoft" />
             <div class="desc">
               <div class="desc-title d-flex justify-content-md-center justify-content-between px-3 px-md-0">
                 <h3>Devin Withoft</h3>
