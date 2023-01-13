@@ -3,7 +3,7 @@ import { logger } from "../utils/Logger"
 import { plannedMealsService } from "./PlannedMealsService.js"
 import { daysService } from "./DaysService.js"
 import { generateId } from "../utils/GenerateId.js"
-
+import { api } from "./AxiosService"
 
 class ShoppingListService {
 
@@ -27,6 +27,7 @@ class ShoppingListService {
     const sorted = ingredients.sort(function (a, b) {
       return a.food.localeCompare(b.food);
     })
+    const save = await this.saveShoppingList(dayId, ingredients)
     AppState.shoppingList = ingredients
     logger.log('app state shopping list', AppState.shoppingList)
   }
@@ -56,7 +57,12 @@ class ShoppingListService {
     })
     AppState.shoppingList = ingredients
     logger.log('app state shopping list', AppState.shoppingList)
+  }
 
+
+  async saveShoppingList(dayId, ingredients) {
+    const res = await api.post('api/shoppinglist', { dayId, ingredients })
+    logger.log(res.data, 'response from server')
   }
 
 }
