@@ -2,6 +2,7 @@ import { AppState } from "../AppState"
 import { logger } from "../utils/Logger"
 import { plannedMealsService } from "./PlannedMealsService.js"
 import { daysService } from "./DaysService.js"
+import { generateId } from "../utils/GenerateId.js"
 
 
 class ShoppingListService {
@@ -18,6 +19,7 @@ class ShoppingListService {
       for (let j = 0; j < elm.recipe.ingredients.length; j++) {
         let ingredient = elm.recipe.ingredients[j]
         ingredient.recipeId = elm.recipe.id
+        ingredient.id = generateId()
         ingredients.push(ingredient)
       }
       logger.log(ingredients)
@@ -43,6 +45,7 @@ class ShoppingListService {
         for (let k = 0; k < elm.recipe.ingredients.length; k++) {
           let ingredient = elm.recipe.ingredients[k]
           ingredient.recipeId = elm.recipe.id
+          ingredient.id = generateId()
           ingredients.push(ingredient)
         }
       }
