@@ -17,6 +17,7 @@
 
   </section>
   <!-- NOTE adding recipe cards here...  -->
+  <div id="tour-2-browse"></div>
   <section>
     <div v-for="r in recipes" :key="r.url">
       <RecipeCard :recipe="r" />
@@ -25,7 +26,7 @@
       <button @click="loadMoreRecipes" class="btn btn-dark">Load More</button>
     </div>
   </section>
-
+  <Tour />
 </template>
 
 <script>
@@ -36,6 +37,7 @@ import { logger } from '../utils/Logger.js'
 import Pop from '../utils/Pop.js'
 import { AppState } from '../AppState.js'
 import SearchBar from "../components/SearchBar.vue"
+import Tour from '../components/Tour.vue'
 export default {
   setup() {
     async function getFeaturedRecipes() {
@@ -66,7 +68,7 @@ export default {
       }
     }
   },
-  components: { RecipeCard, SearchBar }
+  components: { RecipeCard, SearchBar, Tour }
 }
 </script>
 

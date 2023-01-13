@@ -9,7 +9,6 @@
     Made with 💖 by Us
   </footer>
 
-
 </template>
 
 <script>
@@ -20,7 +19,9 @@ import Navbar from './components/Navbar.vue'
 export default {
   setup() {
     return {
-      appState: computed(() => AppState)
+      appState: computed(() => AppState),
+
+
     }
   },
   components: { Navbar }

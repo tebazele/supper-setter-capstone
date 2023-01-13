@@ -2,15 +2,15 @@
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark mt-0 ">
     <router-link class="navbar-brand d-flex" :to="{ name: 'Home' }">
       <div>
-        <img alt="logo" src="../assets/img/logo.png" height="75">
+        <img id='tour-0-welcome' alt="logo" src="../assets/img/logo.png" height="75">
         <!-- <h1 class=" raleway">
 
         Supper Setter <i class="mdi mdi-food"></i>
         </h1> -->
       </div>
     </router-link>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText"
-      aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <button id="tour-1-login" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+      data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
