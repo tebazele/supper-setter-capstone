@@ -64,7 +64,8 @@ class RecipesService {
 
   async checkIngredient(recipeId, ingredientId) {
     const recipe = await this.getOneRecipe(recipeId)
-    return recipe.ingredients
+    const ingredient = recipe.ingredients.filter(i => i.foodId == ingredientId)
+    return ingredient
   }
 
 }

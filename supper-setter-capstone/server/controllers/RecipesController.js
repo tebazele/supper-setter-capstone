@@ -18,7 +18,6 @@ export class RecipesController extends BaseController {
   async addToMyRecipes(req, res, next) {
     try {
       req.body.accountId = req.userInfo.id
-      req.body.newId =
       const newRecipe = await recipesService.addToMyRecipes(req.body)
       return res.send(newRecipe)
     } catch (error) {

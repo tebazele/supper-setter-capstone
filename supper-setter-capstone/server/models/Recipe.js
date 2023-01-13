@@ -1,11 +1,10 @@
 import { Schema } from "mongoose";
 
-const IngredientSchema = new Schema({
+export const IngredientSchema = new Schema({
   food: { type: String, required: true },
   measure: { type: String },
   quantity: { type: Number },
   checked: { type: Boolean, default: false },
-  id: {}
 })
 
 const ObjectId = Schema.Types.ObjectId
