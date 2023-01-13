@@ -15,12 +15,19 @@
                     }">Add
                     recipe</button>
             </div>
-            <div v-for="b in breakfastMeals" :key="b.id" class="text-center mt-2">
-                <img :src="b.recipe.image" class="thumbnail rounded" />
-                <h5 v-if="b.recipe" class="my-1 fw-bold roboto-slab p-2"> {{
-                    b.recipe.label
-                }} <i @click="deletePlannedMeal(b.id)" class="mdi mdi-delete text-danger" title="Delete recipe"></i>
-                </h5>
+            <div v-for="b in breakfastMeals" :key="b.id" class="mt-2">
+                <div class="d-flex">
+
+                    <img :src="b.recipe.image" class="thumbnail rounded" />
+                    <h5 v-if="b.recipe" class="my-1 fw-bold roboto-slab p-2"> {{
+                        b.recipe.label
+                    }} </h5>
+                    <div class="d-flex align-items-end ms-auto">
+                        <h4 @click="deletePlannedMeal(b.id)" class="mdi mdi-delete text-danger" title="Delete recipe">
+                        </h4>
+
+                    </div>
+                </div>
 
 
             </div>
@@ -36,12 +43,19 @@
                     recipe</button>
 
             </div>
-            <div v-for="l in lunchMeals" :key="l.id" class="text-center mt-2">
-                <img :src="l.recipe.image" class="thumbnail rounded" />
-                <h5 v-if="l.recipe" class="my-1 fw-bold roboto-slab p-2"> {{
-                    l.recipe.label
-                }} <i @click="deletePlannedMeal(l.id)" class="mdi mdi-delete text-danger" title="Delete recipe"></i>
-                </h5>
+            <div v-for="l in lunchMeals" :key="l.id" class="mt-2">
+                <div class="d-flex">
+
+                    <img :src="l.recipe.image" class="thumbnail rounded" />
+                    <h5 v-if="l.recipe" class="my-1 fw-bold roboto-slab p-2"> {{
+                        l.recipe.label
+                    }}
+                    </h5>
+                    <div class="d-flex align-items-end ms-auto">
+                        <h4 @click="deletePlannedMeal(l.id)" class="mdi mdi-delete text-danger" title="Delete recipe">
+                        </h4>
+                    </div>
+                </div>
 
             </div>
             <hr>
@@ -56,12 +70,19 @@
                     data-bs-target="#exampleModal">Add
                     recipe</button>
             </div>
-            <div class="text-center mt-2" v-for="d in dinnerMeals" :key="d.id">
-                <img :src="d.recipe.image" class="thumbnail rounded" />
-                <h5 v-if="d.recipe.id" class="my-1 fw-bold roboto-slab p-2"> {{
-                    d.recipe.label
-                }} <i @click="deletePlannedMeal(d.id)" class="mdi mdi-delete text-danger" title="Delete recipe"></i>
-                </h5>
+            <div class="mt-2" v-for="d in dinnerMeals" :key="d.id">
+                <div class="d-flex">
+
+                    <img :src="d.recipe.image" class="thumbnail rounded" />
+                    <h5 v-if="d.recipe.id" class="my-1 fw-bold roboto-slab p-2"> {{
+                        d.recipe.label
+                    }} </h5>
+                    <div class="d-flex align-items-end ms-auto">
+                        <h4 @click="deletePlannedMeal(d.id)" class="mdi mdi-delete text-danger" title="Delete recipe">
+                        </h4>
+
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -123,8 +144,8 @@ export default {
 
 <style lang="scss" scoped>
 .thumbnail {
-    width: 78vw;
-    height: 17vh;
+    width: 20vw;
+    height: 20vw;
     object-position: center;
     object-fit: cover;
     vertical-align: bottom;

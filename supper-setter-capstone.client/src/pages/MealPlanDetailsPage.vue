@@ -16,7 +16,7 @@
           <h5 class="raleway">Day {{ index + 1 }} <span @click="deleteDay(ps.dayId)" class="mdi mdi-delete"></span></h5>
           <button @click="createDayShoppingList(ps.dayId)" class="btn bg-primary border border-dark border-1"><i
               class="mdi mdi-cart"></i>
-            List (Day {{ index + 1 }})</button>
+            List Day {{ index + 1 }}</button>
         </div>
         <!-- <h5>Day {{ index + 1 }}</h5> -->
         <MealPlan :plannedMealsArray="ps.plannedMeals" :dayId="ps.dayId" />
