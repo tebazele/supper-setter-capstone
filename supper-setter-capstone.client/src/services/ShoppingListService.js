@@ -40,7 +40,11 @@ class ShoppingListService {
       plannedMealsArray.push(...meals.data.plannedMeals)
       for (let j = 0; j < plannedMealsArray.length; j++) {
         const elm = plannedMealsArray[j];
-        ingredients.push(...elm.recipe.ingredients)
+        for (let k = 0; k < elm.recipe.ingredients.length; k++) {
+          let ingredient = elm.recipe.ingredients[k]
+          ingredient.recipeId = elm.recipe.id
+          ingredients.push(ingredient)
+        }
       }
     }
     logger.log(ingredients)
