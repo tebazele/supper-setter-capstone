@@ -3,7 +3,7 @@
     <div class="d-flex my-2 justify-content-between">
       <h2 v-if="mealPlan" class="mt-1 raleway d-flex justify-content-between">
         {{ mealPlan.name }}
-        <button @click="createMealPlanShoppingList(mealPlan.id)" class="btn btn-info">Shopping List</button>
+
       </h2>
       <!-- <div v-if="creator">
         <img :src="creator.picture" class="img-fluid tiny-img rounded-circle border border-dark border-1" />
@@ -14,8 +14,9 @@
       <div class="col-12" v-for="(ps, index) in plannedMealsByDay" :key="index">
         <div class="d-flex justify-content-between">
           <h5 class="raleway">Day {{ index + 1 }} <span @click="deleteDay(ps.dayId)" class="mdi mdi-delete"></span></h5>
-          <button @click="createDayShoppingList(ps.dayId)" class="btn btn-info border border-dark border-1">Shopping
-            List</button>
+          <button @click="createDayShoppingList(ps.dayId)" class="btn btn-info border border-dark border-1"><i
+              class="mdi mdi-cart"></i>
+            List (Day {{ index + 1 }})</button>
         </div>
         <!-- <h5>Day {{ index + 1 }}</h5> -->
         <MealPlan :plannedMealsArray="ps.plannedMeals" :dayId="ps.dayId" />
@@ -26,6 +27,8 @@
         <button @click="deleteMealPlan()" class="btn border border-dark bg-danger text-white selectable mb-2"><i
             class="mdi mdi-delete"></i>Delete
           Plan</button>
+        <button @click="createMealPlanShoppingList(mealPlan.id)"
+          class="btn btn-info border border-dark border-1 mb-2"><i class="mdi mdi-cart"></i>List from MealPlan</button>
         <button class="btn bg-secondary border border-dark me-2 mb-2" @click="createDay">Add Day</button>
       </div>
     </div>
@@ -51,7 +54,7 @@
           </div>
           <section class="row" v-for="m in nonArchivedMyRecipes" :key="m.edamamId">
             <div @click="createPlannedMeal(m.id)"
-              class="ms-3 mt-2 col-11 d-flex justify-content-between align-items-baseline m-1 bg-grey">
+              class="selectable ms-3 mt-2 col-11 d-flex justify-content-between align-items-baseline m-1 bg-grey">
               <p class="roboto-slab">{{ m.label }}</p>
               <img :src="m.image" alt="food" class="thumbnail selectable" />
             </div>

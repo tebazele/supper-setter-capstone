@@ -6,7 +6,7 @@
       </div>
       <div class="col-6 text-end">
         <router-link :to="{ name: 'MealPlans' }">
-          <button class="btn btn-success my-3">Add MealPlan</button>
+          <button class="btn bg-dark text-white my-3 border border-dark border-1">Add MealPlan</button>
 
           <!-- @click="clearPlannedMeals()" -->
 
@@ -33,9 +33,9 @@
       </div>
       <div v-for="r in nonArchivedRecipes" :key="r.edamamId" class="col-12">
         <router-link :to="{ name: 'RecipeDetails', params: { edamamId: r.edamamId } }">
-          <div class="pb-1 text-center bg-white my-2">
+          <div class="pb-1 text-center bg-white my-2 rounded">
 
-            <img :src="r.image" class="recipe-img" alt="">
+            <img :src="r.image" class="recipe-img rounded-top" alt="">
             <h6 class="roboto-slab pt-2">{{ r.label }}</h6>
 
           </div>

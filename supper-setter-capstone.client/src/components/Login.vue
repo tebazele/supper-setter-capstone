@@ -2,7 +2,7 @@
   <span class="navbar-text raleway">
     <div v-if="!user.isAuthenticated" class="text-end">
 
-      <button class="btn selectable text-success lighten-30 text-uppercase my-2 my-lg-0" @click="login">
+      <button class="btn selectable light-green text-uppercase my-2 my-lg-0" @click="login">
         Login
       </button>
     </div>
@@ -15,12 +15,15 @@
       <!-- </div> -->
       <!-- <div class="dropdown-menu dropdown-menu-lg-left p-0" aria-labelledby="authDropdown"> -->
       <div class="list-group text-end">
+        <!-- <router-link :to="{ name: 'About' }" class="btn light-green selectable text-uppercase">
+          About
+        </router-link> -->
         <router-link :to="{ name: 'Account' }">
-          <div class=" btn text-success lighten-30 selectable text-uppercase m-0">
+          <div class=" btn light-green selectable text-uppercase m-0">
             Your Collections
           </div>
         </router-link>
-        <div class="lighten-10 text-uppercase text-light selectable p-1 me-1" @click="logout">
+        <div class="lighten-10 text-uppercase light-green selectable p-1 me-1" @click="logout">
           <i class="mdi mdi-logout"></i>
           logout
         </div>
@@ -52,5 +55,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.light-green {
+  color: #d7e0c6
+}
 </style>
