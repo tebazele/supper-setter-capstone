@@ -29,7 +29,9 @@
     </section>
 
   </div>
-  <Tour />
+  <div v-if="!account.name">
+    <Tour />
+  </div>
 </template>
 
 <script>
@@ -59,6 +61,7 @@ export default {
     })
     return {
       recipes: computed(() => AppState.recipes),
+      account: computed(() => AppState.account),
 
       async loadMoreRecipes() {
         try {

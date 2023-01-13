@@ -7,7 +7,7 @@
             <div class="d-flex justify-content-between">
 
                 <h3>Breakfast</h3>
-                <button class="btn bg-secondary border border-dark border-1" data-bs-toggle="modal"
+                <button class="text-white btn bg-secondary border border-dark border-1" data-bs-toggle="modal"
                     data-bs-target="#exampleModal" @click="() => {
                         editable.mealType = 'breakfast';
                         editable.dayId = dayId;
@@ -31,7 +31,7 @@
                     editable.mealType = 'lunch';
                     editable.dayId = dayId;
                     setEditableInAppState()
-                }" class="btn bg-secondary border border-dark border-1" data-bs-toggle="modal"
+                }" class="text-white btn bg-secondary border border-dark border-1" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">Add
                     recipe</button>
 
@@ -52,7 +52,7 @@
                     editable.mealType = 'dinner';
                     editable.dayId = dayId
                     setEditableInAppState()
-                }" class="btn bg-secondary border border-dark border-1 mb-1" data-bs-toggle="modal"
+                }" class="text-white btn bg-secondary border border-dark border-1 mb-1" data-bs-toggle="modal"
                     data-bs-target="#exampleModal">Add
                     recipe</button>
             </div>

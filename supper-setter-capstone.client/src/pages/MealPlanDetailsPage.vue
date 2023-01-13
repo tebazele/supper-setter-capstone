@@ -14,7 +14,7 @@
       <div class="col-12" v-for="(ps, index) in plannedMealsByDay" :key="index">
         <div class="d-flex justify-content-between">
           <h5 class="raleway">Day {{ index + 1 }} <span @click="deleteDay(ps.dayId)" class="mdi mdi-delete"></span></h5>
-          <button @click="createDayShoppingList(ps.dayId)" class="btn btn-info border border-dark border-1"><i
+          <button @click="createDayShoppingList(ps.dayId)" class="btn bg-primary border border-dark border-1"><i
               class="mdi mdi-cart"></i>
             List (Day {{ index + 1 }})</button>
         </div>
@@ -28,8 +28,9 @@
             class="mdi mdi-delete"></i>Delete
           Plan</button>
         <button @click="createMealPlanShoppingList(mealPlan.id)"
-          class="btn btn-info border border-dark border-1 mb-2"><i class="mdi mdi-cart"></i>List from MealPlan</button>
-        <button class="btn bg-secondary border border-dark me-2 mb-2" @click="createDay">Add Day</button>
+          class="btn bg-primary border border-dark border-1 mb-2"><i class="mdi mdi-cart"></i>List from
+          MealPlan</button>
+        <button class="btn bg-secondary text-white border border-dark me-2 mb-2" @click="createDay">Add Day</button>
       </div>
     </div>
   </div>
