@@ -53,10 +53,14 @@
           <!-- STUB filter my Recipes buttons -->
           <div class="d-flex">
             <button @click="
-            filterBy = 'breakfast'" class="same-width btn btn-outline-dark me-1">Breakfast</button>
-            <button @click="filterBy = 'lunch/dinner'" class="same-width btn btn-outline-dark me-1">Lunch/
+            filterBy = 'breakfast'; search.query = ''" class="same-width btn btn-outline-dark me-1">Breakfast</button>
+            <button @click="filterBy = 'lunch/dinner'; search.query = ''"
+              class="same-width btn btn-outline-dark me-1">Lunch/
               Dinner</button>
-            <button @click="filterBy = ''" class="same-width btn btn-outline-dark">All</button>
+            <button @click="() => {
+              search.query = '';
+              searchMyRecipes()
+            }" class="same-width btn btn-outline-dark">All</button>
 
           </div>
           <section class="row" v-for="m in nonArchivedMyRecipes" :key="m.edamamId">
@@ -85,6 +89,7 @@ import { mealPlansService } from '../services/MealPlansService.js';
 import { plannedMealsService } from '../services/PlannedMealsService.js';
 import MealPlan from '../components/MealPlan.vue';
 import { Modal } from 'bootstrap';
+import { recipesService } from '../services/RecipesService.js';
 export default {
   setup() {
     const filterBy = ref('')
@@ -163,7 +168,8 @@ export default {
           logger.log(recipeId)
           await plannedMealsService.createPlannedMeal(recipeId)
           Modal.getOrCreateInstance('#exampleModal').hide()
-          // TODO close the modal
+          filterBy.value = ''
+          search.query = ''
         } catch (error) {
           logger.log(error)
           Pop.error(error.message)
@@ -191,6 +197,17 @@ export default {
           if (await Pop.confirm('Are you sure you want to delete this day?', '')) {
             await daysService.deleteDay(dayId)
           }
+        } catch (error) {
+          logger.log(error)
+          Pop.error(error.message)
+        }
+      },
+
+      async searchMyRecipes() {
+        try {
+          filterBy.value = ''
+          await recipesService.searchMyRecipes(search.query)
+          search.query = ''
         } catch (error) {
           logger.log(error)
           Pop.error(error.message)
