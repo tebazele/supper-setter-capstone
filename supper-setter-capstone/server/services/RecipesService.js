@@ -1,3 +1,4 @@
+import { logger } from "../utils/Logger"
 import { dbContext } from "../db/DbContext"
 import { BadRequest, Forbidden } from "../utils/Errors"
 import { plannedMealsService } from "./PlannedMealsService.js"
@@ -59,6 +60,20 @@ class RecipesService {
 
     return `${recipe.label} has been removed from collection and all instances in meal plans have been removed`
   }
+
+
+  async checkIngredient(recipeId, ingredientId) {
+    const recipe = await dbContext.Recipe.findById(recipeId)
+    if (!recipe) {
+      throw new BadRequest('no recipe found ')
+    }
+    logger.log(recipe, 'this is recipe')
+    // const ingredient = recipe.ingredients.find(recipe.ingredients.id == ingredientId)
+    // ingredient.checked = !ingredient.checked
+
+    return recipe
+  }
+
 }
 
 

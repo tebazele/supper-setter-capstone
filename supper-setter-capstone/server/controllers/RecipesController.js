@@ -11,6 +11,7 @@ export class RecipesController extends BaseController {
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.addToMyRecipes)
       .put('/:recipeId', this.archiveRecipe)
+      .put('/:recipeId/ingredients/:ingredientId', this.checkIngredient)
       .delete('/:recipeId', this.clearRecipe)
   }
 
@@ -24,7 +25,14 @@ export class RecipesController extends BaseController {
     }
   }
 
-
+  async checkIngredient(req, res, next) {
+    try {
+      const ingredient = await recipesService.checkIngredient(req.param.recipeId, req.param.ingredientId)
+      return res.send(ingredient)
+    } catch (error) {
+      next(error)
+    }
+  }
 
   async archiveRecipe(req, res, next) {
     try {
