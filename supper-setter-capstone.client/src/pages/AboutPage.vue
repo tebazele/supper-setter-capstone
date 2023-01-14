@@ -16,7 +16,7 @@
         <div class="raleway text-light cards">
           <!-- Jeanne Allen -->
           <label class="card" for="item-1" id="member-1">
-            <img src="../assets/img/Jeanne head shot 1.png" alt="Jeanne Allen" />
+            <img src="../assets/img/jeanne.png" alt="Jeanne Allen" />
             <div class="desc">
               <div class="desc-title d-flex justify-content-md-center justify-content-between px-3 px-md-0">
                 <h3 class="fw-bold">Jeanne Allen</h3>
