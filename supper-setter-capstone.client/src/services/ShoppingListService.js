@@ -23,7 +23,7 @@ class ShoppingListService {
     const sorted = ingredients.sort(function (a, b) {
       return a.food.localeCompare(b.food);
     })
-    const save = await this.saveShoppingList(dayId, ingredients)
+    await this.saveShoppingList(dayId, ingredients)
     AppState.shoppingList = ingredients
   }
 

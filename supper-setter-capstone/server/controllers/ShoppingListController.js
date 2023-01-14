@@ -7,8 +7,8 @@ export class ShoppingListController extends BaseController {
   constructor() {
     super('api/shoppinglist')
     this.router
-      .post('', this.saveShoppingList)
       // .get('/:dayId', this.grabShoppingListByDayId)
+      .post('', this.saveShoppingList)
       .use(Auth0Provider.getAuthorizedUserInfo)
   }
 
