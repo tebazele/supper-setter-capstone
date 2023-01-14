@@ -78,7 +78,7 @@
                 </div>
               </div>
               <div class="desc-body p-3">
-                <span>Cool bio</span>
+                <span>"Thoughts are like mountains. Big ones take time." ~Liam</span>
               </div>
             </div>
           </label>
@@ -98,7 +98,7 @@
                 </div>
               </div>
               <div class="desc-body p-3">
-                <span>Cool bio
+                <span>"I like food. Food tastes good!" ~Descendants
                 </span>
               </div>
             </div>
