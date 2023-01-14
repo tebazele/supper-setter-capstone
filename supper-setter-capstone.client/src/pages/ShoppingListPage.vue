@@ -48,11 +48,11 @@ export default {
 
     async function loadShoppingList() {
       if (route.query.day) {
-        await shoppingListService.getShoppingListByDayId(route.query.day)
+        await shoppingListService.generateShoppingListByDayId(route.query.day)
         await daysService.getDayInfoByDayId(route.query.day)
       }
       if (route.query.mealplan) {
-        await shoppingListService.getShoppingListByMealPlanId(route.query.mealplan)
+        await shoppingListService.generateShoppingListByMealPlanId(route.query.mealplan)
         await mealPlansService.getMealPlanById(route.query.mealplan)
       }
     }

@@ -7,9 +7,8 @@ import { api } from "./AxiosService"
 
 class ShoppingListService {
 
-  async getShoppingListByDayId(dayId) {
 
-
+  async generateShoppingListByDayId(dayId) {
     const ingredients = []
     const day = await plannedMealsService.getPlannedMealsByDayId(dayId)
     for (let i = 0; i < day.data.plannedMeals.length; i++) {
@@ -28,7 +27,7 @@ class ShoppingListService {
     AppState.shoppingList = ingredients
   }
 
-  async getShoppingListByMealPlanId(mealPlanId) {
+  async generateShoppingListByMealPlanId(mealPlanId) {
     const plannedMealsArray = []
     const ingredients = []
     await daysService.getDays(mealPlanId)
