@@ -16,9 +16,9 @@ class RecipesService {
 
   async getRecipeById(id) {
     const res = await edamamApi.get('/' + id)
-    logger.log('this is getting recipe by id', res.data)
+    // logger.log('this is getting recipe by id', res.data)
     let mappedRecipe = new Recipe(res.data)
-    logger.log(mappedRecipe)
+    // logger.log(mappedRecipe)
     AppState.activeRecipe = mappedRecipe
   }
 
@@ -51,7 +51,17 @@ class RecipesService {
   async getMyRecipes() {
     try {
       const res = await api.get('account/recipes')
-      logger.log('got my recipes', res.data)
+      // logger.log('got my recipes', res.data)
+      // FIXME for images if we could afford it; would also need to do this when we get the planned meals and populate the recipe object
+      // STUB iterate through res.data and get each recipe from edamam (using edamamId); replace the image url on each myRecipe object with a new one from Edamam
+      // const myRecipesArray = []
+      // for (let i = 0; i < res.data.length; i++) {
+      //   let recipeObject = res.data[i]
+      //   let recipeFromEdamam = this.getRecipeById(recipeObject.edamamId)
+      //   recipeObject.image = recipeFromEdamam.image
+      //   myRecipesArray.push(recipeObject)
+      // }
+      // AppState.myRecipes = myRecipesArray
       AppState.myRecipes = res.data
     } catch (error) {
       logger.log(error.message)
