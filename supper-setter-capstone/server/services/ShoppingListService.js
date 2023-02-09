@@ -3,8 +3,10 @@ import { dbContext } from "../db/DbContext.js"
 class ShoppingListService {
   async saveShoppingList(body) {
     // if (body.dayId) {
-    //   let oldlist = await this.checkForShoppingListByDayId(body.dayId)
-    //   return oldlist
+    //   let oldlist = await this.checkForShoppingListByDayId
+    //   if (oldlist) {
+    //     return oldlist
+    //   }
     // }
     const newShoppingList = await dbContext.ShoppingList.create(body)
     return newShoppingList

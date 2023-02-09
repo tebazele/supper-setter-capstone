@@ -1,11 +1,11 @@
 import { Schema } from "mongoose";
 
-export const IngredientSchema = new Schema({
-  food: { type: String, required: true },
-  measure: { type: String },
-  quantity: { type: Number },
-  checked: { type: Boolean, default: false },
-})
+// export const IngredientSchema = new Schema({
+//   food: { type: String, required: true },
+//   measure: { type: String },
+//   quantity: { type: Number },
+//   checked: { type: Boolean, default: false },
+// })
 
 const ObjectId = Schema.Types.ObjectId
 export const RecipeSchema = new Schema({
@@ -16,7 +16,7 @@ export const RecipeSchema = new Schema({
   uniqueUrl: { type: String, required: true },
   edamamId: { type: String, required: true },
   archived: { type: Boolean, required: true, default: false },
-  ingredients: { type: [IngredientSchema], required: true },
+  ingredients: { type: [Object], required: true },
   mealType: { type: Array, default: ['lunch/dinner'] }
   // TODO look at default 
 }, { timestamps: true, toJSON: { virtuals: true } })

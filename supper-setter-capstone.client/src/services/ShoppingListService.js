@@ -16,7 +16,7 @@ class ShoppingListService {
       for (let j = 0; j < elm.recipe.ingredients.length; j++) {
         let ingredient = elm.recipe.ingredients[j]
         ingredient.recipeId = elm.recipe.id
-        ingredient.id = generateId()
+        // ingredient.id = generateId()
         ingredients.push(ingredient)
       }
     }
@@ -40,10 +40,11 @@ class ShoppingListService {
         for (let k = 0; k < elm.recipe.ingredients.length; k++) {
           let ingredient = elm.recipe.ingredients[k]
           ingredient.recipeId = elm.recipe.id
-          ingredient.id = generateId()
+          // ingredient.id = generateId()
           ingredients.push(ingredient)
         }
       }
+      logger.log(ingredients)
     }
     const sorted = ingredients.sort(function (a, b) {
       return a.food.localeCompare(b.food);
