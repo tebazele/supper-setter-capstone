@@ -8,6 +8,12 @@ import { api } from "./AxiosService"
 class ShoppingListService {
 
 
+  async getDayShopList(dayId) {
+    const shoppinglist = await api.get(`api/days/${dayId}/shoppinglist`)
+    AppState.shoppingList = shoppinglist
+    logger.log(shoppinglist)
+  }
+
   async generateShoppingListByDayId(dayId) {
     const ingredients = []
     const day = await plannedMealsService.getPlannedMealsByDayId(dayId)
@@ -15,16 +21,15 @@ class ShoppingListService {
       const elm = day.data.plannedMeals[i];
       for (let j = 0; j < elm.recipe.ingredients.length; j++) {
         let ingredient = elm.recipe.ingredients[j]
-        ingredient.recipeId = elm.recipe.id
-        // ingredient.id = generateId()
+        if (ingredient.measure == '<unit>') {
+          ingredient.measure = null
+        }
         ingredients.push(ingredient)
       }
     }
-    const sorted = ingredients.sort(function (a, b) {
-      return a.food.localeCompare(b.food);
-    })
-    await this.saveShoppingList(dayId, ingredients)
-    AppState.shoppingList = ingredients
+    console.log(ingredients)
+    await this.postDayShopList(dayId, ingredients)
+
   }
 
   async generateShoppingListByMealPlanId(mealPlanId) {
@@ -53,13 +58,16 @@ class ShoppingListService {
   }
 
 
-  async saveShoppingList(dayId, ingredients) {
-    const res = await api.post('api/shoppinglist', { dayId, ingredients })
-    logger.log('response from server', res.data)
-    AppState.shoppingList = res.data
+  async postDayShopList(dayId, ingredients) {
+    console.log(ingredients)
+    const res = await api.post(`api/days/${dayId}/shoppinglist`, ingredients)
+    logger.log(res.data)
   }
-
-
-
 }
+
+// NOTE FOR ALPHABETIZING INGREDIENTS
+// const sorted = ingredients.sort(function (a, b) {
+//   return a.food.localeCompare(b.food);
+// })
+
 export const shoppingListService = new ShoppingListService()

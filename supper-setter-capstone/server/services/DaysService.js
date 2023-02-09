@@ -57,6 +57,14 @@ class DaysService {
     const day = await dbContext.Days.findById(dayId).populate('mealPlan')
     return day
   }
+  async checkShopList(dayId) {
+    const day = await this.getDayInfoByDayId(dayId)
+    if (!day) { throw new BadRequest("There was no day found to generate a list for") }
+    day.shopListGenerated = !day.shopListGenerated
+    await day.save()
+  }
+
+
 }
 
 

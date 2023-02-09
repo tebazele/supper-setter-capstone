@@ -90,6 +90,7 @@ import { plannedMealsService } from '../services/PlannedMealsService.js';
 import MealPlan from '../components/MealPlan.vue';
 import { Modal } from 'bootstrap';
 import { recipesService } from '../services/RecipesService.js';
+import { shoppingListService } from "../services/ShoppingListService.js";
 export default {
   setup() {
     const filterBy = ref('')
@@ -176,6 +177,7 @@ export default {
         }
       },
       async createDayShoppingList(dayId) {
+        await shoppingListService.generateShoppingListByDayId(dayId)
         router.push({ name: 'ShoppingList', query: { day: `${dayId}` } })
       },
       async createMealPlanShoppingList(mealPlanId) {

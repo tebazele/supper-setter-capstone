@@ -1,6 +1,7 @@
 import { Auth0Provider } from "@bcwdev/auth0provider";
 import { daysService } from "../services/DaysService";
 import { plannedMealsService } from "../services/PlannedMealsService.js";
+import { shoppingListService } from '../services/ShoppingListService.js'
 import BaseController from "../utils/BaseController";
 
 
@@ -11,10 +12,11 @@ export class DaysController extends BaseController {
     this.router
       .get('/:dayId/plannedmeals', this.getPlannedMealsByDayId)
       .get('/:dayId', this.getDayInfoByDayId)
+      .get('/:dayId/shoppinglist', this.getShopList)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .post('', this.createDay)
       .delete('/:dayId', this.removeDay)
-
+      .post('/:dayId/shoppinglist', this.generateShopList)
   }
 
   async getPlannedMealsByDayId(req, res, next) {
@@ -51,4 +53,23 @@ export class DaysController extends BaseController {
     }
   }
 
+
+  async generateShopList(req, res, next) {
+    try {
+      await daysService.checkShopList(req.params.dayId)
+      const message = await shoppingListService.generateDayShopList(req.params.dayId, req.body)
+      return res.send(message)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async getShopList(req, res, next) {
+    try {
+      const shoplist = await shoppingListService.getDayShopList(req.params.dayId)
+      return res.send(shoplist)
+    } catch (error) {
+      next(error)
+    }
+  }
 }

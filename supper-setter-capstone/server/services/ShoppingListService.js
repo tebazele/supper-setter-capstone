@@ -1,22 +1,23 @@
 import { dbContext } from "../db/DbContext.js"
 
 class ShoppingListService {
-  async saveShoppingList(body) {
-    // if (body.dayId) {
-    //   let oldlist = await this.checkForShoppingListByDayId
-    //   if (oldlist) {
-    //     return oldlist
-    //   }
-    // }
-    const newShoppingList = await dbContext.ShoppingList.create(body)
-    return newShoppingList
+  async getDayShopList(dayId) {
+    const shoppingList = await dbContext.Ingredient.find({ dayId })
+    return shoppingList
   }
 
-  async checkForShoppingListByDayId(dayId) {
-    const shoppinglist = await dbContext.ShoppingList.find({ dayId })
 
-    return shoppinglist
+  async generateDayShopList(dayId, body) {
+    const shoppingList = []
+    await body.forEach(i => {
+      i.dayId = dayId;
+      dbContext.Ingredient.create(i)
+    })
+    return `Shopping list for dayId ${dayId} generated`
   }
+
+
+
 }
 
 

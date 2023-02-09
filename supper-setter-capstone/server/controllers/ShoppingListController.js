@@ -8,7 +8,7 @@ export class ShoppingListController extends BaseController {
     super('api/shoppinglist')
     this.router
       // .get('/:dayId', this.grabShoppingListByDayId)
-      .post('', this.saveShoppingList)
+      // .post('', this.saveShoppingList)
       .use(Auth0Provider.getAuthorizedUserInfo)
   }
 
@@ -19,21 +19,20 @@ export class ShoppingListController extends BaseController {
   //   } catch (error) {
   //     next(error)
   //   }
-  // }
-  async saveShoppingList(req, res, next) {
-    try {
-      const message = await shoppingListService.saveShoppingList(req.body)
-      return res.send(message)
-    } catch (error) {
-      next(error)
-    }
-  }
-
-
-
-
-
-
-
-
+  // // }
+  // async saveShoppingList(req, res, next) {
+  //   try {
+  //     const message = await shoppingListService.saveShoppingList(req.body)
+  //     return res.send(message)
+  //   } catch (error) {
+  //     next(error)
+  //   }
 }
+
+
+
+
+
+
+
+

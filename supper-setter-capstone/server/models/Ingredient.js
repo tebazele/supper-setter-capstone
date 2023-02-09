@@ -7,5 +7,6 @@ export const IngredientSchema = new Schema({
   quantity: { type: Number, required: true },
   checked: { type: Boolean, default: false },
   recipeId: { type: String },
-}, { timestamps: true, toJSON: { virtuals: true } })
+  dayId: { type: String }
+})
 
