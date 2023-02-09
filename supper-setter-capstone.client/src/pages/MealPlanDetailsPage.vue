@@ -184,13 +184,12 @@ export default {
         }
       },
       async createDayShoppingList(dayId) {
-
         await shoppingListService.generateShoppingListByDayId(dayId)
-        router.push({ name: 'ShoppingList', query: { day: `${dayId}` } })
+        // router.push({ name: 'ShoppingList', query: { day: `${dayId}` } })
       },
       async createMealPlanShoppingList(mealPlanId) {
         await shoppingListService.generateShoppingListByMealPlanId(mealPlanId)
-        router.push({ name: 'ShoppingList', query: { mealplan: `${mealPlanId}` } })
+        // router.push({ name: 'ShoppingList', query: { mealplan: `${mealPlanId}` } })
       },
       async pushDayShoppingList(dayId) {
         router.push({ name: 'ShoppingList', query: { day: `${dayId}` } })
