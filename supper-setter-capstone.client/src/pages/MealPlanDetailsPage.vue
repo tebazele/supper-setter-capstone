@@ -12,15 +12,16 @@
     <section class="row">
       <!-- <p>{{ plannedMealsByDay }}</p> -->
       <div class="col-12" v-for="(ps, index) in plannedMealsByDay" :key="index">
+        <h6>{{ days[index] }}</h6>
         <div class="d-flex justify-content-between">
           <h5 class="raleway">Day {{ index + 1 }} <span @click="deleteDay(ps.dayId)"
               class="mdi mdi-delete text-danger"></span></h5>
-          <button v-if="ps.day?.shopListGenerated" @click="pushDayShoppingList(ps.dayId)"
+          <button v-if="days[index].shopListGenerated" @click="pushDayShoppingList(ps.dayId)"
             class="btn bg-primary border border-dark border-1"><i class="mdi mdi-cart"></i>
-            List Day {{ index + 1 }}</button>
+            push Day {{ index + 1 }}</button>
           <button v-else @click="createDayShoppingList(ps.dayId)" class="btn bg-primary border border-dark border-1"><i
               class="mdi mdi-cart"></i>
-            VIEW List</button>
+            create List</button>
         </div>
         <!-- <h5>Day {{ index + 1 }}</h5> -->
         <MealPlan :plannedMealsArray="ps.plannedMeals" :dayId="ps.dayId" />
