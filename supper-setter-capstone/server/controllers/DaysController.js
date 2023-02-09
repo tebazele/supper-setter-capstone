@@ -57,7 +57,7 @@ export class DaysController extends BaseController {
 
   async generateShopList(req, res, next) {
     try {
-      await daysService.checkShopList(req.params.dayId)
+      await daysService.checkIfShopList(req.params.dayId)
       const message = await shoppingListService.generateDayShopList(req.params.dayId, req.body)
       return res.send(message)
     } catch (error) {

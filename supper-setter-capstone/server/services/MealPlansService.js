@@ -18,7 +18,7 @@ class MealPlansService {
   async getOneMealPlan(id) {
     const mealPlan = await dbContext.MealPlan.findById(id).populate('creator')
     if (!mealPlan) {
-      throw new BadRequest(`no mealPlan at ${id}`)
+      throw new BadRequest(`no meal plan at ${id}`)
     }
     return mealPlan
   }
@@ -39,6 +39,13 @@ class MealPlansService {
     await mealPlan.remove()
 
     return `${mealPlan.name} and associated days have been deleted`
+  }
+
+
+  async checkIfShopList(mealPlanId) {
+    const mealPlan = await this.getOneMealPlan(mealPlanId)
+    mealPlan.shopListGenerated = !mealPlan.shopListGenerated
+    await mealPlan.save()
   }
 }
 

@@ -14,6 +14,11 @@ class ShoppingListService {
     logger.log(shoppinglist)
   }
 
+  async getMealPlanShopList(mealPlanId) {
+    const shoppinglist = await api.get(`api/mealplans/${mealPlanId}/shoppinglist`)
+    AppState.shoppingList = shoppinglist.data
+    logger.log(shoppinglist)
+  }
   async generateShoppingListByDayId(dayId) {
     const ingredients = []
     const day = await plannedMealsService.getPlannedMealsByDayId(dayId)
@@ -27,7 +32,6 @@ class ShoppingListService {
         ingredients.push(ingredient)
       }
     }
-    console.log(ingredients)
     await this.postDayShopList(dayId, ingredients)
 
   }
@@ -44,23 +48,27 @@ class ShoppingListService {
         const elm = plannedMealsArray[j];
         for (let k = 0; k < elm.recipe.ingredients.length; k++) {
           let ingredient = elm.recipe.ingredients[k]
-          ingredient.recipeId = elm.recipe.id
-          // ingredient.id = generateId()
+          if (ingredient.measure == '<unit>') {
+            ingredient.measure = null
+          }
           ingredients.push(ingredient)
         }
       }
-      logger.log(ingredients)
     }
-    const sorted = ingredients.sort(function (a, b) {
-      return a.food.localeCompare(b.food);
-    })
-    AppState.shoppingList = ingredients
+    await this.postMealPlanShopList(mealPlanId, ingredients)
   }
+
 
 
   async postDayShopList(dayId, ingredients) {
     console.log(ingredients)
     const res = await api.post(`api/days/${dayId}/shoppinglist`, ingredients)
+    logger.log(res.data)
+  }
+
+  async postMealPlanShopList(mealPlanId, ingredients) {
+    console.log(ingredients)
+    const res = await api.post(`api/mealplans/${mealPlanId}/shoppinglist`, ingredients)
     logger.log(res.data)
   }
 
@@ -70,7 +78,6 @@ class ShoppingListService {
   }
 
 }
-
 // NOTE FOR ALPHABETIZING INGREDIENTS
 // const sorted = ingredients.sort(function (a, b) {
 //   return a.food.localeCompare(b.food);

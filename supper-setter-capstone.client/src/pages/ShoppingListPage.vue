@@ -48,10 +48,9 @@ export default {
       if (route.query.day) {
         await shoppingListService.getDayShopList(route.query.day)
         await daysService.getDayInfoByDayId(route.query.day)
-        console.log(AppState.shoppingList)
       }
       if (route.query.mealplan) {
-        await shoppingListService.generateShoppingListByMealPlanId(route.query.mealplan)
+        await shoppingListService.getMealPlanShopList(route.query.mealplan)
         await mealPlansService.getMealPlanById(route.query.mealplan)
       }
     }

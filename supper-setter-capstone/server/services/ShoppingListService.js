@@ -12,6 +12,10 @@ class ShoppingListService {
     const shoppingList = await dbContext.Ingredient.find({ dayId })
     return shoppingList
   }
+  async getMealPlanShopList(mealPlanId) {
+    const shoppingList = await dbContext.Ingredient.find({ mealPlanId })
+    return shoppingList
+  }
 
 
   async generateDayShopList(dayId, body) {
@@ -20,9 +24,17 @@ class ShoppingListService {
       i.dayId = dayId;
       dbContext.Ingredient.create(i)
     })
-    return `Shopping list for dayId ${dayId} generated`
+    return `Shopping list for day with Id ${dayId} generated`
   }
 
+  async generateMealPlanShopList(mealPlanId, body) {
+    const shoppingList = []
+    await body.forEach(i => {
+      i.mealPlanId = mealPlanId;
+      dbContext.Ingredient.create(i)
+    })
+    return `Shopping list for mealPlan with Id ${mealPlanId} generated`
+  }
 
 
 }

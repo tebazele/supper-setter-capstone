@@ -181,6 +181,7 @@ export default {
         router.push({ name: 'ShoppingList', query: { day: `${dayId}` } })
       },
       async createMealPlanShoppingList(mealPlanId) {
+        await shoppingListService.generateShoppingListByMealPlanId(mealPlanId)
         router.push({ name: 'ShoppingList', query: { mealplan: `${mealPlanId}` } })
       },
       async deleteMealPlan() {

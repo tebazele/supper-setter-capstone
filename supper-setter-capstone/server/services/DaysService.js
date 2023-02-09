@@ -11,9 +11,7 @@ class DaysService {
     if (!foundDay) throw new BadRequest(`no day at id: ${dayId}`)
     // @ts-ignore
     if (foundDay.mealPlan.creatorId.toString() != creatorId) throw new Forbidden(`Cannot delete a day thats not yours`)
-
     const mealPlanId = foundDay.mealPlanId
-
     await foundDay.remove()
     // NOTE PUT request to re-sequence all day names
     let editedDaysArray = []
@@ -57,7 +55,7 @@ class DaysService {
     const day = await dbContext.Days.findById(dayId).populate('mealPlan')
     return day
   }
-  async checkShopList(dayId) {
+  async checkIfShopList(dayId) {
     const day = await this.getDayInfoByDayId(dayId)
     if (!day) { throw new BadRequest("There was no day found to generate a list for") }
     day.shopListGenerated = !day.shopListGenerated
