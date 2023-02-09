@@ -15,9 +15,12 @@
         <div class="d-flex justify-content-between">
           <h5 class="raleway">Day {{ index + 1 }} <span @click="deleteDay(ps.dayId)"
               class="mdi mdi-delete text-danger"></span></h5>
-          <button @click="createDayShoppingList(ps.dayId)" class="btn bg-primary border border-dark border-1"><i
-              class="mdi mdi-cart"></i>
+          <button v-if="ps.day?.shopListGenerated" @click="pushDayShoppingList(ps.dayId)"
+            class="btn bg-primary border border-dark border-1"><i class="mdi mdi-cart"></i>
             List Day {{ index + 1 }}</button>
+          <button v-else @click="createDayShoppingList(ps.dayId)" class="btn bg-primary border border-dark border-1"><i
+              class="mdi mdi-cart"></i>
+            View List</button>
         </div>
         <!-- <h5>Day {{ index + 1 }}</h5> -->
         <MealPlan :plannedMealsArray="ps.plannedMeals" :dayId="ps.dayId" />
@@ -28,7 +31,10 @@
         <button @click="deleteMealPlan()" class="btn border border-dark bg-danger text-white selectable mb-2"><i
             class="mdi mdi-delete"></i>Delete
           Plan</button>
-        <button @click="createMealPlanShoppingList(mealPlan.id)"
+        <button v-if="mealPlan?.shopListGenerated" @click="pushMealPlanShoppingList(mealPlan.id)"
+          class="btn bg-primary border border-dark border-1 mb-2"><i class="mdi mdi-cart"></i>View from
+          MealPlan</button>
+        <button v-else @click="createMealPlanShoppingList(mealPlan.id)"
           class="btn bg-primary border border-dark border-1 mb-2"><i class="mdi mdi-cart"></i>List from
           MealPlan</button>
         <button class="btn bg-secondary text-white border border-dark me-2 mb-2" @click="createDay">Add Day</button>
@@ -184,6 +190,13 @@ export default {
         await shoppingListService.generateShoppingListByMealPlanId(mealPlanId)
         router.push({ name: 'ShoppingList', query: { mealplan: `${mealPlanId}` } })
       },
+      async pushDayShoppingList(dayId) {
+        router.push({ name: 'ShoppingList', query: { day: `${dayId}` } })
+      },
+      async pushMealPlanShoppingList(mealPlanId) {
+        router.push({ name: 'ShoppingList', query: { mealplan: `${mealPlanId}` } })
+      },
+
       async deleteMealPlan() {
         try {
           if (await Pop.confirm('Are you sure you want to delete this meal plan?', "You can't go back")) {
