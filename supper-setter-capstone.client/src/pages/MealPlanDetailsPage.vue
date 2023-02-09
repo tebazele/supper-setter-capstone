@@ -20,7 +20,7 @@
             List Day {{ index + 1 }}</button>
           <button v-else @click="createDayShoppingList(ps.dayId)" class="btn bg-primary border border-dark border-1"><i
               class="mdi mdi-cart"></i>
-            View List</button>
+            VIEW List</button>
         </div>
         <!-- <h5>Day {{ index + 1 }}</h5> -->
         <MealPlan :plannedMealsArray="ps.plannedMeals" :dayId="ps.dayId" />
