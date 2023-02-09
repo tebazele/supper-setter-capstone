@@ -17,7 +17,7 @@ class ShoppingListService {
   async getMealPlanShopList(mealPlanId) {
     const shoppinglist = await api.get(`api/mealplans/${mealPlanId}/shoppinglist`)
     AppState.shoppingList = shoppinglist.data
-    logger.log(shoppinglist)
+    logger.log('shopping list')
   }
   async generateShoppingListByDayId(dayId) {
     const ingredients = []
