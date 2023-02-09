@@ -55,6 +55,7 @@ export default {
       }
     }
 
+    // TODO STILL NEEDS TO SEE IF DAY OR MEALPLAN FOR API ROUTE
     async function checkIngredient(ingredientId) {
       await shoppingListService.checkIngredient(route.query.dayId, ingredientId)
     }
