@@ -10,7 +10,7 @@ class ShoppingListService {
 
   async getDayShopList(dayId) {
     const shoppinglist = await api.get(`api/days/${dayId}/shoppinglist`)
-    AppState.shoppingList = shoppinglist
+    AppState.shoppingList = shoppinglist.data
     logger.log(shoppinglist)
   }
 
@@ -63,6 +63,12 @@ class ShoppingListService {
     const res = await api.post(`api/days/${dayId}/shoppinglist`, ingredients)
     logger.log(res.data)
   }
+
+
+  async checkIngredient(dayId, ingredientId) {
+    await api.put(`api/days/${dayId}/shoppinglist/${ingredientId}`, ingredientId)
+  }
+
 }
 
 // NOTE FOR ALPHABETIZING INGREDIENTS

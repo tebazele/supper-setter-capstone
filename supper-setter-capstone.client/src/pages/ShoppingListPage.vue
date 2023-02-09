@@ -8,7 +8,8 @@
     <div v-for="i in ingredients" class="d-flex ">
 
       <div class="form-check ms-2">
-        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" v-model="i.checked"
+          @change="checkIngredient(i._id)">
         <label class="form-check-label" for="flexCheckDefault">
 
         </label>
@@ -16,12 +17,9 @@
 
       <p>{{ i.food }}
         <span v-if="i.quantity != 0">
-
           {{ i.quantity }}
         </span>
-        <span v-if="i.measure != '<unit>'">
-          {{ i.measure }}
-        </span>
+        {{ i.measure }}
       </p>
 
 
@@ -50,6 +48,7 @@ export default {
       if (route.query.day) {
         await shoppingListService.getDayShopList(route.query.day)
         await daysService.getDayInfoByDayId(route.query.day)
+        console.log(AppState.shoppingList)
       }
       if (route.query.mealplan) {
         await shoppingListService.generateShoppingListByMealPlanId(route.query.mealplan)
@@ -57,8 +56,8 @@ export default {
       }
     }
 
-    async function checkIngredient() {
-
+    async function checkIngredient(ingredientId) {
+      await shoppingListService.checkIngredient(route.query.dayId, ingredientId)
     }
 
 
@@ -67,7 +66,8 @@ export default {
       ingredients: computed(() => AppState.shoppingList),
       activeDay: computed(() => AppState.activeDay),
       activeMealPlan: computed(() => AppState.activeMealPlan),
-      route
+      route,
+      checkIngredient
     }
   }
 };

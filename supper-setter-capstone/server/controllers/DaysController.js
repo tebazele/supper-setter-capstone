@@ -14,6 +14,7 @@ export class DaysController extends BaseController {
       .get('/:dayId', this.getDayInfoByDayId)
       .get('/:dayId/shoppinglist', this.getShopList)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .put('/:dayId/shoppinglist/:ingredientId', this.updateIngredient)
       .post('', this.createDay)
       .delete('/:dayId', this.removeDay)
       .post('/:dayId/shoppinglist', this.generateShopList)
@@ -68,6 +69,16 @@ export class DaysController extends BaseController {
     try {
       const shoplist = await shoppingListService.getDayShopList(req.params.dayId)
       return res.send(shoplist)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+
+
+  async updateIngredient(req, res, next) {
+    try {
+      const ingredient = await shoppingListService.updateIngredient(req.params.ingredientId)
     } catch (error) {
       next(error)
     }
