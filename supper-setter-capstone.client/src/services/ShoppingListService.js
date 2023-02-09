@@ -9,6 +9,7 @@ class ShoppingListService {
 
 
   async getDayShopList(dayId) {
+    debugger
     const shoppinglist = await api.get(`api/days/${dayId}/shoppinglist`)
     AppState.shoppingList = shoppinglist.data
     logger.log(shoppinglist)

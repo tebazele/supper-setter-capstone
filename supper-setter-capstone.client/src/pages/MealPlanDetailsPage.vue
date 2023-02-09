@@ -184,6 +184,7 @@ export default {
         }
       },
       async createDayShoppingList(dayId) {
+
         await shoppingListService.generateShoppingListByDayId(dayId)
         router.push({ name: 'ShoppingList', query: { day: `${dayId}` } })
       },
