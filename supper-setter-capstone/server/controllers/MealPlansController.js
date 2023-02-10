@@ -12,8 +12,8 @@ export class MealPlansController extends BaseController {
     this.router
       .get('/:mealPlanId', this.getOneMealPlan)
       .get('/:mealPlanId/days', this.getMealPlanDays)
-      .get('/:mealPlanId/shoppinglist', this.getShopList)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/:mealPlanId/shoppinglist', this.getShopList)
       .post('/:mealPlanId/shoppinglist', this.generateShopList)
       .post('', this.createMealPlan)
       .delete('/:mealPlanId', this.removeMealPlan)

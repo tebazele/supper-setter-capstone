@@ -11,7 +11,7 @@ class ShoppingListService {
   async getDayShopList(dayId) {
     const shoppinglist = await api.get(`api/days/${dayId}/shoppinglist`)
     AppState.shoppingList = shoppinglist.data
-    logger.log(shoppinglist)
+    logger.log("[SHOPPING LIST from backend]", shoppinglist)
   }
 
   async getMealPlanShopList(mealPlanId) {

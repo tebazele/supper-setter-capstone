@@ -12,8 +12,8 @@ export class DaysController extends BaseController {
     this.router
       .get('/:dayId/plannedmeals', this.getPlannedMealsByDayId)
       .get('/:dayId', this.getDayInfoByDayId)
-      .get('/:dayId/shoppinglist', this.getShopList)
       .use(Auth0Provider.getAuthorizedUserInfo)
+      .get('/:dayId/shoppinglist', this.getShopList)
       .put('/:dayId/shoppinglist/:ingredientId', this.updateIngredient)
       .post('', this.createDay)
       .delete('/:dayId', this.removeDay)

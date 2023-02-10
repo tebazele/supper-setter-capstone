@@ -71,7 +71,7 @@
                     recipe</button>
             </div>
             <div class="mt-2" v-for="d in dinnerMeals" :key="d.id">
-                <div class="d-flex">
+                <div class="d-flex pb-2">
 
                     <img :src="d.recipe.image" class="thumbnail rounded" />
                     <h5 v-if="d.recipe.id" class="my-1 fw-bold roboto-slab p-2"> {{
