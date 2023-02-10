@@ -17,8 +17,8 @@
           <h5 class="raleway">Day {{ index + 1 }} <span @click="deleteDay(ps.dayId)"
               class="mdi mdi-delete text-danger"></span></h5>
           <button v-if="days[index].shopListGenerated" @click="pushDayShoppingList(ps.dayId)"
-            class="btn bg-primary border border-dark border-1"><i class="mdi mdi-cart"></i>
-            Go To List {{ index + 1 }}</button>
+            class="btn bg-primary border border-dark border-1">View Day <i class="mdi mdi-cart"></i>
+            List {{ index + 1 }}</button>
           <button v-else @click="createDayShoppingList(ps.dayId)" class="btn bg-primary border border-dark border-1"><i
               class="mdi mdi-cart"></i>
             List from Day</button>
@@ -36,8 +36,8 @@
           class="btn bg-primary border border-dark border-1 mb-2"><i class="mdi mdi-cart"></i>View from
           MealPlan</button>
         <button v-else @click="createMealPlanShoppingList(mealPlan.id)"
-          class="btn bg-primary border border-dark border-1 mb-2"><i class="mdi mdi-cart"></i>List from
-          MealPlan</button>
+          class="btn bg-primary border border-dark border-1 mb-2">View MealPlan <i class="mdi mdi-cart"></i>
+          List</button>
         <button class="btn bg-secondary text-white border border-dark me-2 mb-2" @click="createDay">Add Day</button>
       </div>
     </div>
@@ -185,11 +185,11 @@ export default {
       },
       async createDayShoppingList(dayId) {
         await shoppingListService.generateShoppingListByDayId(dayId)
-        // router.push({ name: 'ShoppingList', query: { day: `${dayId}` } })
+        router.push({ name: 'ShoppingList', query: { day: `${dayId}` } })
       },
       async createMealPlanShoppingList(mealPlanId) {
         await shoppingListService.generateShoppingListByMealPlanId(mealPlanId)
-        // router.push({ name: 'ShoppingList', query: { mealplan: `${mealPlanId}` } })
+        router.push({ name: 'ShoppingList', query: { mealplan: `${mealPlanId}` } })
       },
       async pushDayShoppingList(dayId) {
         router.push({ name: 'ShoppingList', query: { day: `${dayId}` } })
