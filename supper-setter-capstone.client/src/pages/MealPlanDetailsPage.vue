@@ -33,11 +33,11 @@
             class="mdi mdi-delete"></i>Delete
           Plan</button>
         <button v-if="mealPlan?.shopListGenerated" @click="pushMealPlanShoppingList(mealPlan.id)"
-          class="btn bg-primary border border-dark border-1 mb-2"><i class="mdi mdi-cart"></i>View from
-          MealPlan</button>
-        <button v-else @click="createMealPlanShoppingList(mealPlan.id)"
           class="btn bg-primary border border-dark border-1 mb-2">View MealPlan <i class="mdi mdi-cart"></i>
           List</button>
+        <button v-else @click="createMealPlanShoppingList(mealPlan.id)"
+          class="btn bg-primary border border-dark border-1 mb-2"><i class="mdi mdi-cart"></i>
+          List from Mealplan</button>
         <button class="btn bg-secondary text-white border border-dark me-2 mb-2" @click="createDay">Add Day</button>
       </div>
     </div>
