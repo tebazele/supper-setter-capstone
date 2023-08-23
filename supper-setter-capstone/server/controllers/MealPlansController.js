@@ -14,6 +14,7 @@ export class MealPlansController extends BaseController {
       .get('/:mealPlanId/days', this.getMealPlanDays)
       .use(Auth0Provider.getAuthorizedUserInfo)
       .get('/:mealPlanId/shoppinglist', this.getShopList)
+      .put('/:mealPlanId/shoppinglist/:ingredientId', this.updateIngredient)
       .post('/:mealPlanId/shoppinglist', this.generateShopList)
       .post('', this.createMealPlan)
       .delete('/:mealPlanId', this.removeMealPlan)
@@ -71,6 +72,15 @@ export class MealPlansController extends BaseController {
     try {
       const shoppinglist = await shoppingListService.getMealPlanShopList(req.params.mealPlanId)
       return res.send(shoppinglist)
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  async updateIngredient(req, res, next) {
+    try {
+      const ingredient = await shoppingListService.updateIngredient(req.params.ingredientId)
+      return res.send(ingredient)
     } catch (error) {
       next(error)
     }

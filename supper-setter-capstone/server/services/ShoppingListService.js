@@ -7,6 +7,7 @@ class ShoppingListService {
     if (!ingredient) { throw new BadRequest(`There is no ingredient with the ID of ${id}`) }
     ingredient.checked = !ingredient.checked
     ingredient.save()
+    return ingredient
   }
   async getDayShopList(dayId) {
     const shoppingList = await dbContext.Ingredient.find({ dayId })

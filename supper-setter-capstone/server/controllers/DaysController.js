@@ -79,6 +79,7 @@ export class DaysController extends BaseController {
   async updateIngredient(req, res, next) {
     try {
       const ingredient = await shoppingListService.updateIngredient(req.params.ingredientId)
+      return res.send(ingredient)
     } catch (error) {
       next(error)
     }

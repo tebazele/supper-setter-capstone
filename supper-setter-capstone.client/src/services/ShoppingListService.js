@@ -73,8 +73,12 @@ class ShoppingListService {
   }
 
 
-  async checkIngredient(dayId, ingredientId) {
-    await api.put(`api/days/${dayId}/shoppinglist/${ingredientId}`, ingredientId)
+  async checkIngredientDay(dayId, ingredientId) {
+    await api.put(`api/days/${dayId}/shoppinglist/${ingredientId}`)
+  }
+
+  async checkIngredientMealPlan(mealPlanId, ingredientId) {
+    await api.put(`api/mealPlans/${mealPlanId}/shoppinglist/${ingredientId}`)
   }
 
 }
